@@ -1,0 +1,12 @@
+.texto {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.barra {
+    background: rgba(217, 217, 217, 0.4);
+}
+
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item.active>.sidebar-link {
+    color: black !important;
+}

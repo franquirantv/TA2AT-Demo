@@ -1,0 +1,34 @@
+<section class="section2">
+    <div class="container">
+
+        <h3 class="marginb2 heading-line" *ngIf="this.router.url!='/explorar'">Mis diseños</h3>
+        <div class="columna">
+            <div class="wrapper" *ngIf="this.router.url!='/explorar'">
+                <div (click)="pulsado()" class="button">
+                    <div class="icon">
+                        <mat-icon>note_add</mat-icon>
+                    </div>
+                    <span>Subir diseño</span>
+
+                </div>
+
+                <!-- <button class="boton" (click)="pulsado()"> SUBIR DISEÑO  </button> -->
+            </div>
+            <main class="gallery">
+                <div class="noDiseno" *ngIf="!EmptyDesignList(listaDisenyos)">
+                    <h5>Aún no has subido ningún diseño.</h5>
+                </div>
+                <div class="insideGallery">
+                    <figure *ngFor="let disenyo of listaDisenyos">
+                        <a [routerLink]="[ '/estudio/misdisenos/design-estudio', disenyo.did] ">
+                            <img class="shadow rounded p-2" [src]="disenyo.imagenUrl" />
+                        </a>
+                    </figure>
+                </div>
+            </main>
+            <div>
+                <app-pagination (cambiarPagina)="cambiarPagina( $event ) " [texto]="true " [totalRegistros]="totalDisenyos " [registroActual]="posicionactual+1 " [registrosPorPagina]="registrosporpagina "></app-pagination>
+            </div>
+        </div>
+    </div>
+</section>

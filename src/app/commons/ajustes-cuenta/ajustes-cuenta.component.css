@@ -1,0 +1,331 @@
+/*Modal*/
+
+.modal-dialog {
+    margin-left: 7% !important;
+}
+
+.encajado {
+    overflow: auto;
+    margin-top: 0.5em;
+    width: 100%;
+}
+
+.modal-content {
+    background-color: white !important;
+    width: 80em;
+    height: 40em;
+}
+
+.headerModal {
+    display: flex;
+    justify-content: center;
+}
+
+.headerModal img {
+    width: 10% !important;
+}
+
+#botonesBuscar .btn.bg-dark {
+    color: white;
+}
+
+#botonesBuscar .btn.inverso {
+    color: #343a40;
+    outline-color: #343a40;
+    background-color: white;
+    border: 1px solid #343a40;
+}
+
+
+/*----------------FIN Modal*/
+
+
+/*-------------Modal perfil*/
+
+
+/*Para arreglar que el div se sobre pusiera a los botones*/
+
+#modalPerfil>div>div>div.modal-body>div>div.col-md-4 {
+    height: 50%;
+}
+
+#imgPerfil,
+#imgSinPerfil {
+    width: 180px;
+    height: 279px;
+}
+
+#divPerfil div div label,
+#divPerfil+div.labels label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#modalPerfil .nav-link,
+#modalPerfil2 .nav-link,
+#modalPerfil3 .nav-link,
+#modalPerfil4 .nav-link {
+    color: #343a40;
+    cursor: pointer;
+}
+
+#modalNotificaciones #modalNotificaciones1 .nav-link {
+    color: #343a40;
+    cursor: pointer;
+}
+
+#modalPerfil2 {
+    font-size: 1em;
+}
+
+#modalPerfil2Contenido,
+#modalPerfil3Contenido,
+#modalPerfil4Contenido {
+    overflow: auto;
+    margin: 0.5em;
+}
+
+.active {
+    color: #D4AF37 !important;
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+}
+
+
+/*Tamano para modales*/
+
+.divSize {
+    height: 5em;
+}
+
+
+/*IMG*/
+
+#upload {
+    opacity: 0;
+}
+
+
+/*#upload-label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+}*/
+
+.image-area {
+    border: 2px dashed rgba(255, 255, 255, 0.7);
+    padding: 1rem;
+    position: relative;
+}
+
+.titlePost {
+    background-color: #D4AF37;
+    outline-color: #D4AF37;
+    color: white;
+    box-shadow: 5px 5px 5px 5px darkgray;
+    padding: 0.5em 0 0.5em 0;
+    margin-top: 1em;
+    text-align: center;
+    width: 60%;
+}
+
+.divGestiona {
+    display: flex;
+    justify-content: center;
+}
+
+.divCuenta {
+    padding: 1em;
+}
+
+.divCuenta h5 {
+    text-decoration: underline;
+}
+
+.divCuenta button {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: white;
+    box-shadow: 0 4px 9px -4px black;
+}
+
+.divCuenta .btnModify {
+    margin-bottom: 2em;
+}
+
+.divCuenta p button:hover {
+    background-color: #eee;
+    outline-color: #D4AF37;
+    color: #D4AF37;
+}
+
+label.form-check-label {
+    font-weight: bold;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: green !important;
+}
+
+.custom-checkbox .custom-control-input:checked:focus~.custom-control-label::before {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 255, 0, 0.25)
+}
+
+.custom-checkbox .custom-control-input:focus~.custom-control-label::before {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25)
+}
+
+.custom-checkbox .custom-control-input:active~.custom-control-label::before {
+    background-color: #C8FFC8;
+}
+
+
+/*.image-area::before {
+  content: 'Uploaded image result';
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  z-index: 1;
+}*/
+
+.image-area img {
+    z-index: 2;
+    position: relative;
+}
+
+
+/*---------*/
+
+
+/*--------Mensajes*/
+
+
+/*------------------*/
+
+
+/*---------------------scrollbar*/
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D4AF37;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #D4AF37;
+}
+
+
+/*---------------------fin scrollbar*/
+
+
+/*-----------FIN Modal perfil*/
+
+#animated-container {
+    visibility: hidden !important;
+}
+
+
+/*Cuadro Google*/
+
+#credential_picker_container>iframe {
+    display: none;
+    visibility: hidden;
+}
+
+
+/*---------------Nuevos estilos modal sin bootstrap*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/*.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}*/
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.modal p {
+    margin-bottom: 20px;
+}
+
+.modal button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    background-color: #3e8e41;
+}
+
+
+/* Boton de cerrar modal */
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+
+/*---------------FIN Nuevos estilos modal sin bootstrap*/

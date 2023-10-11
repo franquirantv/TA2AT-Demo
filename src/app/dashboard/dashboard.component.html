@@ -1,0 +1,126 @@
+<!-- AQUI CARGAMOS TOP-CARDS ESTUDIOS-->
+
+<body>
+    <div class="container">
+        <section class="section2">
+            <h3 class="heading-line">Dashboard</h3>
+            <!-- AQUI CARGAMOS TOP-CARDS ADMIN-->
+            <div *ngIf="RutaEstudio()">
+                <div class="flex1">
+                    <div>
+                        <iframe class="responsive-iframe-top" [src]="this.nDesign" frameborder="0"></iframe>
+                    </div>
+                    <div>
+                        <iframe class="responsive-iframe-top" [src]="this.nGUardados" frameborder="0"></iframe>
+                    </div>
+                    <div>
+                        <iframe class="responsive-iframe-top" [src]="this.nVisitas" frameborder="0"></iframe>
+                    </div>
+                </div>
+                <div class="flex2">
+                    <div>
+                        <iframe class="responsive-iframe-visitas" [src]="this.visitasDia" frameborder="0"></iframe>
+                        <div class="button-container">
+                            <button (click)="ultimoSem()">Últimos 7 días</button>
+                            <button (click)="ultimoMes()">Último Mes</button>
+                            <button (click)="ultimoAno()">Último Año</button>
+                        </div>
+                        <div><iframe class="responsive-iframe-visitas-disenyos" [src]="this.visitasDesign" frameborder="0"></iframe></div>
+                    </div>
+                    <div class="espacio">
+                        <div><iframe class="responsive-iframe-guardados-disenyos" [src]="this.guardadosDesign" frameborder="0"></iframe></div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!RutaEstudio()">
+                <div class="flex1Admin">
+                    <div>
+                        <iframe class="responsive-iframe-top-A" src="https://ta2at.ovh/grafana/d-solo/30zGLGB4k/pruebas?orgId=1&from=1680912000000&to=1743724800000&theme=light&panelId=20" frameborder="0"></iframe>
+                    </div>
+                    <div>
+                        <iframe class="responsive-iframe-top-A" src="https://ta2at.ovh/grafana/d-solo/30zGLGB4k/pruebas?orgId=1&from=1680912000000&to=1743724800000&theme=light&panelId=22" frameborder="0"></iframe>
+                    </div>
+                    <div>
+                        <iframe class="responsive-iframe-top-A" src="https://ta2at.ovh/grafana/d-solo/30zGLGB4k/pruebas?orgId=1&from=1680912000000&to=1743724800000&theme=light&panelId=24" frameborder="0"></iframe>
+                    </div>
+                </div>
+                <div class="flex2Admin">
+                    <iframe class="responsive-iframe-logins" src="https://ta2at.ovh/grafana/d-solo/30zGLGB4k/pruebas?orgId=1&from=1684340190996&to=1684944990996&theme=light&panelId=26" frameborder="0"></iframe>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- app feeds -->
+            <!-- ============================================================== -->
+
+            <!--<div class="grid-container-element">
+              <div class="grid-child-element">
+                  <div class="tabs flex border-b border-gray-200 text-center">
+                      <div class="tab bg-white active title flex-1" data-tab-content="tab1-content">
+                          <a class="relative block text-sm font-medium">
+                Toda la actividad
+              </a>
+                      </div>
+
+                      <div class="tab flex-1 pl-px" data-tab-content="tab2-content">
+                          <a class=" relative block text-sm font-medium">
+                Mensajes recibidos
+              </a>
+                      </div>
+                      <div class="tab flex-1" data-tab-content="tab3-content">
+                          <a class=" relative block text-sm font-medium">
+                Diseños Usados
+              </a>
+                      </div>
+                      <div class="tab -mr-px flex-1" data-tab-content="tab4-content">
+                          <a class=" relative block text-sm font-medium">
+                Diseños Guardados
+              </a>
+                      </div>
+                  </div>
+
+                  <div class="tab-content">
+                      <div class="tab-content-item active" id="tab1-content">
+                          <h4>sample text tab 1 </h4>
+                      </div>
+                      <div class="tab-content-item" id="tab2-content">
+                          <h4>sample text tab 2 </h4>
+
+                      </div>
+                      <div class="tab-content-item" id="tab3-content">
+                          <h4>sample text tab 3 </h4>
+
+                      </div>
+                      <div class="tab-content-item" id="tab4-content">
+                          <h4>sample text tab 4 </h4>
+
+                      </div>
+                  </div>
+              </div>
+                <ul class="flex border-b border-gray-200 text-center">
+            <li class="flex-1">
+                <a id="todo" class="relative abierto block border-t border-l border-r border-gray-200 bg-white p-4 text-sm font-medium" (click)="showContent(1, 'todo')">
+                    <span class="absolute inset-x-0 -bottom-px h-px w-full bg-white"></span> Todo
+                </a>
+            </li>
+
+            <li class="flex-1 pl-px">
+                <a id="mensajes" class="block bg-gray-100 p-4 text-sm font-medium text-gray-500 ring-1 ring-inset ring-white" (click)="showContent(2, 'mensajes')">
+            Mensajes
+          </a>
+            </li>
+
+            <li class="flex-1">
+                <a id="usados" class="block bg-gray-100 p-4 text-sm font-medium text-gray-500 ring-1 ring-inset ring-white" (click)="showContent(3, 'usados')"> Usados </a>
+            </li>
+
+            <li class="-mr-px flex-1">
+                <a id="guardados" class="block bg-gray-100 p-4 text-sm font-medium text-gray-500 ring-1 ring-inset ring-white" (click)="showContent(4, 'guardados')">
+            Guardados
+          </a>
+            </li>
+        </ul>
+
+          </div>-->
+        </section>
+    </div>
+</body>

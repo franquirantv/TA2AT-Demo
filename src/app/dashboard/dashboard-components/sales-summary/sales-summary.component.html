@@ -1,0 +1,23 @@
+<div class="card">
+    <div class=" grafica card-body">
+        <div class="d-md-flex align-items-center">
+            <div>
+                <h4 class="titulo card-title">Usuarios Vs Estudios</h4>
+                <h5 class="subtitulo card-subtitle">Informe anual usuarios</h5>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <!-- column -->
+            <div class="col-lg-12">
+                <div class="num">
+                    <div class="d-flex flex-column w-100">
+                        <apx-chart [series]="salesChartOptions.series" [chart]="salesChartOptions.chart" [xaxis]="salesChartOptions.xaxis" [yaxis]="salesChartOptions.yaxis" [grid]="salesChartOptions.grid" [stroke]="salesChartOptions.stroke" [tooltip]="salesChartOptions.tooltip"
+                            [dataLabels]="salesChartOptions.dataLabels" [legend]="salesChartOptions.legend" [colors]="salesChartOptions.colors" [markers]="salesChartOptions.markers">
+                        </apx-chart>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+        </div>
+    </div>
+</div>

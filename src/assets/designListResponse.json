@@ -1,0 +1,286 @@
+{
+  "ok": true,
+  "msg": "obtenerDesign",
+  "design": [
+      {
+          "nombre": "lobo black & gray",
+          "color": true,
+          "estilos": [
+              "Realista"
+          ],
+          "zonas": [
+              "Espalda",
+              "Pecho",
+              "Brazos"
+          ],
+          "descripcion": "Diseño de un lobo con la mitad de la cara con distinto estilo y en Black & Gray",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "63bc5cf3e31e74f27300e2b9",
+              "645275b21eaf1e7f61bbbf26",
+              "63f9d3db077f497cf2e2305e",
+              "63874455a7ca794afff94a59"
+          ],
+          "imagen_id": "4ddf37f9-836e-475a-be26-400c8fd721a2.png",
+          "did": "641e152ef5e0f62bb4cb3769"
+      },
+      {
+          "nombre": "samurai",
+          "color": true,
+          "estilos": [
+              "Japonés tradicional"
+          ],
+          "zonas": [
+              "Espalda",
+              "Pecho",
+              "Brazos",
+              "Piernas"
+          ],
+          "descripcion": "Ilustración de samurai japonés complejo.",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "645275b21eaf1e7f61bbbf26",
+              "63c0608a0a1a4833ebf968dd",
+              "63f9d3db077f497cf2e2305e",
+              "63874455a7ca794afff94a59",
+              "6491b193dc749359428e85d0"
+          ],
+          "imagen_id": "52c7a29e-a80f-42a9-b71d-f33f67cd0e63.png",
+          "did": "641e1652f5e0f62bb4cb377f"
+      },
+      {
+          "nombre": "Dragon",
+          "color": true,
+          "estilos": [
+              "Tribal",
+              "Japonés tradicional"
+          ],
+          "zonas": [
+              "Espalda",
+              "Pecho",
+              "Cabeza",
+              "Brazos",
+              "Piernas"
+          ],
+          "descripcion": "Dragon con estilo agresivo.",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "642096e0e749833ac4d9fe68",
+              "636ce64b383e1a0feb82175b",
+              "63c0608a0a1a4833ebf968dd",
+              "63f9d3db077f497cf2e2305e"
+          ],
+          "imagen_id": "c9c79800-3d3d-4cbf-8e6e-2a845fb90e64.png",
+          "did": "641e2d70f5e0f62bb4cb37b1"
+      },
+      {
+          "nombre": "culebra",
+          "color": true,
+          "estilos": [
+              "Tradicional",
+              "Realista"
+          ],
+          "zonas": [
+              "Cabeza",
+              "Pecho",
+              "Espalda",
+              "Brazos",
+              "Piernas"
+          ],
+          "descripcion": "Culebra agresiva con estilo realista.",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "646bb08c1327e521d7a520ad",
+              "63f9d3db077f497cf2e2305e"
+          ],
+          "imagen_id": "7447bbc8-6a64-4253-96c8-3f0af8ee489d.png",
+          "did": "641e2ed1f5e0f62bb4cb37d4"
+      },
+      {
+          "nombre": "Calavera con flores",
+          "color": true,
+          "estilos": [
+              "Tradicional",
+              "Japonés tradicional"
+          ],
+          "zonas": [
+              "Cabeza",
+              "Pecho",
+              "Espalda",
+              "Brazos",
+              "Piernas"
+          ],
+          "descripcion": "Calavera con estilo japonés.",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "645275b21eaf1e7f61bbbf26",
+              "63f9d3db077f497cf2e2305e"
+          ],
+          "imagen_id": "b200d4a7-fb8d-4f79-b5a5-2b90fdde9416.png",
+          "did": "641e2f19f5e0f62bb4cb37dc"
+      },
+      {
+          "nombre": "murciélago de neón",
+          "color": true,
+          "estilos": [
+              "Fluorescente"
+          ],
+          "zonas": [
+              "Cabeza",
+              "Pecho",
+              "Espalda",
+              "Brazos",
+              "Piernas"
+          ],
+          "descripcion": "Murciélago con corazón violeta con efecto de neón.",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "63c0608a0a1a4833ebf968dd",
+              "63f9d3db077f497cf2e2305e",
+              "636ce64b383e1a0feb82175b",
+              "63874455a7ca794afff94a59"
+          ],
+          "imagen_id": "89e5f4b9-1b1c-452f-8b04-2d1ad964d7ef.png",
+          "did": "641e2fa1f5e0f62bb4cb37e8"
+      },
+      {
+          "nombre": "mariposa",
+          "color": true,
+          "estilos": [
+              "Neotradicional"
+          ],
+          "zonas": [
+              "Cabeza",
+              "Pecho",
+              "Espalda",
+              "Brazos",
+              "Piernas"
+          ],
+          "descripcion": "Mariposa neotradicional muy colorida",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "63f9d3db077f497cf2e2305e",
+              "63874455a7ca794afff94a59"
+          ],
+          "imagen_id": "24755c6f-61f8-4151-a0b9-5b672b3bb71e.png",
+          "did": "641e3001f5e0f62bb4cb37f0"
+      },
+      {
+          "nombre": "mandala",
+          "color": true,
+          "estilos": [
+              "Dotwork"
+          ],
+          "zonas": [
+              "Cabeza",
+              "Pecho",
+              "Espalda",
+              "Brazos",
+              "Piernas"
+          ],
+          "descripcion": "Mandala con estilo dotwork",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "63f9d3db077f497cf2e2305e"
+          ],
+          "imagen_id": "29f806ab-3b91-4ca9-914e-293175895a85.png",
+          "did": "641e3091f5e0f62bb4cb37fa"
+      },
+      {
+          "nombre": "Ojo",
+          "color": true,
+          "estilos": [
+              "Realista"
+          ],
+          "zonas": [
+              "Cabeza",
+              "Pecho",
+              "Espalda",
+              "Brazos",
+              "Piernas"
+          ],
+          "descripcion": "Ojo lagrimando Realista",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "63f9d3db077f497cf2e2305e"
+          ],
+          "imagen_id": "db25f8c1-d991-4751-b03b-4e790ae1d163.png",
+          "did": "641e3119f5e0f62bb4cb3804"
+      },
+      {
+          "nombre": "Retrato de David",
+          "color": true,
+          "estilos": [
+              "Realista"
+          ],
+          "zonas": [
+              "Cabeza",
+              "Pecho",
+              "Espalda",
+              "Brazos",
+              "Piernas"
+          ],
+          "descripcion": "Retrato de la escultura de David con estilo realista y con efecto de desgastado.",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "63f9d3db077f497cf2e2305e",
+              "636ce64b383e1a0feb82175b",
+              "63874455a7ca794afff94a59"
+          ],
+          "imagen_id": "f0a5b571-9bf3-4f1d-a738-9ac5249b14d8.png",
+          "did": "641e31dff5e0f62bb4cb3823"
+      },
+      {
+          "nombre": "ALAS",
+          "color": true,
+          "estilos": [
+              "Tribal"
+          ],
+          "zonas": [
+              "Espalda"
+          ],
+          "descripcion": "alas",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "645275b21eaf1e7f61bbbf26",
+              "63f9d3db077f497cf2e2305e"
+          ],
+          "imagen_id": "cc8df975-c892-46e4-9b6e-12ac1650818a.png",
+          "did": "6425407cb8b2d48c0e17a1f5"
+      },
+      {
+          "nombre": "Infinito",
+          "color": true,
+          "estilos": [
+              "Tribal"
+          ],
+          "zonas": [
+              "Espalda"
+          ],
+          "descripcion": "xdcd",
+          "usuario": "63c0608a0a1a4833ebf968dd",
+          "autor": "Pepe",
+          "guardados": [
+              "63f9d3db077f497cf2e2305e"
+          ],
+          "imagen_id": "c650ed69-89df-4e77-9173-c3058bf63c3a.png",
+          "did": "64254a3bb8b2d48c0e17a315"
+      }
+  ],
+  "page": {
+      "desde": 0,
+      "registropp": 12,
+      "total": 12
+  }
+}

@@ -1,0 +1,19 @@
+.container {
+    padding: 1em;
+}
+
+.grafica {
+    background-color: rgb(44, 43, 43);
+}
+
+.titulo {
+    color: #D4AF37;
+}
+
+.subtitulo {
+    color: #d3be79;
+}
+
+.num {
+    color: white;
+}

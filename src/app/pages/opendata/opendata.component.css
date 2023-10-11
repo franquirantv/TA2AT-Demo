@@ -1,0 +1,85 @@
+.divTituloLegal {
+    width: 100%;
+}
+
+.tituloLegal {
+    text-shadow: 1px 3px 5px rgb(79, 79, 79);
+    color: rgb(0, 0, 0);
+}
+
+.logo_lista {
+    background-image: url(/assets/images/favicon.png);
+    background-repeat: no-repeat;
+    background-size: 1.5em;
+    padding: 0.05em 0px 0.35em 2em;
+    color: #D4AF37;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.subrayado {
+    font-weight: bold;
+    color: #D4AF37;
+}
+
+.negrita {
+    font-weight: bold;
+}
+
+.enlace_personalizado {
+    text-decoration: none;
+    color: #343a40;
+}
+
+.subrayado2 {
+    color: #343a40;
+    font-weight: bold;
+}
+
+.csv-download-btn {
+    display: inline-block;
+    border: none;
+    background-color: #D4AF37;
+    color: #373737;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.csv-download-btn:hover {
+    background-color: #D4AF37;
+}
+
+.csv-download-btn:active {
+    background-color: #D4AF37;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.csv-download-btn:focus {
+    outline: none;
+}
+
+.csv-download-btn:before {
+    content: '\2193';
+    margin-right: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    transform: rotate(-90deg);
+    transition-duration: 0.4s;
+}
+
+.csv-download-btn:hover:before {
+    transform: rotate(-180deg);
+}
+
+.background {
+    background-color: #c9c9c9;
+    width: 25%;
+}

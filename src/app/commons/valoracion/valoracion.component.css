@@ -1,0 +1,123 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.modal p {
+    margin-bottom: 20px;
+}
+
+.modal button {
+    background-color: #d4af37;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    background-color: #d4af37;
+}
+
+
+/* Boton de cerrar modal */
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+.botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.botones button {
+    margin: 0 10px;
+}
+
+
+/* Estrellas valoracion */
+
+.star-rating {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.star {
+    font-size: 2em;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.filled {
+    color: #d4af37;
+}
+
+
+/* Titulo descripcion */
+
+.texto {
+    text-align: center;
+}
+
+.text-area-container {
+    text-align: center;
+}
+
+textarea {
+    width: 80%;
+    height: 8em;
+    padding: 1em;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+
+.formulario {
+    text-align: center;
+}

@@ -1,0 +1,8 @@
+.badge {
+    display: table-footer-group;
+    position: absolute;
+    padding: 0.15em 0.15em;
+    background-color: #f2f2f2;
+    color: #333;
+    margin-left: 1.3em;
+}

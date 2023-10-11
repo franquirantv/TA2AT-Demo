@@ -1,0 +1,306 @@
+section {
+    background-color: white !important;
+}
+
+#imgLogin {
+    border-radius: 1rem 0 0 1rem;
+    height: 35em;
+}
+
+.titulo {
+    font-size: 2em;
+}
+
+.card {
+    height: 35em;
+}
+
+.parent {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control-lg {
+    min-height: calc(1.5em + 1rem + 2px);
+    /* padding: 0.5rem 1rem; */
+    font-size: 1rem;
+    border-radius: 0.5rem;
+}
+
+
+/*Tamaño bloque*/
+
+.div1 {
+    /* justify-self: center;
+    margin-right: 1em;
+    width: 13em;
+    display: block; */
+}
+
+.div1 span {
+    transition: right 0.2s;
+    position: relative;
+    bottom: 1.8em;
+    right: 0.8em;
+    float: right;
+    cursor: pointer;
+}
+
+.div3 {
+    font-size: 0.9em;
+}
+
+.div4 {
+    /* display: flex;
+    margin-top: -3.5em;
+    height: 7em; */
+}
+
+.centrar {
+    justify-content: center;
+}
+
+
+/*Iniciar sesión*/
+
+h5.fw-normal mb-3 pb-3 {
+    letter-spacing: 1px;
+}
+
+#ojoLogin {
+    /* margin-right: 1rem; */
+    width: 15%;
+}
+
+.negrita {
+    font-weight: 500;
+}
+
+
+input:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #D4AF37;
+    outline: 0 none;
+}
+
+.inicioSesion {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: #373737;
+    font-size: 1rem;
+}
+
+.inicioSesion:hover {
+    background-color: #e5c14c;
+}
+
+section {
+    animation: fadeInAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.card {
+    border-radius: 1rem;
+}
+
+#pRegistro,
+#pRegistro2 {
+    color: #393f81;
+}
+
+#gBoton {
+    font-size: 0.9em;
+    border: black;
+    padding: 10px 19px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+#cuadroBotonG {
+    text-align: center;
+    color: #545454;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 1px #ddd;
+}
+
+#cuadroBotonG {
+    color: #212529;
+    text-decoration: none;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.google {
+    align-self: center;
+}
+
+
+/* asl-google-signin-button {
+    width: 100%;
+} */
+
+
+/* PÁGINA DISABLED */
+
+.cargando {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999999;
+}
+
+
+/*CUSTOM CHECKBOX RECUERDAME*/
+
+article {
+    position: relative;
+    width: 6%;
+    height: 0;
+    /* margin: 1em; */
+    border: 1px solid #343a40;
+    box-sizing: border-box;
+    border-radius: 1em;
+    margin-left: -0.13em;
+    padding: 1.2em;
+    box-shadow: 0 4px 8px -5px black;
+    ;
+}
+
+article div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 25px;
+    border-radius: 1em;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+article input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5em;
+    opacity: 0;
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked~div:after {
+    /*color: red;
+content: '✓';
+font-size: 1.375em;*/
+    content: url("/./assets/images/faviconR2.png");
+    animation: fadeIn 1s;
+    line-height: 0;
+}
+
+#spanRecordar {
+    position: relative;
+    bottom: 0.75em;
+    margin-left: 2em;
+    font-size: 1em;
+}
+
+
+/*.upgrade-btn {
+display: block;
+margin: 30px auto;
+width: 200px;
+padding: 10px 20px;
+border: 2px solid #50bcf2;
+border-radius: 50px;
+color: #f5f5f5;
+font-size: 18px;
+font-weight: 600;
+text-decoration: none;
+transition: .3s ease;
+}
+
+.upgrade-btn:hover {
+background-color: #50bcf2;
+}
+
+.social i:before {
+width: 14px;
+height: 14px;
+position: fixed;
+color: #fff;
+background: #0077B5;
+padding: 10px;
+border-radius: 50%;
+top: 5px;
+right: 5px;
+}*/
+
+
+/*Ojo es para mostrar contra, pero ver si funciona*/
+
+.fa {
+    cursor: pointer;
+}
+
+.fade-in-image {
+    animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/*Contenedor input password y span con icono*/
+
+.div2 {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.div2 span {
+    position: absolute;
+    top: 45%;
+    right: 0.5em;
+    transition: right 0.2s;
+    cursor: pointer;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.card-body {
+    padding: 0.5em !important;
+}
+
+.helpText{
+    font-size: 0.8em;
+    color: #545454;
+}

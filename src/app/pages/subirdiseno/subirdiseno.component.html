@@ -1,0 +1,372 @@
+<div class="modal fade" id="modalControles" tabindex="-1" aria-labelledby="modalControlesLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-controles">
+            <div class="modal-header">
+                <h5 class="modal-title">¿Cómo utilizar esta herramienta?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h4 class="titulo">CONTROLES</h4>
+                    <ul id="listaControles">
+                        <li>
+                            <h6>
+                                <fa-icon [icon]="faComputerMouse"> </fa-icon> Click derecho arrastrar: mover modelo</h6>
+                            <h2>
+                                <fa-icon [icon]="faArrowsUpDownLeftRight"> </fa-icon>
+                            </h2>
+                        </li>
+                        <!--<img src="./assets/gif/Click_derecho.gif">-->
+                        <li>
+                            <h6>
+                                <fa-icon [icon]="faComputerMouse"> </fa-icon> Click izquierdo arrastrar: rotar modelo</h6>
+                            <h2>
+                                <fa-icon [icon]="faRotate"> </fa-icon>
+                            </h2>
+                        </li>
+                        <li>
+                            <fa-icon [icon]="faComputerMouse"> </fa-icon> Rueda del ratón: zoom</li>
+                        <h2>
+                            <fa-icon [icon]="faMagnifyingGlass"> </fa-icon>
+                        </h2>
+
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button id="guardarCambiosC" data-bs-dismiss="modal">¡Entendido!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAvatar" tabindex="-1" aria-labelledby="modalAvatarLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-avatar">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar avatar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h4 class="titulo">TONO DE PIEL</h4>
+                    <div id="imgColores" class="titulo">
+                        <button (click)="cambiarColorPiel('blanco')">
+                                <input type="radio" name="tono" id="tonoPiel3" value="tonoPiel3" checked="">
+                                    <div for="tonoPiel3" class="botonesColores"></div>
+                            </button>
+
+                        <button (click)="cambiarColorPiel('marron')">
+                                <input type="radio" name="tono" id="tonoPiel4" value="tonoPiel4" checked="">
+                                    <div for="tonoPiel4" class="botonesColores"></div>
+                            </button>
+
+                        <button (click)="cambiarColorPiel('negro')">
+                                <input type="radio" name="tono" id="tonoPiel5" value="tonoPiel5" checked="">
+                                    <div for="tonoPiel5" class="botonesColores"></div>
+                            </button>
+
+                        <button (click)="cambiarColorPiel('muynegro')">
+                                <input type="radio" name="tono" id="tonoPiel6" value="tonoPiel6" checked="">
+                                    <div for="tonoPiel6" class="botonesColores"></div>
+                            </button>
+                    </div>
+                    <div>
+                        <h4 class="titulo">TIPO DE MODELO</h4>
+                        <div class="centrado gap">
+                            <button title="Tipo1" class="cambioCuerpo" (click)="marcado()" class="seleccionado">
+                                    <img src="../../../assets/images/avatar/Avatar-modelo.png" class="pequeño titulo">
+                                </button>
+                            <!-- <button title="Tipo2" class="cambioCuerpo" (click)="marcado2()" [ngClass]="{'seleccionado' : toggle2, 'no_seleccionado': !toggle2}">
+                                    <img src="../../../assets/images/avatar/chicadef.png" class="pequeño titulo">
+                                </button> -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button (click)="actualizarAvatar()" class="actualizarCambios" id="guardarCambios" type="submit" data-bs-dismiss="modal">Actualizar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-editar" id="modalTatuajes">
+    <div class="modal-dialog1">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Diseño</h5>
+                <button type="button" class="btn-close" (click)="hideModalTatuajes()"></button>
+            </div>
+            <div class="modal-body">
+                <app-editar-imagen #editarImagen (imageUploaded)="onImageUploaded($event)"></app-editar-imagen>
+            </div>
+            <div class="modal-footer centrado">
+                <button [ngClass]="tatuajeSubido ? '' : 'boton-inactivo'" class="boton-subir" (click)="hideModalTatuajes(); subirResultado();" id="guardarCambios" type="submit">Subir Diseño</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid-container-element">
+    <div class="parteIzquierda">
+        <mat-stepper orientation="vertical" class="custom-stepper" linear #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Foto, nombre y color</ng-template>
+                    <div class="ordenar">
+                        <div class="imagen">
+                            <img (click)="showModalTatuajes(); resetearImagen();" [src]="imgResultAfterResize" alt="" />
+                            <button (click)="showModalTatuajes(); resetearImagen();" class="boton-subir">
+                                Seleccionar imagen
+                              </button>
+                        </div>
+                        <div class="datos">
+                            <h5>Título</h5>
+                            <input id="titulo" type="text" placeholder="Escribe un título..." class="form-control" name="titulo" formControlName="nombre">
+                            <div class="color">
+                                <h5>Color</h5>
+                                <div class="md-radio md-radio-inline">
+                                    <input id="byn" type="radio" value=false name="color" formControlName="color">
+                                    <label for="byn">Blanco y Negro</label>
+                                </div>
+                                <div class="md-radio md-radio-inline">
+                                    <input id="colorido" type="radio" value=true name="color" formControlName="color">
+                                    <label for="colorido">Colorido</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="espacio" mat-raised-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Estilo, zonas y descripción</ng-template>
+                    <div class="descripcion">
+                        <h5>Estilo</h5>
+                        <mat-form-field hintLabel="Máx. 5 etiquetas" class="example-chip-list" appearance="fill">
+                            <mat-label class="colorLabel">¿A qué estilos pertenece tu diseño?</mat-label>
+                            <mat-chip-grid #chipGrid aria-label="estilo selection">
+                                <mat-chip-row *ngFor="let estilo of estilos" (removed)="remove(estilo)">
+                                    {{estilo}}
+                                    <button matChipRemove [attr.aria-label]="'remove ' + estilo">
+                                  <mat-icon>cancel</mat-icon>
+                                </button>
+                                </mat-chip-row>
+                            </mat-chip-grid>
+                            <input matAutocompletePosition="below" placeholder="Añade un estilo..." #estiloInput [formControl]="estiloCtrl" [matChipInputFor]="chipGrid" [matAutocomplete]="auto" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)"
+                                formControlName="estilos" />
+                            <mat-hint align="end">{{estilos.length}}/5</mat-hint>
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                <mat-option *ngFor="let estilo of filteredEstilos | async" [value]="estilo">
+                                    {{estilo}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <div class="zonas">
+                            <h5>Zonas</h5>
+                            <mat-select formControlName="zonas" multiple placeholder="Selecciona las zonas recomendadas" color="secondary">
+                                <mat-option *ngFor="let zona of zonas" [value]="zona.value" [selected]="zona.value === 'Cabeza'">{{ zona.label }}</mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="descripcion">
+                            <h5>Descripción</h5>
+                            <textarea placeholder="Escribe una descripción..." class="form-control" rows="3" formControlName="descripcion"></textarea>
+                            <!--Aquí-->
+                        </div>
+                    </div>
+                </form>
+                <button class="espacio" mat-raised-button matStepperPrevious>Atrás</button>
+                <button class="espacio" mat-raised-button matStepperNext>Siguiente</button>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Resumen</ng-template>
+                <h5 class="titul">Resumen datos</h5>
+                <div class="column">
+                    <div class="izq">
+                        <img class="imagen" [src]="imgResultAfterResize" alt="" />
+                    </div>
+                    <div class="der">
+                        <p><span class="variable">Título:</span> {{ firstFormGroup.get('nombre')?.value }}</p>
+                        <p><span class="variable">Color:</span> {{ firstFormGroup.get('color')?.value ? 'Colorido' : 'Blanco y Negro' }}</p>
+                        <p><span class="variable">Estilos:</span></p>
+                        <ul>
+                            <li *ngFor="let estilo of estilos" class="estilo">{{ estilo }}</li>
+                        </ul>
+                        <p><span class="variable">Zonas:</span> {{ secondFormGroup.get('zonas')?.value }}</p>
+                        <p><span class="variable">Descripción:</span> {{ secondFormGroup.get('descripcion')?.value }}</p>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="espacio" mat-raised-button matStepperPrevious>Atrás</button>
+                    <button class="espacio" mat-raised-button (click)="subirDisenyo()">Subir diseño</button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+        <!--<form (ngSubmit)="subirDisenyo()" [formGroup]="disenyoForm" name="formulario" id="ajustar">
+            <h3 class="marginb1 heading-line">Subir diseño</h3>
+            <div class="encajado">
+                <h5>Selecciona tu imagen</h5>
+                <div class="ordenar">
+                    <div class="imagen">
+                        <img (click)="showModalTatuajes(); resetearImagen();" [src]="imgResultAfterResize" alt="" />
+                        <button (click)="showModalTatuajes(); resetearImagen();" class="boton-subir">
+                            </button>
+                    </div>
+                    <div class="datos">
+                        <h5>Título</h5>
+                        <input id="titulo" type="text" placeholder="Escribe un título..." class="form-control" name="titulo" formControlName="nombre">
+
+                        <div class="color">
+                            <h5>Color</h5>
+                            <div class="md-radio md-radio-inline">
+                                <input id="byn" type="radio" value=false name="color" formControlName="color">
+                                <label for="byn">Blanco y Negro</label>
+                            </div>
+                            <div class="md-radio md-radio-inline">
+                                <input id="colorido" type="radio" value=true name="color" formControlName="color">
+                                <label for="colorido">Colorido</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="descripcion">
+                    <h5>Estilo</h5>
+                    <mat-form-field hintLabel="Máx. 5 etiquetas" class="example-chip-list" appearance="fill">
+                        <mat-label class="colorLabel">¿A qué estilos pertenece tu diseño?</mat-label>
+                        <mat-chip-grid #chipGrid aria-label="estilo selection">
+                            <mat-chip-row *ngFor="let estilo of estilos" (removed)="remove(estilo)">
+                                {{estilo}}
+                                <button matChipRemove [attr.aria-label]="'remove ' + estilo">
+                                <mat-icon>cancel</mat-icon>
+                              </button>
+                            </mat-chip-row>
+                        </mat-chip-grid>
+                        <input matAutocompletePosition="below" placeholder="Añade un estilo..." #estiloInput [formControl]="estiloCtrl" [matChipInputFor]="chipGrid" [matAutocomplete]="auto" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)"
+                            formControlName="estilos" />
+                        <mat-hint align="end">{{estilos.length}}/5</mat-hint>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let estilo of filteredEstilos | async" [value]="estilo">
+                                {{estilo}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <div class="zonas">
+                        <h5>Zonas recomendadas</h5>
+                        <form [formGroup]="dropDownForm" id="pepe">
+                            <ng-multiselect-dropdown placeholder="Selecciona una zona..." [settings]="dropdownSettings" [data]="dropdownList" formControlName="zonas">
+                            </ng-multiselect-dropdown>
+                        </form>
+                    </div>
+                    <div class="descripcion">
+                        <h5>Descripción</h5>
+                        <textarea placeholder="Escribe una descripción..." class="form-control" rows="3" formControlName="descripcion"></textarea>
+                    </div>
+                </div>
+                <div class="enviar">
+                    <button class="btn separacion" type="button" (click)="Atras()">Atrás</button>
+                    <button class="btn separacionI" type="submit">Subir</button>
+                </div>
+            </div>
+        </form>-->
+    </div>
+    <div class="motor">
+        <div *ngIf="showControles()" class="moverTatuajes">
+            <button (click)="cambiarEscala('menos')" class="controls">
+                    <svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M3.75 12a.75.75 0 01.75-.75h15a.75.75 0 010 1.5h-15a.75.75 0 01-.75-.75z"></path>
+                    </svg>
+                </button>
+            <button (click)="moverTatuajes('arriba')" class="controls up" id="FlechaArriba">
+                    <svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z"></path>
+                    </svg>
+                </button>
+            <button (click)="cambiarEscala('mas')" class="controls">
+                    <svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"></path>
+                    </svg>
+                </button>
+            <button (click)="moverTatuajes('izquierda')" class="controls left" id="FlechaIzquierda">
+                    <svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z"></path>
+                    </svg>
+                </button>
+            <button (click)="moverTatuajes('abajo')" class="controls down" id="FlechaAbajo">
+                    <svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z"></path>
+                    </svg>
+                </button>
+            <button (click)="moverTatuajes('derecha')" class="controls right" id="FlechaDerecha">
+                    <svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                        <path clip-rule="evenodd" fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z"></path>
+                    </svg>
+                </button>
+        </div>
+        <!-- <div #controles id="controles"></div> -->
+        <div class="botones-motor">
+            <!-- color="primary" -->
+            <!-- <button mat-fab id="ajustesAvatar" type="button" data-toggle="modal" data-target="#modalAvatar" type="button" data-bs-toggle="modal" data-bs-target="#modalAvatar">
+                <mat-icon>edit</mat-icon>
+                </button> -->
+
+            <button data-toggle="tooltip" title="Personalizar avatar" mat-fab id="ajustesAvatar" type="button" data-toggle="modal" data-target="#modalAvatar" type="button" data-bs-toggle="modal" data-bs-target="#modalAvatar">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+            <button data-toggle="tooltip" title="Ver información" mat-fab id="mensaje" data-toggle="modal" data-target="#modalControles" type="button" data-bs-toggle="modal" data-bs-target="#modalControles">
+                    <mat-icon>info</mat-icon>
+                </button>
+
+            <button data-toggle="tooltip" title="Rotación automática" mat-fab id="rotarAvatar" (click)="rotarModelo()" type="button">
+                    <mat-icon *ngIf="!getEstaRotando()">3d_rotation</mat-icon>
+                    <mat-icon *ngIf="getEstaRotando()">pause</mat-icon>
+                </button>
+
+            <button data-toggle="tooltip" title="Hacer captura" mat-fab id="captura" (click)="guardarImagen()" type="button">
+                    <mat-icon>camera</mat-icon>
+                </button>
+            <!-- <button mat-fab id="captura" (click)="guardarImagen()" type="button">
+                    <mat-icon>camera</mat-icon>
+                </button> -->
+        </div>
+        <!-- <div id="elegir">
+            <div class="capa">
+                <app-badge [items]="listaTatuajes"></app-badge>
+                <button class="boton-eliminar-tatu1"><mat-icon>layers</mat-icon></button>
+            </div>
+            <div class="select-tatus">
+                <select [attr.disabled]="mostrarselect ? null : ''" [ngClass]="mostrarselect ? '' : 'tatus-option2'" class="tatus-option" (change)="handleChange($event)">
+                     <option>Selecciona el tatuaje</option> -->
+        <!-- <option *ngFor="let item of listaTatuajes" [value]="item.nombre">{{item.nombre}}</option>
+                    </select>
+            </div>
+            <div id="boton-editar" [ngClass]="this.listaTatuajes.length>0 ? '' : 'boton-inactivo'" class="boton-eliminar-centrado">
+                <button (click)="editarTatuaje()" class="boton-eliminar-tatu"><mat-icon>edit</mat-icon></button>
+            </div>
+            <div [ngClass]="this.listaTatuajes.length>0 ? '' : 'boton-inactivo'" class="boton-eliminar-centrado">
+                <button (click)="mostrarTatuaje(value)" class="boton-eliminar-tatu">
+                        <mat-icon *ngIf="!valorMostrar">visibility</mat-icon>
+                        <mat-icon *ngIf="valorMostrar">visibility_off</mat-icon>
+                    </button>
+            </div>
+            <div [ngClass]="this.listaTatuajes.length>0 ? '' : 'boton-inactivo'" class="boton-eliminar-centrado">
+                <button (click)="eliminarTatuaje(value); limpiarTatuajeSubido()" class="boton-eliminar-tatu">
+                        <mat-icon>close</mat-icon>
+                    </button>
+            </div>
+        </div>  -->
+        <!-- <div #rendererCanvas></div> -->
+        <canvas #canvasTAG style=" border:none " id="glcanvas" width="750" height="600">
+                Tu navegador parece no soportar el elemento HTML5 <code>&lt;canvas&gt;</code>.
+            </canvas>
+        <!-- <div #controles id="controles"></div> -->
+        <!-- <div #rendererCanvas id="renderCanvas"></div> -->
+    </div>
+</div>

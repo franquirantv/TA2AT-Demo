@@ -1,0 +1,200 @@
+<!-- Siempre enlazar el componente que contenga los modales
+<app-ajustes-cuenta></app-ajustes-cuenta>-->
+<header class="navbar navbar-expand-lg navbar-light " *ngIf="!explorar()">
+    <a class="navbar-brand" routerLink="">
+        <img id="logo" src="./assets/images/LOGO2.png" width="140" height="70" alt="Logo TA2AT">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" clickOutside (clickOutside)="clickedOutside()">
+        <ul class="navbar-nav mr-auto" id="navegacion">
+            <li class="nav-item">
+                <!--Los span son para el efecto del navbar con css-->
+                <a class="nav-link" href="/explorar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span> <strong>Explorar</strong>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!esUsuario()">
+                <a class="nav-link" href="/planes">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span> <strong>Planes</strong>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contacto">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span> <strong>Contacto</strong>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://tatuate.es/tatublog">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span> <strong>DELT4</strong>
+                </a>
+            </li>
+        </ul>
+        <div *ngIf="!conectado() && !rutalanding() && !rutaInicioSes() && (!rutaSignup() && !rutaSignup2())" class="row" id="botones">
+            <div class="col">
+                <button type="button" id="inicioSesion" class="btn" onclick="window.location.href='/login'">Iniciar sesión</button>
+            </div>
+            <div class="col">
+                <button type="button" id="registrarse" class="btn" onclick="window.location.href='/signup'">Registrarse</button>
+            </div>
+        </div>
+
+        <div *ngIf="!conectado() && rutaInicioSes()" class="row" id="botones">
+            <div class="col">
+                <button type="button" id="registrarse" class="btn" onclick="window.location.href='/signup'">¿No tienes una cuenta? Registrate</button>
+            </div>
+        </div>
+
+        <div *ngIf="!conectado() && (rutaSignup() || rutaSignup2())" class="row" id="botones">
+            <div class="col">
+                <button type="button" id="inicioSesion" class="btn" onclick="window.location.href='/login'">¿Ya tienes cuenta? Inicia sesión</button>
+            </div>
+        </div>
+
+        <div *ngIf="conectado()">
+            <li class="parent">
+                <div class="d-flex align-items-center perfil">
+                    <div>
+                        <img referrerpolicy="no-referrer" [src]="imagen()" alt="user" class="Iperfil img-fluid rounded-circle border border-dark border-3" id="fotoperfilnavbar">
+                    </div>
+                    <div>
+                        <h2 id="miPerfil">{{nombre()}}</h2>
+                    </div>
+                    <div *ngIf="!(TNL() === 0)">
+                        <span class="red">{{TNL()}}</span>
+                    </div>
+                    <div id="flecha">
+                    </div>
+                </div>
+                <ul class="child">
+                    <li id="ajustesAvatar" (click)="redirigirEditarPerfil()">
+                        <div class="menu-item menu-item-settings">
+                            <button type="button">
+                              <mat-icon>settings</mat-icon>
+                              <span>Ajustes</span></button>
+                        </div>
+                    </li>
+                    <li (click)="openModal()">
+                        <div class="menu-item menu-item-question">
+                            <button id="chat">
+                              <mat-icon>question_answer</mat-icon>
+                              <span>Chat </span></button>
+                            <div *ngIf="!(TNL() === 0)">
+                                <span class="red2">{{TNL()}}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li *ngIf="esEstudio()" (click)="redirigirDashboard()">
+                        <div class="menu-item-dashboard">
+                            <button>
+                              <mat-icon>dashboard</mat-icon>
+                              <span>Panel de control</span></button>
+                        </div>
+                    </li>
+                    <li *ngIf="esAdmin()" (click)="redirigirAdminDashboard()">
+                        <div class="menu-item-dashboard">
+                            <button>
+                          <mat-icon class="noIncluir">admin_panel_settings</mat-icon>
+                          <span>Panel de control</span>
+                        </button>
+                        </div>
+                    </li>
+                    <li (click)="logout()">
+                        <div class="menu-item-logout">
+                            <button (click)="logout()"><mat-icon>logout</mat-icon><span>Cerrar sesión</span></button>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </div>
+    </div>
+</header>
+
+<!---------------------------------------------------------Navbar que aparece en explorar-->
+<div class="navExplorar" *ngIf="explorar()">
+    <div class="" id="outside" clickOutside (clickOutside)="clickedOutside()">
+
+        <!-- <div *ngIf="!conectado() && !rutalanding() && !rutaInicioSes() && (!rutaSignup() && !rutaSignup2())" class="row" id="botones">
+            <div class="col">
+                <button type="button" id="inicioSesion" class="btn" onclick="window.location.href='/login'">Iniciar sesión</button>
+            </div>
+            <div class="col">
+                <button type="button" id="registrarse" class="btn" onclick="window.location.href='/signup'">Registrarse</button>
+            </div>
+        </div> -->
+
+        <div>
+          <li class="parent">
+              <div class="d-flex align-items-center perfil">
+                  <div>
+                      <img referrerpolicy="no-referrer" [src]="imagen()" alt="user" class="Iperfil img-fluid rounded-circle border border-dark border-3" id="fotoperfilnavbar">
+                  </div>
+                  <div>
+                      <h2 id="miPerfil">{{nombre()}}</h2>
+                  </div>
+                  <div *ngIf="!(TNL() === 0)">
+                      <span class="red">{{TNL()}}</span>
+                  </div>
+                  <div id="flecha">
+                  </div>
+              </div>
+              <ul class="child">
+                  <li id="ajustesAvatar" (click)="redirigirEditarPerfil()">
+                      <div class="menu-item menu-item-settings">
+                          <button type="button">
+                        <mat-icon>settings</mat-icon>
+                        <span>Ajustes</span></button>
+                      </div>
+                  </li>
+                  <li (click)="openModal()">
+                      <div class="menu-item menu-item-question">
+                          <button id="chat">
+                          <mat-icon>question_answer</mat-icon>
+                          <span>Chat</span></button>
+                          <div *ngIf="!(TNL() === 0)">
+                              <span class="red2">{{TNL()}}</span>
+                          </div>
+
+                      </div>
+                  </li>
+                  <li *ngIf="esEstudio()" (click)="redirigirDashboard()">
+                      <div class="menu-item-dashboard">
+                          <button>
+                          <mat-icon>dashboard</mat-icon>
+                          <span>Panel de control</span></button>
+                      </div>
+                  </li>
+                  <li *ngIf="esAdmin()" (click)="redirigirAdminDashboard()">
+                      <div class="menu-item-dashboard">
+                          <button>
+                      <mat-icon class="noIncluir">admin_panel_settings</mat-icon>
+                      <span>Panel de control</span>
+                    </button>
+                      </div>
+                  </li>
+                  <li (click)="logout()">
+                      <div class="menu-item-logout">
+                          <button><mat-icon>logout</mat-icon><span>Cerrar sesión</span></button>
+                      </div>
+                  </li>
+              </ul>
+          </li>
+        </div>
+
+    </div>
+</div>
+
+<!-- Siempre enlazar el componente que contenga los modales-->

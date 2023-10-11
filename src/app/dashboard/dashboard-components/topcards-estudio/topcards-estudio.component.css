@@ -1,0 +1,29 @@
+/*
+.fondo {
+    background-color: rgb(43, 43, 43);
+    border: #D4AF37 5px solid;
+} */
+
+.justifi {
+    justify-content: center;
+}
+
+.numero {
+    color: black;
+}
+
+.justi {
+    justify-content: center;
+}
+
+.borde {
+    border-radius: 5%;
+}
+
+.grid-container-element {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em;
+    width: 100%;
+    padding: 2em 0em 2em 0em;
+}

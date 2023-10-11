@@ -1,0 +1,33 @@
+<div class="modal" [ngClass]="{'show': mostrarModal()}">
+    <div class="modal-overlay" (click)="hideModal()"></div>
+    <!-- Esto srive para que si clikas fuera del modal se cierre -->
+    <div class="modal-content">
+        <span class="modal-close" (click)="hideModal()">&times;</span>
+        <!-- Boton x para cerrar el modal -->
+        <div class="texto">
+            <h2>Valora nuestra aplicacion</h2>
+        </div>
+
+        <p>Es muy importante para nosotros saber tu opinión y como podríamos mejorar</p>
+        <div class="star-rating">
+            <span class="star" (click)="onStarClick(1)" [ngClass]="{'filled': rating >= 1}">&#9733;</span>
+            <span class="star" (click)="onStarClick(2)" [ngClass]="{'filled': rating >= 2}">&#9733;</span>
+            <span class="star" (click)="onStarClick(3)" [ngClass]="{'filled': rating >= 3}">&#9733;</span>
+            <span class="star" (click)="onStarClick(4)" [ngClass]="{'filled': rating >= 4}">&#9733;</span>
+            <span class="star" (click)="onStarClick(5)" [ngClass]="{'filled': rating >= 5}">&#9733;</span>
+        </div>
+        <form class="formular" (ngSubmit)="valorar()" [formGroup]="valoracionForm">
+
+            <div class="text-area-container">
+                <textarea placeholder="Ingrese su comentario aquí" formControlName="comentario"></textarea>
+            </div>
+
+            <div class="botones">
+                <button type="submit" (click)="TomarDecision(true); hideModal()">Enviar</button>
+                <button type="reset" (click)="hideModal()">Responder mas tarde</button>
+                <button type="submit" (click)="TomarDecision(false); hideModal()">No volver a mostrar</button>
+            </div>
+        </form>
+    </div>
+
+</div>

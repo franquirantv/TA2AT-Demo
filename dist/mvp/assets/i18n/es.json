@@ -1,0 +1,11 @@
+{
+    "cookie": {
+        "header": "¡Respetamos tu privacidad!",
+        "message": "El sitio web de TA2AT utiliza cookies para mejorar su experiencia de usuario y para analizar el tráfico del sitio. Cuando pulsas el botón de 'Permitir cookies', aceptas que podamos almacenar y acceder a las cookies en su dispositivo. En caso contrario puedes simplemente cerrar esta ventana pulsando en el botón 'Cerrar' Puedes obtener más información sobre las cookies a través de nuestro enlace, así como leer nuestra política de privacidad y nuestros términos y condiciones:",
+        "dismiss": "¡De acuerdo!",
+        "allow": "Permitir cookies",
+        "deny": "Cerrar",
+        "link": "Saber más",
+        "policy": "Política de Cookies"
+    }
+}

@@ -1,0 +1,197 @@
+.antes {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-height: 28.6em;
+    gap: 2em;
+}
+
+.despues {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-height: 28.6em;
+    gap: 2em;
+}
+
+.previsualizar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    left: -7em;
+    position: relative;
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+}
+
+.container1 {
+    width: 28em;
+    height: 14em;
+    padding: 1rem;
+    text-align: center;
+    border: dashed 3px #979797;
+    position: relative;
+    margin: 1em auto;
+    input {
+        opacity: 0;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        cursor: pointer
+    }
+    label {
+        color: white;
+        width: 11.4375em;
+        height: 2.75em;
+        background-color: #D4AF37;
+        border-radius: 1.34em;
+        padding: 0.5em 1em;
+    }
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #38424c;
+    }
+}
+
+.fileover {
+    border: dashed 3px #D4AF37;
+    background-color: #FFF8E7;
+}
+
+.seleccionarArchivo {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#imagen {
+    max-width: 14em;
+    background-color: #ccc;
+    height: auto;
+    align-self: center;
+}
+
+.imagenInicial {
+    max-width: 14.5em;
+    height: auto;
+    align-self: center;
+}
+
+.fila {
+    display: flex;
+    position: sticky;
+    top: 6em;
+    flex-direction: row;
+    align-self: center;
+    left: 25em;
+}
+
+.fila2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.columna {
+    display: flex;
+    flex-direction: column;
+}
+
+.icono-tam {
+    max-width: 30%;
+    /* left: -4em; */
+    background: white;
+    border: 0.1em solid #D4AF37;
+    border-radius: 1em;
+    padding: 0.3em;
+    margin: 0.3em;
+    margin-left: 3em;
+}
+
+.boton-ajuste {
+    border: 2px solid #D4AF37;
+    color: black;
+    margin: 0.2em;
+    border-radius: 1em;
+    width: auto;
+}
+
+.columna-ajustes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.quitar {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: #D4AF37;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 3em;
+}
+
+.button {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    margin: 0 5px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:hover {
+    width: 13.125em;
+}
+
+.wrapper .button .icon {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:nth-child(1):hover .icon {
+    background: #D4AF37;
+}
+
+.wrapper .button .icon mat-icon {
+    font-size: 1.6em;
+    margin-top: 0.7em;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:hover .icon mat-icon {
+    color: #fff;
+}
+
+.wrapper .button span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin-left: 10px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:nth-child(1) span {
+    color: #D4AF37;
+}

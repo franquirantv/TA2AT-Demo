@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+</head>
+
+<body>
+    <section class="vh-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-3">
+                    <form [formGroup]="personalDetails" class="msform">
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                            <li [ngClass]="step>=1 ? 'active ' : 'inactive'"><a>Sobre ti</a></li>
+                            <li [ngClass]="step>=2 ? 'active' : 'inactive'"><a>Información personal</a></li>
+                            <li [ngClass]="step==3 ? 'active' : 'inactive'"><a>Confirmación cuenta</a></li>
+                        </ul>
+                        <!-- fieldsets -->
+                        <fieldset *ngIf="step == 1">
+                            <h2 class="fs-title">Define tu rol</h2>
+                            <div class="radio-buttons">
+                                <label class="custom-radio">
+                  <input type="radio" name="rol" (click)="usuario()">
+                  <span class="radio-btn" id="usuarioF">
+                    <img class="imagenBien" src="./assets/images/registro/usuario.jpg">
+                    <i class="las la-check"></i>
+                    <div class="hobbies-icon">
+                      <i class="las la-user"></i>
+                    </div>
+                    <h3>Usuario</h3>
+                  </span>
+                </label>
+                                <label class="custom-radio">
+                  <input type="radio" name="rol" (click)="estudio()">
+                  <span class="radio-btn" id="estudioF">
+                    <img class="imagenBien" src="./assets/images/registro/estudio.jpg">
+                    <i class="las la-check"></i>
+                    <div class="hobbies-icon">
+                      <i class="las la-store-alt"></i>
+                    </div>
+                    <h3>Estudio</h3>
+                  </span>
+                </label>
+                            </div>
+                            <input *ngIf="!desbloquear()" (click)="next()" type="button" name="next" class="next action-button" value="Siguiente" />
+                        </fieldset>
+                    </form>
+                    <form (ngSubmit)="registerUsu()" [formGroup]="datosUsuario" class="msform">
+                        <fieldset *ngIf="step == 2 && rolSelected ==='Usuario' ">
+                            <h2 class="fs-title">Registro usuario</h2>
+                            <div class="columnas">
+                                <div class="div1">
+                                    <h2 class="fs-title">Datos de la cuenta</h2>
+                                    <label class="form-label">Foto de perfil</label>
+                                    <div class="parent">
+                                        <div class="div11">
+                                            <div class="button-wrapper">
+                                                <span class="label">Subir archivo</span>
+                                                <input type="file" name="Foto de perfil" accept="image/*" id="upload" class="upload-box" (change)="onselectFile($event)" formControlName="foto">
+                                            </div>
+                                        </div>
+                                        <div class="div12">
+                                            <img [src]="url" height="75" width="75">
+                                        </div>
+                                    </div>
+                                    <label class="form-label" for="usu">Nombre Usuario(*)</label>
+                                    <input type="text" class="form-control form-control-lg" id="usu" formControlName="usu" />
+                                    <div class="parent mb-2">
+                                        <div class="div11">
+                                            <label class="form-label" for="password" id="labelNombre">Contraseña(*)</label>
+                                            <input show-hide-password onkeydown="return event.keyCode !== 32" type="password" id="password" data-toggle="tooltip" data-placement="top" title="Debe contener entre 6 y 20 caracteres (sin espacios) y almenos una mayuscula, una minuscula, un número" class="form-control form-control-lg"
+                                                formControlName="password" autocomplete="off" />
+                                        </div>
+                                        <div class="div12">
+                                            <label class="form-label" for="password2" id="labelNombre">Repita contraseña(*)</label>
+                                            <input show-hide-password onkeydown="return event.keyCode !== 32" type="password" id="password2" data-toggle="tooltip" data-placement="top" title="Asegurate que las contraseñas sean iguales" class="form-control form-control-lg" formControlName="password2"
+                                                pattern="\S+" autocomplete="off" />
+
+                                        </div>
+                                    </div>
+                                    <div class="check">
+                                        <label class="checkbox">
+                                          <input class="checkbox__input" type="checkbox" id="feature1" formControlName="politicaAceptada">
+                                          <svg class="checkbox__check" width="30" height="30">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                          </svg>
+                                          <span id="spanRecordar">
+                                            <label class="form-label mb-0" id="labelRecordar">
+                                              He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">Política de
+                                              privacidad</a>(*)
+                                            </label>
+                                          </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="div2">
+                                    <h2 class="fs-title">Datos personales</h2>
+                                    <label class="form-label" for="nombre">Nombre(*)</label>
+                                    <input id="nombre" type="text" class="form-control form-control-lg" formControlName="nombre" />
+
+                                    <label class="form-label" for="apellidos">Apellidos(*)</label>
+                                    <input id="apellidos" type="text" class="form-control form-control-lg" formControlName="apellidos" />
+                                    <!--<p class="text-danger" *ngIf="!campoValido2('apellidos')">Los apellidos son obligatorio</p>-->
+
+                                    <label class="form-label" for="fnac">Fecha de nacimiento(*)</label>
+                                    <input id="fnac" type="date" class="form-control form-control-lg" formControlName="fnacimiento" />
+
+                                    <label class="form-label" for="email">Correo electrónico(*)</label>
+                                    <input id="email" type="email" class="form-control form-control-lg" data-toggle="tooltip" data-placement="top" title="Asegurate que sea un formato de correo valido" formControlName="email" />
+                                    <!--<p class="text-danger" *ngIf="!campoValido2('email')">El email es obligatorio y debe ser un email</p>-->
+                                </div>
+                            </div>
+                            <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Anterior" />
+                            <input disabled id="registro" type="button" name="next" id="color" value="Registrarse" />
+                            <p class="text-danger">No disponible en la DEMO</p>
+                          </fieldset>
+                    </form>
+                    <form (ngSubmit)="registerEstudio()" [formGroup]="datosEstudio" class="msform">
+                        <fieldset *ngIf="step == 2 && rolSelected ==='Estudio'">
+                            <h2 class="fs-title">Registro estudio</h2>
+                            <div class="columnas">
+                                <div class="div1">
+                                    <h2 class="fs-title">Datos de la cuenta</h2>
+                                    <label class="form-label" for="form2Example27">Foto de perfil</label>
+                                    <div class="parent">
+                                        <div class="div11">
+                                            <div class="button-wrapper">
+                                                <span class="label">Subir archivo</span>
+                                                <input type="file" name="Foto de perfil" accept="image/*" id="upload" class="upload-box" (change)="onselectFile($event)" formControlName="foto">
+                                            </div>
+                                        </div>
+                                        <div class="div12">
+                                            <img [src]="url" height="75" width="75">
+                                        </div>
+                                    </div>
+
+                                    <label class="form-label" for="form2Example17">Correo electrónico(*)</label>
+                                    <input type="email" id="form2Example37" class="form-control form-control-lg" data-toggle="tooltip" data-placement="top" title="Asegurate que sea un formato de correo valido" formControlName="email" />
+
+                                    <div class="parent">
+                                        <div class="div11">
+                                            <label class="form-label" for="form2Example27" id="labelNombre">Contraseña(*)</label>
+                                            <input show-hide-password onkeydown="return event.keyCode !== 32" type="password" id="password" data-toggle="tooltip" data-placement="top" title="Debe contener entre 6 y 20 caracteres (sin espacios) y almenos una mayuscula, una minuscula, un número" class="form-control form-control-lg"
+                                                formControlName="password" autocomplete="off" />
+                                            <!--<p class="text-danger" *ngIf="!campoValido('password')">El campo contraseña es obligatorio</p>-->
+                                            <!--<p class="text-danger" *ngIf="!filtro_contraE()">La contraseña debe contener almenos una mayuscula, una minuscula, un número, debe estar compuesta entre 6 y 20 caracteres y no debe contener espacios en blanco </p>-->
+                                        </div>
+                                        <div class="div12">
+                                            <label class="form-label" for="form2Example27" id="labelNombre">Repita contraseña(*)</label>
+                                            <input show-hide-password onkeydown="return event.keyCode !== 32" type="password" id="password2" data-toggle="tooltip" data-placement="top" title="Asegurate que las contraseñas sean iguales" class="form-control form-control-lg" formControlName="password2"
+                                                autocomplete="off" />
+                                            <!--<p class="text-danger" *ngIf="!campoValido('password2')">El campo repita contraseña es obligatorio</p>-->
+                                            <!--<p class="text-danger" *ngIf="!contraE()">Ambas contraseñas deben ser iguales</p>-->
+                                        </div>
+                                    </div>
+                                    <div class="check mt-4">
+                                        <label class="checkbox">
+                                          <input class="checkbox__input" type="checkbox" id="feature1" formControlName="politicaAceptada">
+                                          <svg class="checkbox__check" width="30" height="30">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                          </svg>
+                                          <span id="spanRecordar">
+                                            <label class="form-label mb-0" id="labelRecordar">
+                                              He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">Política de
+                                              privacidad</a>(*)
+                                            </label>
+                                          </span>
+
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="div2">
+                                    <h2 class="fs-title">Datos del estudio</h2>
+                                    <label class="form-label" for="form2Example17" id="margen">Nombre del estudio o tatuador(*)</label>
+                                    <input type="text" id="form2Exam7" class="form-control form-control-lg" formControlName="est" />
+
+                                    <label class="form-label" for="form2Example17">CIF(*)</label>
+                                    <input type="text" id="form2Exampl7" class="form-control form-control-lg" formControlName="CIF" />
+                                </div>
+                            </div>
+                            <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Anterior" />
+                            <input id="registro" type="button" name="next" id="color" value="Registrarse" />
+                            <p class="text-danger">No disponible en la DEMO</p>
+
+                        </fieldset>
+                    </form>
+                    <div *ngIf="step==3" class="card">
+                        <h2 class="confirmacion">Confirma tu cuenta</h2>
+                        <div class="parent">
+                            <div class="div11">
+                                <img class="imagenConfirmacion" src="./assets/images/registro/mail.png">
+                            </div>
+                            <div class="div12">
+                                <p>¡Gracias por registrarte en TA2AT! Para completar tu registro, necesitamos que confirmes tu dirección de correo electrónico.</p>
+                                <p>Por favor, revisa tu bandeja de entrada (y también tu carpeta de correo no deseado) y busca un mensaje de nuestra parte con el asunto "Confirmación de registro".</p>
+                                <p>Una vez que lo encuentres, haz clic en el enlace de confirmación para activar tu cuenta. Si no recibes el mensaje en unos pocos minutos, por favor, contáctanos para que podamos ayudarte a solucionar el problema.</p>
+                                <p>¡Estamos emocionados de tenerte como parte de nuestra comunidad!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

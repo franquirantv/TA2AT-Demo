@@ -1,0 +1,617 @@
+section {
+    background-color: white !important;
+}
+
+#imgRegister {
+    border-radius: 1rem 0 0 1rem;
+}
+
+.card {
+    background: white;
+    border-radius: 1em;
+    box-shadow: 0 0 15px 1px rgb(0 0 0 / 40%);
+    /* padding: 5em 8em; */
+    box-sizing: border-box;
+    width: 66em;
+    height: 32em;
+    margin: 0 10%;
+    position: relative;
+    padding-top: 2em;
+    margin-bottom: 2em;
+}
+
+#margen {
+    margin-top: 4em
+}
+
+.msform {
+    text-align: center;
+    position: relative;
+    margin-top: 1.875em;
+}
+
+.msform fieldset {
+    background: white;
+    border-radius: 1em;
+    box-shadow: 0 0 15px 1px rgb(0 0 0 / 40%);
+    /* padding: 5em 8em; */
+    box-sizing: border-box;
+    width: 66em;
+    height: 32em;
+    margin: 0 10%;
+    position: relative;
+    padding-top: 2em;
+    margin-bottom: 2em;
+}
+
+
+/* Anterior
+.eyeicon {
+    position: absolute;
+    margin-left: 13.65em;
+    margin-top: -2em;
+    cursor: pointer;
+}
+*/
+
+
+/*Contenedor input password y span con icono*/
+
+.div11 {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    grid-area: 1 / 1 / 2 / 2;
+    align-self: center;
+    justify-self: center;
+}
+
+.div11 span {
+    position: absolute;
+    top: 66%;
+    right: 0.5em;
+    transition: right 0.2s;
+    cursor: pointer;
+}
+
+.div12 {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    grid-area: 1 / 2 / 2 / 3;
+    align-self: center;
+    justify-self: center;
+}
+
+.div12 span {
+    position: absolute;
+    top: 66%;
+    right: 0.5em;
+    transition: right 0.2s;
+    cursor: pointer;
+}
+
+
+/*Hide all except first fieldset*/
+
+.msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+
+/*inputs*/
+
+
+/*.msform input,
+.msform textarea {
+padding: 15px;
+border: 1px solid #ccc;
+border-radius: 0px;
+margin-bottom: 10px;
+width: 100%;
+box-sizing: border-box;
+color: #2C3E50;
+font-size: 18px;
+}
+
+.msform input:focus,
+.msform textarea:focus {
+-moz-box-shadow: none !important;
+-webkit-box-shadow: none !important;
+box-shadow: none !important;
+border: 1px solid #D4AF37;
+outline-width: 0;
+transition: All 0.5s ease-in;
+-webkit-transition: All 0.5s ease-in;
+-moz-transition: All 0.5s ease-in;
+-o-transition: All 0.5s ease-in;
+}*/
+
+
+/*buttons*/
+
+.form-control-lg {
+    min-height: calc(1.5em + 0.5rem);
+    font-size: 1rem;
+    border-radius: 0.5rem;
+}
+
+.msform .action-button {
+    width: 6.25em;
+    font-weight: bold;
+    color: white;
+    background-color: #D4AF37;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 0.625em 0.313em;
+    margin: 0.625em 0.313em;
+}
+
+.msform .action-button:hover,
+#color:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #D4AF37;
+}
+
+#color {
+    background: #D4AF37;
+    width: 6.25em;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 0.625em 0.313em;
+    margin: 0.625em 0.313em;
+}
+
+.msform .action-button-previous {
+    width: 6.25em;
+    background: #C5C5F1;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 0.625em 0.313em;
+    margin: 0.625em 0.313em;
+}
+
+.msform .action-button-previous:hover,
+.msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+
+
+/*headings*/
+
+.fs-title {
+    font-size: 1.125em;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 0.813em;
+    color: #666;
+    margin-bottom: 1.25em;
+}
+
+
+/*progressbar*/
+
+#progressbar {
+    margin-bottom: 1.875em;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: white;
+    font-size: 0.9em;
+    width: 33.33%;
+    float: left;
+    position: relative;
+    letter-spacing: 0.063em;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1.5em;
+    height: 1.5;
+    line-height: 1.625em;
+    display: block;
+    font-size: 0.75em;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 0.625em auto;
+}
+
+
+/*progressbar connectors*/
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 0.125em;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 0.563;
+    z-index: -1;
+    /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+
+/*marking active/completed steps green*/
+
+
+/*The number of the step and the connector before it = green*/
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #D4AF37;
+    color: white;
+}
+
+#progressbar li.inactive:before {
+    background: rgb(248, 246, 163);
+    color: #000;
+}
+
+fieldset {
+    /* for chrome and safari*/
+    -webkit-animation-duration: .50ms;
+    -webkit-animation-name: slidein;
+    /*for firefox*/
+    -moz-animation-duration: 1s;
+    -moz-animation-name: slidein;
+    /* for opera*/
+    -o-animation-duration: 1s;
+    -o-animation-name: slidein;
+    /* Standard syntax*/
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+@-webkit-keyframes slidein {
+    from {
+        margin-right: 100%;
+        width: 100%;
+    }
+    to {
+        margin-right: 0%;
+        width: 100%;
+    }
+}
+
+@-moz-keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+@-o-keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+a:not([href]):not([class]),
+a:not([href]):not([class]):hover {
+    color: black;
+    text-decoration: none;
+}
+
+
+/*Registrarse*/
+
+h5.fw-normal mb-3 pb-3 {
+    letter-spacing: 0.063em;
+}
+
+#ojoRegister {
+    margin-right: 1rem;
+    width: 10%;
+}
+
+label {
+    font-weight: bold;
+}
+
+input:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #D4AF37;
+    outline: 0 none;
+}
+
+button#registro {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 0.125em;
+    outline-color: #D4AF37;
+    color: white;
+}
+
+.mb-5 pb-lg-2 {
+    color: #393f81;
+}
+
+.imagenBien {
+    border-radius: 8px;
+    height: 17.7em;
+    width: 18em;
+}
+
+.radio-buttons {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.texto1 {
+    margin-top: 4em;
+    padding-right: 2em;
+}
+
+.custom-radio input {
+    display: none;
+}
+
+.radio-btn {
+    width: 18em;
+    height: 18em;
+    border: 3px solid transparent;
+    display: inline-block;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 20px #c3c3c367;
+    cursor: pointer;
+    margin: 1.5em;
+}
+
+.radio-btn>i {
+    color: #ffffff;
+    background-color: #D4AF37;
+    font-size: 1.25em;
+    position: absolute;
+    top: -0.938em;
+    left: 50%;
+    transform: translateX(-50%) scale(4);
+    border-radius: 50px;
+    padding: 0.188em;
+    transition: 0.2s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.radio-btn .hobbies-icon {
+    width: 5em;
+    height: 5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.radio-btn .hobbies-icon i {
+    color: #ffffff;
+    line-height: 5em;
+    font-size: 3.75em;
+}
+
+h3 {
+    margin-top: 1em;
+    color: #000000;
+    font-family: "Raleway", sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.custom-radio input:checked+.radio-btn {
+    border: 3px solid #D4AF37;
+}
+
+.custom-radio input:checked+.radio-btn>i {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.imagenC {
+    display: flex;
+    justify-content: center;
+}
+
+.columnas {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 0.5fr);
+    grid-template-rows: repeat(1, 0.5fr);
+}
+
+.div1 {
+    grid-area: 1 / 1 / 2 / 2;
+    padding-left: 6.5em;
+    height: 23em;
+}
+
+.div1>input {
+    width: 60%;
+    margin-left: 20%;
+}
+
+.div2 {
+    grid-area: 1 / 2 / 2 / 3;
+    padding-right: 6.5em;
+    height: 23em;
+}
+
+.div2>input {
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 3%;
+}
+
+.parent {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 2em;
+}
+
+#labelNombre {
+    margin-top: 1em;
+}
+
+.button-wrapper {
+    position: relative;
+    width: 10em;
+    text-align: center;
+    padding-left: 3em;
+    align-self: center;
+    justify-self: center;
+}
+
+.button-wrapper span.label {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    width: 100%;
+    background: #D4AF37;
+    color: #fff;
+    padding: 0.625em 0;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    border-radius: 1em;
+}
+
+#upload {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 3.125em;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+
+/*-----------CUSTOM CHECKBOX RECUERDAME*/
+
+article {
+    position: relative;
+    width: 6%;
+    height: 2em;
+    margin: 1em;
+    border: 1px solid #343a40;
+    box-sizing: border-box;
+    border-radius: 1em;
+    margin-left: -0.13em;
+    padding: 1.2em;
+    box-shadow: 0 4px 8px -5px black;
+}
+
+article div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 25px;
+    border-radius: 1em;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+article input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5em;
+    opacity: 0;
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked~div:after {
+    /*color: red;
+    content: '✓';
+    font-size: 1.375em;*/
+    content: url("/./assets/images/faviconR2.png");
+    animation: fadeIn 1s;
+    line-height: 0;
+}
+
+#spanRecordar {
+    position: relative;
+    bottom: 0.75em;
+    margin-left: 2em;
+}
+
+#labelRecordar {
+    width: 22vw;
+}
+
+
+/*-----------FIN CUSTOM CHECKBOX RECUERDAME*/
+
+.confirmacion {
+    padding-left: 36%;
+    width: 33em;
+    padding-right: 34%;
+    padding-bottom: 1%;
+}
+
+.imagenConfirmacion {
+    width: 100%;
+    padding-left: 10%;
+}
+
+
+/*----------------------------------------------------*/
+
+button#inicioSesion {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: #373737;
+    margin-left: 25%;
+}

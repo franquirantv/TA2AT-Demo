@@ -1,0 +1,130 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.1/css/all.css">
+</head>
+<section class="vh-90">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-4 col-lg-4 d-none d-md-block">
+                            <img src="./assets/images/pixels_ralph_rabago_3214807_peque2.jpg" id="imgLogin" alt="Persona tatuada posando" class="img-fluid" />
+                        </div>
+                        <div class="col-md-8 col-lg-8 d-flex align-items-center">
+                            <div class="centrar card-body text-black">
+                                <form (ngSubmit)="login()" [formGroup]="loginForm" class="loginForm">
+                                    <!--Aquí-->
+                                    <div class="d-grid align-self-center mb-2">
+                                        <div class="logo">
+                                            <img src="./assets/images/favicon2g.webp" class="img-fluid" id="ojoLogin" alt="login form" />
+                                        </div>
+                                        <span class="titulo fw-bold">Bienvenid@ a TA2AT</span>
+                                    </div>
+                                    <!-- <h5>¡Inicia sesión con tu cuenta y adéntrate en la comunidad de TA2AT!</h5> -->
+                                    <!--  id="cuadroBotonG"-->
+                                    <!--TODO ver este problema junto con auth.module.ts-->
+                                    <!-- <div class="google pt-1 mb-2 helpText"> -->
+                                        <!-- <asl-google-signin-button class="btn btn-lg btn-google btn-block text-uppercase btn-outline" id="gBotonR" type="standard" theme="filled_black" size="large" size="large" logo_alignment="center" data-text="continue_with"></asl-google-signin-button> -->
+                                      <!-- </div> -->
+                                    <div class="parent">
+                                        <div class="div1 mb-2">
+                                            <div class="form-outline">
+                                                <label class="form-label negrita" for="form2Example17">Correo electrónico</label>
+                                                <input [readonly]=true placeholder="Correo electrónico" type="email" id="form2Example17" class="form-control form-control-lg" formControlName="email" />
+                                                <!--Aquí-->
+                                                <p class="text-danger m-0" *ngIf="!campoValido('email')">El correo electrónico debe ser válido.</p>
+                                                <p class="text-danger m-0">No disponible en la DEMO</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="div1">
+                                            <div class="form-outline">
+                                                <label class="form-label negrita" for="form2Example27">Contraseña</label>
+                                                <input [readonly]=true placeholder="Contraseña" show-hide-password type="password" id="form2Example27" class="form-control form-control-lg" formControlName="password" autocomplete="off" />
+                                                <!--Aquí-->
+                                                <p class="text-danger m-0" *ngIf="!campoValido('password')">La contraseña es obligatoria.</p>
+                                                <p class="text-danger">No disponible en la DEMO</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="div3 mb-2">
+                                            <div class="form-outline">
+                                                <!--<input type="checkbox" class="" id="" formControlName="remember">
+                                <label class="form-label" for="form2Example27">Recuerdame</label>-->
+                                                <!--<form action="#">
+                                    <p>
+                                        <input type="checkbox" class="" id="" formControlName="remember">
+                                        <label class="form-label" for="form2Example27">Recuérdame</label>
+                                    </p>
+                                </form>-->
+                                                <article>
+                                                    <input type="checkbox" id="feature1" formControlName="remember">
+                                                    <div>
+                                                        <p></p>
+
+                                                    </div>
+                                                    <span id="spanRecordar"><label class="form-label" for="form2Example27" id="labelRecordar">Recuérdame</label></span>
+                                                </article>
+                                                <!--Aquí-->
+                                            </div>
+                                        </div>
+                                        <div class="div4">
+                                            <div class="">
+                                                <a class="small text-muted" href="/recovery">¿Has olvidado la contraseña?</a>
+                                                <p id="pRegistro">¿Aún no tienes cuenta? <a href="/signup" id="pRegistro2">Registrate aquí</a></p>
+                                            </div>
+
+                                        </div>
+
+                                          <div class="pt-1 mb-4 d-flex justify-content-center gap-2">
+                                            <button (click)="navigate('/explorar')" class="btn btn-lg btn-block negrita inicioSesion" type="button" [disabled]="waiting" data-bs-toggle="modal" data-bs-target="#modalCargando"><i class="fa-solid fa-circle-notch fa-spin" *ngIf="waiting"></i>Acceder como Usuario</button>
+                                            <button (click)="navigate('/estudio/dashboard')" class="btn btn-lg btn-block negrita inicioSesion" type="button" [disabled]="waiting" data-bs-toggle="modal" data-bs-target="#modalCargando"><i class="fa-solid fa-circle-notch fa-spin" *ngIf="waiting"></i>Acceder como Estudio</button>
+                                          </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal cargando
+<div class="modal" id="modalCargando" tabindex="-1" aria-labelledby="modalCargandosLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+    <div class="modal-header border-0" class="headerModal">
+        <img class="d-block justify-content-center" src="./assets/images/LOGO2.png">
+    </div>
+    <div class="modal-body">
+        <h1>modal-body</h1>
+        <div class="contenedor">
+            <div class="container mensaje">
+                <div class="noti">
+                    <h5 class="fw-bold">Asunto de mensaje 1</h5>
+                    <p> Esto es una prueba de mensaje. </p>
+                </div>
+                <div class="noti">
+                    <h5 class="fw-bold">Asunto de mensaje 1</h5>
+                    <p> Esto es una prueba de mensaje. </p>
+                </div>
+                <div class="noti">
+                    <h5 class="fw-bold">Asunto de mensaje 1</h5>
+                    <p> Esto es una prueba de mensaje. </p>
+                </div>
+                <div class="noti">
+                    <h5 class="fw-bold">Asunto de mensaje 1</h5>
+                    <p> Esto es una prueba de mensaje. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer border-0" id="botonesBuscar">
+        <button type="button" class="btn bg-dark" data-bs-dismiss="modal">Cerrar</button>
+    </div>
+</div>
+</div>
+</div>
+-->

@@ -1,0 +1,102 @@
+<div class="botonVolverAtras" *ngIf="!isExplorar()">
+    <button (click)="atras()">Atrás</button>
+</div>
+<main class="container">
+    <div class="parte-superior">
+        <!-- Left Column / Headphones Image -->
+        <div class="cardBox">
+            <div class="card">
+                <img class="imagen" [src]="imagenUrl">
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+
+            <!-- Product Description -->
+            <div class="info-diseno">
+                <h1><strong>{{nombre}}</strong></h1>
+                <p class="descripcion">{{descripcion}}</p>
+            </div>
+
+
+            <div class="tatuador-card">
+                <div class="tatuador-infos">
+                    <div class="tatuador-image">
+                        <!-- <img [src]="imagenEstudio"> -->
+                        <img src="assets/images/blank-profile-picture.png">
+                    </div>
+                    <div class="tatuador-info">
+                        <p class="tatuador-name" id="nombreUsuario" data-bs-toggle="modal" data-bs-target="#contactoUsuario">
+                            {{nombreUsuario}}
+                        </p>
+                        <div class="tatuador-stats">
+                            <p class="tatuador-flex flex-col">
+                                Diseños
+                                <span class="tatuador-state-value">
+                                    35
+                                </span>
+                            </p>
+                            <p class="tatuador-flex">
+                                Visitas
+                                <span class="tatuador-state-value">
+                                    455
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tatuador-boton">
+                        <button class="tatuador-request" type="button" (click)="abrirNuevoChat()">
+                        CHAT
+                    </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Product Configuration -->
+    <div class="caracteristicas">
+
+        <div class="caracte">
+            <h1>CARACTERÍSTICAS</h1>
+            <!-- Product Color -->
+            <div class="apartado-color">
+                <span><strong>Color</strong></span>
+
+                <div class="valor-ajuste">
+                    <p class="valor">{{colorString}}</p>
+                </div>
+            </div>
+            <div class="estilos">
+                <span><strong>Estilos</strong></span>
+
+                <div class="valor-ajuste">
+                    <div class="orden-zonas" *ngFor="let est of estilo">
+                        <p class="zonas">{{est}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cable Configuration -->
+
+        </div>
+        <!-- Cable Configuration -->
+
+        <div class="zonas-recomendadas">
+            <span><strong>Zonas recomendadas</strong></span>
+
+            <div class="valor-zonas">
+                <div class="orden-zonas" *ngFor="let zona of zonas">
+                    <a class="zonas">{{zona}}</a>
+                </div>
+            </div>
+
+            <!-- <a href="#">How to configurate your headphones</a> -->
+        </div>
+
+    </div>
+    <div class="anadir">
+        <button (click)="anyadirAvatar()"><mat-icon>add_circle_outline</mat-icon><a>AÑADIR AVATAR</a></button>
+    </div>
+</main>

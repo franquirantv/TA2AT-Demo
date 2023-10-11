@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+</head>
+
+<body>
+    <section class="vh-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-3">
+                    <form [formGroup]="personalDetails" class="msform">
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                            <li [ngClass]="step>=1 ? 'active ' : 'inactive'"><a>Sobre ti</a></li>
+                            <li [ngClass]="step>=2 ? 'active' : 'inactive'"><a>Información personal</a></li>
+                            <li [ngClass]="step==3 ? 'active' : 'inactive'"><a>Confirmación cuenta</a></li>
+                        </ul>
+                        <!-- fieldsets -->
+                        <fieldset *ngIf="step == 1">
+                            <h2 class="fs-title">Define tu rol</h2>
+                            <div class="radio-buttons">
+                                <label class="custom-radio">
+                                  <input type="radio" name="rol" (click)="usuario()">
+                                  <span class="radio-btn" id="usuarioF">
+                                    <img class="imagenBien" src="./assets/images/registro/usuario.jpg">
+                                  <i class="las la-check"></i>
+                                    <div class="hobbies-icon">
+                                      <i class="las la-user"></i>
+                                    </div>
+                                    <h3>Usuario</h3>
+                                  </span>
+                                </label>
+                                <label class="custom-radio">
+                                  <input type="radio" name="rol" (click)="estudio()">
+                                  <span class="radio-btn" id="estudioF">
+                                    <img class="imagenBien" src="./assets/images/registro/estudio.jpg">
+                                  <i class="las la-check"></i>
+                                    <div class="hobbies-icon">
+                                      <i class="las la-store-alt"></i>
+                                    </div>
+                                    <h3>Estudio</h3>
+                                  </span>
+                                </label>
+                            </div>
+                            <input *ngIf="!desbloquear()" (click)="next()" type="button" name="next" class="next action-button" value="Siguiente" />
+                        </fieldset>
+                    </form>
+                    <form (ngSubmit)="registerGoogleUsuario()" [formGroup]="datosUsuario" class="msform">
+                        <fieldset *ngIf="step == 2 && rolSelected ==='Usuario' ">
+                            <h2 class="fs-title">Registro usuario</h2>
+                            <div class="columnas">
+                                <div class="div1">
+                                    <h2 class="fs-title">Datos de la cuenta</h2>
+                                    <label class="form-label" for="form2Example27">Foto de perfil</label>
+                                    <div class="parent">
+                                        <div class="div11">
+                                            <div class="button-wrapper">
+                                                <span class="label">Subir archivo</span>
+                                                <input type="file" name="Foto de perfil" accept="image/*" id="upload" class="upload-box" (change)="onselectFile($event)" formControlName="foto">
+                                            </div>
+                                        </div>
+                                        <div class="div12">
+                                            <img [src]="url" height="75" width="75">
+                                        </div>
+                                    </div>
+                                    <label class="form-label" for="form2Example17">Nombre Usuario(*)</label>
+                                    <input type="text" id="form2Example17" class="form-control form-control-lg" formControlName="usu" [(ngModel)]="nombreUsuario" value="" />
+                                    <div>
+                                        <article>
+                                            <input type="checkbox" id="feature1" formControlName="politicaAceptada">
+                                            <div>
+                                                <p></p>
+
+                                            </div>
+                                            <span id="spanRecordar"><label class="form-label" for="form2Example27" id="labelRecordar">He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">Política de privacidad</a>(*)</label></span>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="div2">
+                                    <h2 class="fs-title">Datos personales</h2>
+                                    <label class="form-label" for="form2Example27">Nombre(*)</label>
+                                    <input type="text" id="form2Example27" class="form-control form-control-lg" formControlName="nombre" [(ngModel)]="firstName" />
+
+                                    <label class="form-label" for="form2Example17">Apellidos(*)</label>
+                                    <input type="text" id="form2Example17" class="form-control form-control-lg" formControlName="apellidos" [(ngModel)]="lastName" />
+
+                                    <label class="form-label" for="form2Example17">Fecha de nacimiento(*)</label>
+                                    <input type="date" id="form2Example27" class="form-control form-control-lg" formControlName="fnacimiento" />
+
+                                    <label class="form-label" for="form2ExamFple27">Correo electrónico(*)</label>
+                                    <input type="email" id="form2Example37" class="form-control form-control-lg" data-toggle="tooltip" data-placement="top" title="Asegurate que sea un formato de correo valido" formControlName="email" [(ngModel)]="email" readonly />
+                                </div>
+                            </div>
+                            <input (click)="previous()" type="button" [disabled]="waiting" name="previous" class="previous action-button-previous" value="Anterior" />
+                            <input id="registro" type="submit" [disabled]="waiting" name="next" id="color" value="Registrarse" />
+                        </fieldset>
+                    </form>
+                    <form (ngSubmit)="registerGoogleEstudio()" [formGroup]="datosEstudio" class="msform">
+                        <fieldset *ngIf="step == 2 && rolSelected ==='Estudio'">
+                            <h2 class="fs-title">Registro estudio</h2>
+                            <div class="columnas">
+                                <div class="div1">
+                                    <h2 class="fs-title">Datos de la cuenta</h2>
+                                    <label class="form-label" for="form2Example27">Foto de perfil</label>
+                                    <div class="parent">
+                                        <div class="div11">
+                                            <div class="button-wrapper">
+                                                <span class="label">Subir archivo</span>
+                                                <input type="file" name="Foto de perfil" accept="image/*" id="upload" class="upload-box" (change)="onselectFile($event)" formControlName="foto">
+                                            </div>
+                                        </div>
+                                        <div class="div12">
+                                            <img referrerpolicy="no-referrer" [src]="url" height="75" width="75">
+                                        </div>
+                                    </div>
+
+                                    <label class="form-label" for="form2Example17">Correo electrónico(*)</label>
+                                    <input type="email" id="form2Example37" class="form-control form-control-lg" data-toggle="tooltip" data-placement="top" title="Asegurate que sea un formato de correo valido" formControlName="email" [(ngModel)]="email" readonly/>
+                                    <!--<p class="text-danger" *ngIf="!campoValido('email')">El email es obligatorio y debe ser un email</p>-->
+
+                                    <!--<div class="parent">
+                                        <div class="div11">
+                                            <label class="form-label" for="form2Example27" id="labelNombre">Contraseña(*)</label>
+                                            <input show-hide-password type="password" id="form2Example47" data-toggle="tooltip" data-placement="top" title="Debe contener entre 6 y 20 caracteres (sin espacios) y almenos una mayuscula, una minuscula, un número" class="form-control form-control-lg"
+                                                formControlName="password" />
+                                        </div>
+                                        <div class="div12">
+                                            <label class="form-label" for="form2Example27" id="labelNombre">Repita contraseña(*)</label>
+                                            <input show-hide-password type="password" id="form2Example57" data-toggle="tooltip" data-placement="top" title="Asegurate que las contraseñas sean iguales" class="form-control form-control-lg" formControlName="password2" />
+
+                                        </div>
+                                    </div>-->
+                                    <div>
+                                        <article>
+                                            <input type="checkbox" id="feature1" formControlName="politicaAceptada">
+                                            <div>
+                                                <p></p>
+
+                                            </div>
+                                            <span id="spanRecordar"><label class="form-label" for="form2Example27" id="labelRecordar">He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">Política de privacidad</a>(*)</label></span>
+                                        </article>
+                                    </div>
+                                    <!--<label for="exampleDataList" class="form-label" id="labelPlan">Plan</label>
+                                    <div class="form-outline mb-4">
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">Free</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                            <label class="form-check-label" for="inlineRadio2">Premium</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                            <label class="form-check-label" for="inlineRadio3">Ultimate</label>
+                                        </div>
+                                    </div>-->
+                                </div>
+
+                                <div class="div2">
+                                    <h2 class="fs-title">Datos del estudio</h2>
+                                    <label class="form-label" for="form2Example17" id="margen">Nombre del estudio o tatuador(*)</label>
+                                    <input type="text" id="form2Exam7" class="form-control form-control-lg" formControlName="est" [(ngModel)]="firstName" />
+                                    <!--<p class="text-danger" *ngIf="!campoValido('est')">El nombre del estudio es obligatorio</p>-->
+
+                                    <!--<label class="form-label" for="form2Example27">Nombre(*)</label>
+                                    <input type="text" id="form2Example27" class="form-control form-control-lg" formControlName="nombre" />
+                                    <p class="text-danger" *ngIf="!campoValido('nombre')">El nombre es obligatorio</p>-->
+
+
+                                    <!--<label class="form-label" for="form2Example17">Apellidos(*)</label>
+                                    <input type="text" id="form2Example17" class="form-control form-control-lg" formControlName="apellidos" />
+                                    <p class="text-danger" *ngIf="!campoValido('apellidos')">Los apellidos son obligatorio</p>-->
+
+
+                                    <label class="form-label" for="form2Example17">CIF(*)</label>
+                                    <input type="text" id="form2Exampl7" class="form-control form-control-lg" formControlName="CIF" />
+
+                                </div>
+                            </div>
+                            <input (click)="previous()" type="button" [disabled]="waiting" name="previous" class="previous action-button-previous" value="Anterior" />
+                            <input id="registro" type="submit" [disabled]="waiting" name="next" id="color" value="Registrarse" />
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

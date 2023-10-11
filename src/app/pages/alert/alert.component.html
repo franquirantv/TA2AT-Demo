@@ -1,0 +1,155 @@
+<section class="section2">
+  <div class="container">
+      <h3 class="marginb2 heading-line">Notificaciones</h3>
+
+      <div class="tabs" *ngIf="!esEstudio()">
+          <div class="tab-2">
+              <label for="tab2-1">Nuevas</label>
+              <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
+              <div class="notification-ui_dd-content">
+                  <div class="notification-list notification-list--unread" *ngFor="let notificacion of articulos">
+                      <div class="notification-list_content">
+                          <div class="notification-list_img">
+                              <img src="https://i.imgur.com/tdi3NGa.png" alt="user">
+                          </div>
+                          <div class="notification-list_detail">
+
+                              <!-- <li *ngFor="let notificacion of articulos">{{ notificacion.asunto }} {{notificacion.email}} </li>-->
+                              <div>
+                                  <div class="columnasM">
+                                      <p><b>{{notificacion.info}}</b> </p>
+                                      <p>{{notificacion.mensaje}}</p>
+                                  </div>
+                                  <div class="iconosder">
+                                      <mat-icon>remove_red_eye</mat-icon>
+                                      <mat-icon>question_answer</mat-icon>
+                                      <mat-icon>delete</mat-icon>
+                                  </div>
+                              </div>
+
+                          </div>
+
+                      </div>
+
+                      <!--  <a class="btn btn-danger btn-sm" (click)="eliminar(notificacion.ID)">Borrar</a>-->
+                  </div>
+
+
+              </div>
+              <!--
+              <div class="text-center">
+                  <a href="#!" class="dark-link">Load more activity</a>
+              </div> -->
+          </div>
+          <div class="tab-2">
+              <label for="tab2-2">Leídas</label>
+              <input id="tab2-2" name="tabs-two" type="radio">
+              <div class="notification-ui_dd-content">
+                  <div class="notification-list notification-list--unread" *ngFor="let mensajes of leidas">
+                      <div class="notification-list_content">
+                          <div class="notification-list_img">
+                              <img src="https://i.imgur.com/tdi3NGa.png" alt="user">
+                          </div>
+                          <div class="notification-list_detail">
+
+                              <!-- <li *ngFor="let notificacion of articulos">{{ notificacion.asunto }} {{notificacion.email}} </li>-->
+                              <div class="columnasM">
+                                  <div>
+                                      <p>{{mensajes.info}}</p>
+                                      <p>{{mensajes.mensaje}}</p>
+                                  </div>
+                                  <div class="iconosder">
+                                      <mat-icon>question_answer</mat-icon>
+                                      <mat-icon>delete</mat-icon>
+                                  </div>
+                              </div>
+
+                          </div>
+
+                      </div>
+
+                      <!--  <a class="btn btn-danger btn-sm" (click)="eliminar(notificacion.ID)">Borrar</a>-->
+                  </div>
+
+
+              </div>
+
+
+          </div>
+      </div>
+
+      <div class="tabs" *ngIf="esEstudio()">
+          <div class="tab-2">
+              <label for="tab2-1">Nuevas</label>
+              <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
+              <div class="notification-ui_dd-content">
+                  <div class="notification-list notification-list--unread" *ngFor="let mensajes of array">
+                      <div class="notification-list_content">
+                          <div class="notification-list_img">
+                              <img src="https://i.imgur.com/tdi3NGa.png" alt="user">
+                          </div>
+                          <div class="notification-list_detail">
+
+                              <!-- <li *ngFor="let notificacion of articulos">{{ notificacion.asunto }} {{notificacion.email}} </li>-->
+                              <div class="columnasM">
+                                  <div>
+                                      <p>{{mensajes.info}}</p>
+                                      <p>{{mensajes.mensaje}}</p>
+                                  </div>
+                                  <div class="iconosder">
+                                      <mat-icon>remove_red_eye</mat-icon>
+                                      <!-- <mat-icon>question_answer</mat-icon> -->
+                                      <mat-icon>delete</mat-icon>
+                                  </div>
+                              </div>
+
+                          </div>
+
+                      </div>
+
+                      <!--  <a class="btn btn-danger btn-sm" (click)="eliminar(notificacion.ID)">Borrar</a>-->
+                  </div>
+
+
+              </div>
+
+
+          </div>
+          <div class="tab-2">
+              <label for="tab2-2">Leídas</label>
+              <input id="tab2-2" name="tabs-two" type="radio">
+              <div class="notification-ui_dd-content">
+                  <div class="notification-list notification-list--unread" *ngFor="let mensajes of leidas">
+                      <div class="notification-list_content">
+                          <div class="notification-list_img">
+                              <img src="https://i.imgur.com/tdi3NGa.png" alt="user">
+                          </div>
+                          <div class="notification-list_detail">
+
+                              <!-- <li *ngFor="let notificacion of articulos">{{ notificacion.asunto }} {{notificacion.email}} </li>-->
+                              <div class="columnasM">
+                                  <div>
+                                      <p>{{mensajes.info}}</p>
+                                      <p>{{mensajes.mensaje}}</p>
+                                  </div>
+                                  <div class="iconosder">
+                                      <mat-icon>delete</mat-icon>
+                                  </div>
+                              </div>
+
+                          </div>
+
+                      </div>
+
+                      <!--  <a class="btn btn-danger btn-sm" (click)="eliminar(notificacion.ID)">Borrar</a>-->
+                  </div>
+
+
+              </div>
+
+
+          </div>
+      </div>
+
+  </div>
+</section>

@@ -1,0 +1,140 @@
+* {
+    text-align: center;
+}
+
+.btn-floating {
+    --mdb-btn-border-radius: 50%;
+    border-radius: var(--mdb-btn-border-radius);
+    position: relative;
+}
+
+.btn-floating.btn-lg .fab,
+.btn-floating.btn-lg .far,
+.btn-floating.btn-lg .fas,
+.btn-group-lg>.btn-floating.btn .fab,
+.btn-group-lg>.btn-floating.btn .far,
+.btn-group-lg>.btn-floating.btn .fas {
+    width: 2.8125rem;
+    line-height: 2.8125rem;
+}
+
+.btn-light {
+    background-color: #fbfbfb;
+    color: #D4AF37;
+    box-shadow: 0 4px 9px -4px #fbfbfb;
+    margin-left: 0.2em;
+}
+
+.btn-light:hover {
+    background-color: #eee;
+    color: darkgray;
+}
+
+.btn-light:focus {
+    background-color: darkgray;
+    color: #D4AF37;
+}
+
+.btn-light:active {
+    background-color: darkgray;
+    color: #D4AF37;
+}
+
+.colorEmpresa {
+    background-color: #fbfbfb;
+    color: #D4AF37;
+    box-shadow: 0 4px 9px -4px #fbfbfb;
+    margin-left: 0.2em;
+}
+
+.accordion-button {
+    color: white;
+}
+
+.card {
+    background-color: #D4AF37;
+    color: #eee;
+}
+
+.destacado,
+[aria-expanded=true] {
+    color: #D4AF37;
+    font-weight: 600;
+}
+
+.planes {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: #373737;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("/assets/images/flecha criminal.svg") !important;
+}
+
+.accordion-button.collapsed::after {
+    background-image: url("/assets/images/favicon.png");
+}
+
+#font-size {
+    font-size: large;
+}
+
+#estiloAbajo {
+    background-color: #D4AF37;
+    color: #373737;
+}
+
+
+/*Accordion animation*/
+
+@media (prefers-reduced-motion: reduce) {
+    .collapsing {
+        transition-property: height, visibility;
+        transition-duration: .35s;
+    }
+}
+
+.pregunta {
+    color: white;
+}
+
+#footerIzq {
+    margin-left: 1em;
+}
+
+.manita {
+    cursor: pointer;
+    color: #373737;
+}
+
+.centrar {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    transition: 0.5s;
+}
+
+.centrar>a {
+    text-decoration: none;
+    color: #D4AF37;
+}
+
+.centrar:hover {
+    background-color: #D4AF37;
+}
+
+.centrar:hover>a {
+    color: #373737;
+}
+
+.row {
+    padding: 0;
+    margin: 0;
+}
+
+.lista-centro {
+    margin-left: 0;
+}

@@ -1,0 +1,26 @@
+.derecha {
+    float: right
+}
+
+.heading-line {
+    position: relative;
+    padding-bottom: 0.17em;
+}
+
+.heading-line:after {
+    content: "";
+    height: 0.15em;
+    width: 2.8em;
+    background-color: #D4AF37;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.marginb2 {
+    margin-bottom: 2em;
+}
+
+.section2 {
+    padding: 2em 0;
+}

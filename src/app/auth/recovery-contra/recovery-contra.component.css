@@ -1,0 +1,53 @@
+#ojoRecovery {
+    margin-right: 1rem;
+    width: 10%;
+}
+
+section>div>div>div>div>div {
+    display: flex;
+    justify-content: center;
+    border: 0;
+}
+
+input:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #D4AF37;
+    outline: 0 none;
+}
+
+button#cambiarContra {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: #373737;
+}
+
+#imgRecovery {
+    border-radius: 0 1rem 1rem 0;
+    height: 35em;
+    width: 100vw;
+}
+
+.card {
+    border-radius: 1rem;
+}
+
+#floatingInput {
+    width: 98%;
+}
+
+
+/*Contenedor que contiene al contenedor con bordes*/
+
+section>div {
+    display: flex;
+    justify-content: center;
+}
+
+
+/*Contendor con bordes*/
+
+section>div>div {
+    width: 90%;
+}

@@ -1,0 +1,154 @@
+<div class="botonVolverAtras">
+    <button (click)="Atras()">Atrás</button>
+</div>
+<main class="container">
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column">
+        <img class="imagen1" src='./../../../assets/painball/maqueta-marco-oro_53876-88370-removebg-preview.png'>
+        <img class="imagen" [src]="imagenUrl">
+
+        <label class="switch">
+            <input class="chk" type="checkbox" >
+            <span class="slider" (click)="encender()"></span>
+        </label>
+    </div>
+    <div class="lampara ">
+        <div class="cable"></div>
+        <div class="caja"></div>
+        <div id="luce"></div>
+    </div>
+    <!-- Right Column -->
+    <div class="right-column">
+
+        <div *ngIf="esEditar()">
+            <form class="formulario" (ngSubmit)="enviar()" [formGroup]="datosForm">
+                <div class="">
+                    <span id="nombreUsuario" data-bs-toggle="modal" data-bs-target="#contactoUsuario">{{nombreUsuario}}</span>
+                    <div class="">
+                        <label class="titulo-form">Nombre</label>
+                        <input id="nombre" type="text" class="form-control" formControlName="nombre" [ngClass]="{'is-invalid' : campoNoValido('nombre')}">
+                        <div class="invalid-feedback campo-novalido">
+                            El campo es obligatorio
+                        </div>
+                    </div>
+                    <div class="">
+                        <label class="titulo-form">Descripcion</label>
+                        <textarea id="nombre" type="text" class="form-control" formControlName="descripcion" [ngClass]="{'is-invalid' : campoNoValido('descripcion')}"></textarea>
+                        <div class="invalid-feedback campo-novalido">
+                            El campo es obligatorio
+                        </div>
+                    </div>
+                    <div class="color">
+                        <label class="titulo-form">Color</label>
+                        <div class="md-radio md-radio-inline">
+                            <input id="byn" type="radio" [value]=false name="color" formControlName="color">
+                            <label class="titulo-form" for="byn">Blanco y Negro</label>
+
+                            <input id="colorido" type="radio" [value]=true name="color" formControlName="color">
+                            <label class="titulo-form" for="colorido">Colorido</label>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Estilos-->
+                <mat-form-field hintLabel="Máx. 5 etiquetas" class="example-chip-list" appearance="fill">
+                    <mat-label class="colorLabel">¿A qué estilos pertenece tu diseño?</mat-label>
+                    <mat-chip-grid #chipGrid aria-label="estilo selection">
+                        <mat-chip-row *ngFor="let estilo of estilos" (removed)="remove(estilo)">
+                            {{estilo}}
+                            <button matChipRemove [attr.aria-label]="'remove ' + estilo">
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                        </mat-chip-row>
+                    </mat-chip-grid>
+                    <input matAutocompletePosition="below" placeholder="Añade un estilo..." #estiloInput [formControl]="estiloCtrl" [matChipInputFor]="chipGrid" [matAutocomplete]="auto" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)"
+                        formControlName="estilos" />
+                    <mat-hint align="end">{{estilos.length}}/5</mat-hint>
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                        <mat-option *ngFor="let estilo of filteredEstilos | async" [value]="estilo">
+                            {{estilo}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <div class="zonas">
+                    <label class="titulo-form">Zonas recomendadas</label>
+                    <form [formGroup]="dropDownForm" id="pepe">
+                        <ng-multiselect-dropdown placeholder="Selecciona una zona..." [settings]="dropdownSettings" [data]="dropdownList" formControlName="zonas">
+                        </ng-multiselect-dropdown>
+                    </form>
+                </div>
+
+                <div class="cable-config">
+                    <div id="divBotonesModificar" class="row">
+                        <div id="btnDelete" class="col-sm">
+                            <button class="btn btn-danger" (click)="mensaje()"><mat-icon>delete_forever</mat-icon>Borrar diseño</button>
+                        </div>
+                        <div id="btnModify" class="col-sm">
+                            <button class="btn btn-warning" (click)="editarDesign()"><mat-icon>cancel</mat-icon>Cancelar</button>
+                        </div>
+                        <div id="btnModify" class="col-sm">
+                            <button class="btn btn-warning" type="submit"><mat-icon>send</mat-icon>Guardar Cambios</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div *ngIf="!esEditar()">
+            <!-- Product Description -->
+            <div class="product-description">
+                <span id="nombreUsuario" data-bs-toggle="modal" data-bs-target="#contactoUsuario">{{nombreUsuario}}</span>
+                <h1>{{nombre}}</h1>
+                <p>{{descripcion}}</p>
+            </div>
+
+            <!-- Product Configuration -->
+            <div class="product-configuration">
+
+                <!-- Product Color -->
+                <div class="product-color">
+                    <span><strong>Color</strong></span>
+
+                    <div class="color-choose">
+                        <p>{{colorString}}</p>
+                    </div>
+                </div>
+
+                <!-- Cable Configuration -->
+                <div class="cable-config">
+                    <span><strong>Zonas recomendadas</strong></span>
+
+                    <div class="cable-choose alinear">
+                        <div *ngFor="let zona of zonas">
+                            <button>{{zona}}</button>
+                        </div>
+                    </div>
+
+                    <!-- <a href="#">How to configurate your headphones</a> QUIEN HA PUESTO ESTO???????????-->
+                </div>
+            </div>
+            <!-- Cable Configuration -->
+            <div class="cable-config">
+                <span><strong>Estilos</strong></span>
+
+                <div class="cable-choose alinear">
+                    <div *ngFor="let est of estiloR">
+                        <button>{{est}}</button>
+                    </div>
+                </div>
+                <div id="divBotonesModificar" class="row">
+                    <div id="btnDelete" (click)="mensaje()" class="col-sm">
+                        <button class="btn btn-danger"><mat-icon>delete_forever</mat-icon>Borrar diseño</button>
+                    </div>
+                    <div id="btnModify" (click)="editarDesign()" class="col-sm">
+                        <button class="btn btn-warning"><mat-icon>mode_edit</mat-icon>Editar diseño</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>

@@ -1,13 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Angular</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  </head>
-  <body>
+
+<head>
+    <meta charset="utf-8">
+    <title>Previsualiza tu siguiente tatuaje | TA2AT</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://tatuate.es/">
+    <meta name="description" content="TA2AT es una aplicación para previsualizar tatuajes en un avatar 3D y en la que te puedes deshacer de la incertidumbre de hacerte un tatuaje.">
+    <!--<link rel="icon" type="image/x-icon" href="favicon.ico">-->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
+    <link href="./dist/output.css" rel="stylesheet" type="text/html">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org/",
+            "@type": "WebPage",
+            "name": "Ta2at",
+            "headline": "Ta2at",
+            "url": "https://tatuate.es/",
+            "image": "https://tatuate.es/assets/favicon2g.webp",
+            "description": "Plataforma para la previsualizacion de tatuajes en un avatar 3D",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://tatuate.es/",
+                "name": "Ta2at",
+                "description": "Plataforma para la previsualizacion de tatuajes en un avatar 3D"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "url": "https://tatuate.es/delt4/",
+                "name": "DELT4",
+                "description": "Grupo de estudiantes de Ingeniería Multimedia de la Universidad de Alicante.",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://tatuate.es/assets/favicon2g.webp",
+                    "width": 200,
+                    "height": 200
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+
+</head>
+
+<body>
     <app-root></app-root>
-  </body>
+
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+    <df-messenger intent="WELCOME" chat-title="Bryan" agent-id="beef8540-33c4-4316-b3f4-7e9d2bf4d6b1" language-code="es" chat-icon="./assets/images/favicon2g.webp" alt="favicon"></df-messenger>
+
+    <style>
+        df-messenger {
+            --df-messenger-bot-message: #ffffff;
+            --df-messenger-button-titlebar-color: #000000;
+            --df-messenger-chat-background-color: #c6c6c6;
+            --df-messenger-font-color: black;
+            --df-messenger-send-icon: #878fac;
+            --df-messenger-user-message: #fff2b1;
+        }
+        
+        div.chat-wrapper[opened="true"] {
+            height: 560px;
+            opacity: 1;
+            top: 17%;
+            margin-right: 6em;
+            transform: translate3d(0px, 0px, 0px) scale(1, 1);
+            transition: transform 0.2s ease, opacity 0.2s ease-in;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-249744948-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-249744948-1');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-249744948-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-249744948-1');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-249744948-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-249744948-1');
+    </script>
+</body>
+
 </html>

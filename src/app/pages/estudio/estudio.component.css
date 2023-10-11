@@ -1,0 +1,14 @@
+.max-width {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    position: fixed;
+    z-index: 900;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,357 @@
+<!-- <button (click)="mostrar()">mostrar/ocultar</button> -->
+<div class="modal modal-overlay" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="false" *ngIf="cargarAjustes()" [ngClass]="{'show': mostrarModal()}">
+    <!-- <div class="modal" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="false"> -->
+    <div class="modal-dialog">
+
+        <form class="form-horizontal m-t-20" (ngSubmit)="enviar()" [formGroup]="datosForm">
+
+            <div class="modal-content">
+                <div class="modal-header" class="headerModal">
+                    <img class="d-block w-50 justify-content-center" src="./assets/images/LOGO2.png">
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page">Editar perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil2">Cuenta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil3">Privacidad</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil4">Notificaciones</a>
+                        </li>
+                    </ul>
+                    <!-- --->
+                    <!--<div class="container rounded bg-white mb-5" class="divSize">-->
+                    <div class="row ">
+                        <!-- Datos actualizados -->
+                        <div class="text-success text-right animate__animated animate__faster" [ngClass]="{'animate__fadeIn': showOKD && datosForm.pristine, 'animate__fadeOut' : !(showOKD && datosForm.pristine)}">Datos actualizados</div>
+
+
+                        <!-- Imagen de perfil -->
+                        <div class="col-md-3 border-right">
+                            <div class="d-flex flex-column align-items-center text-center p-3">
+                                <img class="rounded-circle" [src]="imagenUrl" id="imgSinPerfil">
+                                <span class="font-weight-bold">Imagen</span>
+                                <input type="file" class="custom-file-input" formControlName="imagen" id="fotoperfil" (change)="cambioImagen( $event )">
+                                <label class="custom-file-label" for="fotoperfil" data-browse="Elegir">{{fileText}}</label>
+                            </div>
+                        </div>
+
+
+                        <!-- Datos -->
+                        <div class="col-md-5 border-right" id="divPerfil">
+                            <div class="p-4">
+                                <!--<div class="d-flex justify-content-between align-items-center mb-3">
+                                  <h4 class="text-right">Ajustes de perfil</h4>
+                              </div>-->
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <label class="labels" (click)="imprimir()">Nombre</label>
+                                        <!--[value]="nombre()"-->
+                                        <input id="nombre" type="text" class="form-control" formControlName="nombre" [ngClass]="{'is-invalid' : campoNoValido('nombre')}" value="{{nombre()}}">
+                                        <div class="invalid-feedback">
+                                            El campo es obligatorio
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="labels">Apellidos</label>
+                                        <input id="apellidos" type="text" class="form-control" formControlName="apellidos" [ngClass]="{'is-invalid' : campoNoValido('apellidos')}">
+                                        <div class="invalid-feedback">
+                                            El campo es obligatorio
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <label class="labels">Email</label>
+                                        <input [readonly]="true" id="email" type="text" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid' : campoNoValido( 'email')} ">
+                                        <div class="invalid-feedback">
+                                            El campo es obligatorio
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="col-md-4">
+                            <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center experience"><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Información
+                                      adicional</span></div>
+                                <br>
+                                <div class="col-md-12"><label class="labels">Género</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                          Hombre
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                          Mujer
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                                        <label class="form-check-label" for="flexRadioDefault3">
+                                          Otro
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4 checked">
+                                        <label class="form-check-label" for="flexRadioDefault4">
+                                          Prefiero no indicarlo
+                                      </label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col-md-12"><label class="labels">Fecha de nacimiento</label><input id="fechaE" type="date" id="start" name="trip-start" value="" min="2018-01-01" max="2022-12-04" class="form-control"></div>
+                            </div>
+                        </div>-->
+                    </div>
+                    <!--</div>-->
+                </div>
+                <div class="modal-footer border-0" id="botonesBuscar">
+                    <button id="enviar" [disabled]="datosForm.pristine" type="submit" class="btn inverso">Guardar cambios</button>
+                    <button (click)="cargarUsuario()" [disabled]="datosForm.pristine" type="button" class="btn inverso">Cancelar</button>
+                    <button type="button" class="btn bg-dark modal-close" data-bs-dismiss="modal" (click)="hideModal()">X</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- Modal perfil 2 - Cuenta-->
+<div class="modal" id="modalPerfil2" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" class="headerModal">
+                <img class="d-block w-50 justify-content-center" src="./assets/images/LOGO2.png">
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">Cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil3">Privacidad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil4">Notificaciones</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="modalPerfil2Contenido">
+                <div class="divGestiona">
+                    <h5 class="titlePost fw-bold text-center">Gestiona tu cuenta a tu manera</h5>
+                </div>
+                <div class="divCuenta">
+                    <!-- Datos actualizados -->
+                    <div class="text-success text-right animate__animated animate__faster" [ngClass]="{'animate__fadeIn': showOKP && datosPassword.pristine, 'animate__fadeOut' : !(showOKP && datosPassword.pristine)}">Datos actualizados</div>
+
+                    <h5 class="fw-bold">Cambia tu contraseña</h5>
+                    <p> Te aconsejamos que cada cierto tiempo la cambies para aumentar la seguridad de tu cuenta </p>
+
+                    <form class="form-horizontal m-t-20" [formGroup]="datosPassword" (ngSubmit)="cambiarPassword()">
+                        <div class="row m-t-10">
+                            <div class="col-lg-4 text-lg-right">
+                                <span class="">Contraseña actual</span>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid' : campopNoValido('password')}" id="password" autocomplete="off">
+                                <div class="invalid-feedback">
+                                    El campo es obligatorio
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-t-10">
+                            <div class="col-lg-4 text-lg-right">
+                                <span class="">Nueva contraseña</span>
+                            </div>
+                            <div class="col-lg-6 ">
+                                <input type="password" class="form-control" formControlName="nuevopassword" [ngClass]="{'is-invalid' : campopNoValido('nuevopassword')}" id="nuevopassword1" autocomplete="off">
+                                <div class="invalid-feedback">
+                                    El campo es obligatorio
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-t-10">
+                            <div class="col-lg-4 text-lg-right">
+                                <span class="">Repita contraseña</span>
+                            </div>
+                            <div class="col-lg-6 ">
+                                <input type="password" class="form-control" formControlName="nuevopassword2" [ngClass]="{'is-invalid' : campopNoValido('nuevopassword2') || passwordNoIgual()}" id="nuevopassword2" autocomplete="off">
+                                <div class="invalid-feedback" *ngIf="campopNoValido('nuevopassword2')">
+                                    El campo es obligatorio
+                                </div>
+                                <div class="invalid-feedback" *ngIf="passwordNoIgual()">
+                                    La contraseña repetida no es igual a la nueva contraseña
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btnModify btn bg-dark" id="enviarpassword1" [disabled]="datosPassword.pristine"><i class="fa fa-key m-r-10"></i>Modificar contraseña</button>
+                        <button class="btnModify btn bg-dark" (click)="cancelarPassword()" type="button" [disabled]="datosPassword.pristine">Cancelar</button>
+                    </form>
+
+
+                    <h5 class="fw-bold">Elimina tu cuenta</h5>
+                    <p> Si has desistido con la proyección futura de tu tatuaje, esta es la opción</p>
+                    <button type="button" class="btn bg-dark"> Eliminar cuenta </button>
+                </div>
+            </div>
+            <div class="modal-footer border-0" id="botonesBuscar">
+                <button type="button" class="btn bg-dark" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn inverso">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalPerfil3" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" class="headerModal">
+                <img class="d-block w-50 justify-content-center" src="./assets/images/LOGO2.png">
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil2">Cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">Privacidad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil4">Notificaciones</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="modalPerfil3Contenido">
+                <div class="divCuenta">
+                    <div class="divGestiona">
+                        <h5 class="titlePost fw-bold text-center">Marca los límites de tu privacidad</h5>
+                    </div>
+                    <div class="divCuenta">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckDefault">
+                        Todos los usuarios podrán ver tu perfil al completo
+                    </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckChecked">
+                        Mostrar tus diseños guardados en tu perfil público
+                    </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckChecked">
+                        Mostrar teléfono a estudios donde no estás registrado como cliente
+                    </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckChecked">
+                        Recibir noticias de nuevos diseños de otros estudios
+                    </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0" id="botonesBuscar">
+                    <button type="button" class="btn bg-dark" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn inverso">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalPerfil4" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" class="headerModal">
+                <img class="d-block w-50 justify-content-center" src="./assets/images/LOGO2.png">
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil">Editar perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil2">Cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#modalPerfil3">Privacidad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">Notificaciones</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="modalPerfil2Contenido">
+                <div class="divGestiona">
+                    <h5 class="titlePost fw-bold text-center">Configura tus notificaciones</h5>
+                </div>
+                <div class="divCuenta">
+                    <p>¿De qué quieres recibir notificaciones?</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <label class="form-check-label" for="flexCheckDefault">
+                    Novedades
+                </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <label class="form-check-label" for="flexCheckChecked">
+                    Registrado como cliente
+                </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <label class="form-check-label" for="flexCheckChecked">
+                    Confirmaciones de citas
+                </label>
+                    </div>
+                </div>
+                <div class="divCuenta">
+                    <p>¿Por qué medio prefieres recibir las notificaciones?</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <label class="form-check-label" for="flexCheckDefault">
+                    Apartado notificaciones de mi perfil
+                </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <label class="form-check-label" for="flexCheckChecked">
+                    Correo electrónico
+                </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <label class="form-check-label" for="flexCheckChecked">
+                    SMS
+                </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-0" id="botonesBuscar">
+                <button type="button" class="btn bg-dark" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn inverso">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1722 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "TA2AT",
+    "description": "Esta es la documentación oficial de la API que usa la aplicación de TA2AT. Aquí podemos encontrar todos los endpoints que, por el momento, dispone la API. Además también quedan reflejados los modelos de datos que se consumen, así como algunas de las posibles respuestas que nos podemos encontrar tras la correspondiente petición. Esta documentación se irá actualizando a medida que se vayan implementando más funcionalidades",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "ta2at.ua@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://ta2at.ovh/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Diseños",
+      "description": "Publicaciones de tatuadores"
+    },
+    {
+      "name": "Avatar",
+      "description": "Avatar 3D personalizado"
+    },
+    {
+      "name": "CT",
+      "description": "Coordenadas de los tatuajes en el avatar"
+    },
+    {
+      "name": "Usuarios",
+      "description": "Funciones de los usuarios"
+    },
+    {
+      "name": "Archivos",
+      "description": "Archivos que suben los usuarios"
+    }
+  ],
+  "paths": {
+    "/api/design": {
+      "get": {
+        "tags": [
+          "Diseños"
+        ],
+        "summary": "Diseños de cada usuario",
+        "description": "Devuelve todos los diseños mediante el token del usuario",
+        "operationId": "obtenerDesign",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "desde",
+            "in": "header",
+            "description": "número de página desde donde se pide el diseño",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DisenyoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error en la respuesta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Token no válido"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Diseños"
+        ],
+        "summary": "Subida de un nuevo diseño de un usuario",
+        "operationId": "crearDesign",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto del diseño que se va a subir",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Disenyo"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Disenyo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Design creado"
+                    },
+                    "design": {
+                      "$ref": "#/components/schemas/Disenyo"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error en la respuesta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error creando design"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/design/{designId}": {
+      "put": {
+        "tags": [
+          "Diseños"
+        ],
+        "summary": "Actualizar diseño existente",
+        "operationId": "actualizarDesign",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "designId",
+            "in": "path",
+            "description": "ID del diseño al que se hace la llamada",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto del diseño actualizado",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Disenyo"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Disenyo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Design actualizado"
+                    },
+                    "design": {
+                      "$ref": "#/components/schemas/Disenyo"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El nombre de un diseño no se puede repetir",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "El design ya existe"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El ID no existe",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Diseño no encontrado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Diseños"
+        ],
+        "summary": "Elimina un diseño existente",
+        "operationId": "borrarDesign",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "designId",
+            "in": "path",
+            "description": "ID del diseño al que se hace la llamada",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Design eliminado"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El ID no existe",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Diseño no encontrado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/avatar": {
+      "get": {
+        "tags": [
+          "Avatar"
+        ],
+        "summary": "Devuelve un avatar",
+        "description": "Devuelve el objeto del avatar que pertenece al usuario que lo pide.",
+        "operationId": "obtenerAvatar",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "desde",
+            "in": "header",
+            "description": "número de página desde donde se pide el diseño",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvatarResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvatarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error al obtener avatar"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Avatar"
+        ],
+        "summary": "Crea nuevo avatar",
+        "description": "Crea un nuevo avatar a partir del objeto que le pasamos en la petición",
+        "operationId": "crearAvatar",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Ejemplo de avatar personalizado por el usuario",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Avatar"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvatarResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvatarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error creando el avatar"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/avatar/{avatarId}": {
+      "put": {
+        "tags": [
+          "Avatar"
+        ],
+        "summary": "Edita el avatar del usuario",
+        "description": "El usuario con la sesión iniciada podrá actualizar los datos de su avatar para personalizarlo a su gusto.",
+        "operationId": "actualizarAvatar",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "avatarId",
+            "in": "path",
+            "description": "Id del avatar que va a ser editado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto del avatar editado por el usuario",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Avatar"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvatarResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvatarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error actualizando el avatar"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Avatar"
+        ],
+        "summary": "Eliminación del avatar del usuario",
+        "description": "A partir del ID del avatar, el usuario con la sesión iniciada podrá eliminar su avatar. Cuando esto ocurre se le asigna el avatar predeterminado.",
+        "operationId": "borrarAvatar",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "avatarId",
+            "in": "path",
+            "description": "Id del avatar que va a ser eliminado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvatarResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvatarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error al eliminar el avatar"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CT": {
+      "get": {
+        "tags": [
+          "CT"
+        ],
+        "summary": "Devuelve coordenadas",
+        "description": "Devuelve el objeto con las coordenadas de un tatuaje.",
+        "operationId": "obtenerCT",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "desde",
+            "in": "header",
+            "description": "número de página desde donde se pide el diseño",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CTResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CTResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error al obtener las coordenadas"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CT"
+        ],
+        "summary": "Crea nuevas coordenadas",
+        "description": "Crea un objeto con nuevas coordenadas que podrán ser asignadas a un diseño.",
+        "operationId": "crearCT",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Ejemplo de objeto con coordenadas",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CT"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CTResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CTResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error creando coordenadas"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CT/{CTId}": {
+      "put": {
+        "tags": [
+          "CT"
+        ],
+        "summary": "Edita las coordenadas",
+        "description": "El usuario será capaz de mover el diseño sobre el avatar, esto lo podemos hacer a partir de editar las coordenadas de dicho diseño.",
+        "operationId": "actualizarCT",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CTId",
+            "in": "path",
+            "description": "Id de las coordenadas que se van a modificar.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Ejemplo de objeto con coordenadas modificadas",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CT"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CTResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CTResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error actualizando las coordenadas"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CT"
+        ],
+        "summary": "Eliminación de las coordenadas",
+        "description": "Que se eliminen unas coordenadas significa que el diseño que las tenía asignadas se quitará del avatar.",
+        "operationId": "borrarCT",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CTId",
+            "in": "path",
+            "description": "Id de las coordenadas que se van a eliminar.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CTResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CTResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error al eliminar las coordenadas"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/usuario/{usuarioId}": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Obtener usuario a partir del ID",
+        "operationId": "obtenerUsuario",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "description": "Id del usuario a buscar.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error al encontrar el usuario."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Actualiza los datos del usuario",
+        "description": "El usuario será capaz de editar sus datos como: contraseña, nombre, apellidos...",
+        "operationId": "actualizarUsuario",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "description": "Id del usuario a editar.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto con los datos del usuario editados.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error al actualizar el usuario."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Eliminar cuenta",
+        "description": "El usuario puede borrar su cuenta por completo, se le avisará de que esta acción es irreversible.",
+        "operationId": "borrarUsuario",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "description": "Id del usuario a eliminar",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error al eliminar el usuario."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "post": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Inicio de sesión",
+        "operationId": "login",
+        "requestBody": {
+          "description": "Usuario y contraseña del usuario.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "usuario": {
+                    "type": "string",
+                    "example": "ejemplo@gmail.com"
+                  },
+                  "contraseña": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "Ejemplo1234%"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Usuario o contraseñas incorrectos."
+                    },
+                    "token": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/login/register": {
+      "post": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Registro de usuarios",
+        "description": "Creación de nuevos usuarios",
+        "operationId": "crearUsuario",
+        "requestBody": {
+          "description": "Objeto del usuario a registrar",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistroResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistroResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Email ya existe."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/upload": {
+      "get": {
+        "tags": [
+          "Archivos"
+        ],
+        "summary": "Archivo pedido por el usuario",
+        "description": "Devuelve los archivos que tiene subidos el usuario",
+        "operationId": "enviarArchivo",
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "query",
+            "description": "nombre del archivo",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "description": "formato del archivo",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Archivo enviado con éxito."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error en la respuesta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Archivo no existe."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/upload/{usuarioId}": {
+      "post": {
+        "tags": [
+          "Archivos"
+        ],
+        "summary": "Subida de archivos",
+        "description": "El usuario será capaz de subir archivos, p.e su foto de perfil.",
+        "operationId": "SubirArchivo",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "description": "token identificativo del usuario",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "description": "Id del usuario que sube el archivo",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Archivo a subir",
+          "content": {
+            "image/*": {
+              "schema": {
+                "$ref": "#/components/schemas/Archivo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación completada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArchivoResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArchivoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error encontrado en la operación",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "mensaje": {
+                      "type": "string",
+                      "example": "Error al cargar archivo."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Disenyo": {
+        "required": [
+          "name",
+          "photoUrls"
+        ],
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "example": "6372329c35f030adfb9b0d89"
+          },
+          "nombre": {
+            "type": "string",
+            "example": "calavera"
+          },
+          "usuario": {
+            "type": "string",
+            "example": "636549e2d65e55d54ef7a1d4"
+          },
+          "datos": {
+            "type": "string",
+            "example": "hecho ayer"
+          }
+        }
+      },
+      "Page": {
+        "type": "object",
+        "properties": {
+          "desde": {
+            "type": "integer",
+            "example": 0
+          },
+          "registropp": {
+            "type": "integer",
+            "example": 10
+          },
+          "total": {
+            "type": "integer",
+            "example": 3
+          }
+        }
+      },
+      "DisenyoResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": true
+          },
+          "msg": {
+            "type": "string",
+            "example": "obtenerDesign"
+          },
+          "design": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Disenyo"
+            }
+          },
+          "page": {
+            "$ref": "#/components/schemas/Page"
+          }
+        }
+      },
+      "Avatar": {
+        "required": [
+          "uid"
+        ],
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "example": "6372329c35f030adfb9b0d89"
+          },
+          "nombre": {
+            "type": "string",
+            "example": "Pepe"
+          },
+          "usuario": {
+            "type": "string",
+            "example": "6374d9c8c9b93a772a96161a"
+          },
+          "tatuajes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": "6372329c35f030adfb9b0d89"
+                }
+              }
+            }
+          },
+          "coord": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CT"
+            }
+          }
+        }
+      },
+      "AvatarResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": true
+          },
+          "msg": {
+            "type": "string",
+            "example": "obtenerAvatar"
+          },
+          "avatar": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Avatar"
+            }
+          },
+          "page": {
+            "$ref": "#/components/schemas/Page"
+          }
+        }
+      },
+      "CT": {
+        "required": [
+          "uid"
+        ],
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "example": "6372329c35f030adfb9b0d89"
+          },
+          "X": {
+            "type": "number",
+            "example": 0
+          },
+          "Y": {
+            "type": "number",
+            "example": 0
+          },
+          "Z": {
+            "type": "number",
+            "example": 0
+          }
+        }
+      },
+      "CTResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": true
+          },
+          "msg": {
+            "type": "string",
+            "example": "obtenerCT"
+          },
+          "ct": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CT"
+            }
+          },
+          "page": {
+            "$ref": "#/components/schemas/Page"
+          }
+        }
+      },
+      "Archivo": {
+        "type": "string",
+        "format": "binary"
+      },
+      "ArchivoResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": true
+          },
+          "msg": {
+            "type": "string",
+            "example": "subirArchivo"
+          },
+          "nombreArchivo": {
+            "type": "string",
+            "example": "fotodeperfil.jpg"
+          }
+        }
+      },
+      "Usuario": {
+        "required": [
+          "uid"
+        ],
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "example": "6372329c35f030adfb9b0d89"
+          },
+          "nombre": {
+            "type": "string",
+            "example": "Pepe"
+          },
+          "apellidos": {
+            "type": "string",
+            "example": "Martinez"
+          },
+          "email": {
+            "type": "string",
+            "example": "pepe@ua.es"
+          },
+          "rol": {
+            "type": "string",
+            "example": "ROL_USUARIO"
+          },
+          "activo": {
+            "type": "boolean",
+            "example": true
+          },
+          "alta": {
+            "type": "string",
+            "example": "2022-11-10T11:53:47.694Z"
+          },
+          "imagen": {
+            "type": "string",
+            "example": "30cec086-ab90-4fc0-b50e-12143a316ef1.jpg"
+          },
+          "CuentaGoogle": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "UsuarioResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": true
+          },
+          "msg": {
+            "type": "string",
+            "example": "obtenerUsuario"
+          },
+          "usuario": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Usuario"
+            }
+          },
+          "page": {
+            "$ref": "#/components/schemas/Page"
+          }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": true
+          },
+          "msg": {
+            "type": "string",
+            "example": "login"
+          },
+          "usuario": {
+            "type": "object",
+            "properties": {
+              "uid": {
+                "type": "string",
+                "example": "63874455a7ca794afdf3f94a59"
+              },
+              "rol": {
+                "type": "string",
+                "example": "ROL_USUARIO"
+              },
+              "token": {
+                "type": "string",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzY1NDllMmQ2NWU1NWQ1NGVmN2ExZDQiLCJpYXQiOjE2Njg0MTkwMDAsImV4cCI6MTY2ODUwNTQwMH0.pOb7uPbUzRRQCZohCCQx1IeqkvOYQIik"
+              }
+            }
+          }
+        }
+      },
+      "RegistroResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": true
+          },
+          "msg": {
+            "type": "string",
+            "example": "Usuario registrado con exito"
+          },
+          "usuario": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        }
+      }
+    }
+  }
+}

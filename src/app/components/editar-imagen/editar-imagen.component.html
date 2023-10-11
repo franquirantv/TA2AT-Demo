@@ -1,0 +1,109 @@
+<div class="container1" appDnd (fileDropped)="onFileDropped($event)" *ngIf="!showCropper">
+    <div class="seleccionarArchivo">
+        <input type="file" accept="image/*" #fileDropRef id="fileDropRef" (change)="fileBrowseHandler($event) " #fileInput />
+        <div class="centrado">
+            <img src="../../../assets/images/subirArchivos.svg">
+        </div>
+        <div>
+            <h3>Arrastra aquí tu diseño </h3>
+            <h3>o</h3>
+            <label for="fileDropRef">Selecciona el archivo</label>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper" *ngIf="showCropper">
+    <div (click)="resetearImagen2()" class="button">
+        <div class="icon">
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+        <span>Quitar Diseño</span>
+    </div>
+</div>
+
+<!-- <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()">
+</image-cropper> -->
+
+<div class="previsualizar">
+    <div class="antes">
+        <div class="fila">
+            <div class="columna">
+                <button (click)="rotateLeft()" data-toggle="tooltip" title="Rotar Izq.">
+                            <svg class="icono-tam" aria-placeholder="Rotar hacia la derecha" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"></path>
+                            </svg>
+                        </button>
+                <button (click)="rotateRight()" data-toggle="tooltip" title="Rotar Der.">
+                            <svg class="icono-tam" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3"></path>
+                            </svg>
+                        </button>
+                <button (click)="flipHorizontal()" data-toggle="tooltip" title="Invertir Horizontal">
+                            <svg class="icono-tam" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"></path>
+                            </svg>
+                        </button>
+                <button (click)="flipVertical()" data-toggle="tooltip" title="Invertir Vertical">
+                            <svg class="icono-tam" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"></path>
+                            </svg>
+                        </button>
+                <!-- <button (click)="setCropperForm()">Forma del Cropper</button> -->
+                <!-- <button (click)="toggleContainWithinAspectRatio()">
+                            <svg class="icono-tam" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"></path>
+                            </svg>
+                        </button> -->
+                <button (click)="resetImage()" data-toggle="tooltip" title="Resetear">
+                            <svg class="icono-tam" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"></path>
+                            </svg>
+                        </button>
+                <!-- <input [(ngModel)]="rotation" placeholder="Rotation" type="number" (keyup)="updateRotation()" /> -->
+                <button class="boton-ajuste" (click)="zoomOut()">ZOOM -</button>
+                <button class="boton-ajuste" (click)="zoomIn()">ZOOM +</button>
+                <div>
+                    <input id="checkbox" type="checkbox" [(ngModel)]="quitarFondo" (change)="updateDisplayValue();" />
+                    <label for="checkbox">{{ displayValue }}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="despues">
+        <div class="titulo">
+            <h4>Imagen Subida:</h4>
+        </div>
+        <image-cropper class="imagenInicial" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [containWithinAspectRatio]="true" [aspectRatio]="1 / 1" [resizeToWidth]="512" [cropperMinHeight]="0" [cropperMaxHeight]="0" [onlyScaleDown]="true"
+            [roundCropper]="cropperForm" [canvasRotation]="canvasRotation" [transform]="transform" [alignImage]="'center'" [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"
+            (loadImageFailed)="loadImageFailed()"></image-cropper>
+        <!-- <div class="fila">
+            <div class="columna">
+                <div class="fila2">
+                    <input id="checkbox" type="checkbox" [(ngModel)]="quitarFondo" (change)="updateDisplayValue()" />
+                    <label for="checkbox">{{ displayValue }}</label>
+                </div>
+
+                <button (click)="rotateLeft()">Rotate left</button>
+                <button (click)="rotateRight()">Rotate right</button>
+                <button (click)="flipHorizontal()">Flip horizontal</button>
+                <button (click)="flipVertical()">Flip vertical</button>
+                 <button (click)="setCropperForm()">Forma del Cropper</button>
+
+                <button (click)="toggleContainWithinAspectRatio()">{{containWithinAspectRatio?'Fill Aspect Ratio':'Contain Within Aspect Ratio'}}</button>
+                <button (click)="resetImage()">Reset image</button>
+
+                <input [(ngModel)]="rotation" placeholder="Rotation" type="number" (keyup)="updateRotation()" />
+                <button (click)="zoomOut()">Zoom -</button>
+                <button (click)="zoomIn()">Zoom +</button>
+            </div>
+            <image-cropper class="imagenInicial" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="1 / 1" [resizeToWidth]="512" [cropperMinHeight]="0" [cropperMaxHeight]="0"
+                [onlyScaleDown]="true" [roundCropper]="cropperForm" [canvasRotation]="canvasRotation" [transform]="transform" [alignImage]="'center'" [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady($event)" (loadImageFailed)="loadImageFailed()"></image-cropper>
+    </div> -->
+    </div>
+    <div class="despues">
+        <h4>Imagen Resultante:</h4>
+        <img src="" alt="" id="imagen">
+    </div>
+
+    <!-- <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" /> -->

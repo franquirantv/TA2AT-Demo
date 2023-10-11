@@ -1,0 +1,111 @@
+<body>
+    <!-- <h1>¡NO DUDES EN CONTACTAR CON NOSOTROS!</h1> -->
+    <div class="centrado">
+        <div class="contenedor">
+            <div class="parent card filas">
+                <div class="imagenFondo">
+                    <img src="../../../assets/images/contacto.jpg">
+                </div>
+                <div class="columnas">
+                    <h4>Habla con nosotros</h4>
+                    <h4>O visita nuestras RRSS</h4>
+                </div>
+                <div class="" id="juntar">
+                    <div>
+                        <form name="formulario" class="form" id="myForm" [formGroup]="contactoForm" (ngSubmit)="enviarMensaje(); formSubmitData();">
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example17">Asunto</label>
+                                <input type="text" id="form2Example17" class="form-control form-control-lg" formControlName="asunto" />
+                                <!--Aquí-->
+                            </div>
+                            <!-- <div class="form-outline mb-4">
+                          <label class="form-label" for="form2Example17">Email</label>
+                          <input type="email" id="form2Example17" class="form-control form-control-lg" formControlName="email" />
+                      </div>-->
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="exampleFormControlTextarea1">Mensaje</label><br>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="mensaje"></textarea>
+                                <!--Aquí-->
+                            </div>
+
+                            <div class="centrar1">
+                                <article>
+                                    <input type="checkbox" id="feature1" formControlName="privacidad">
+                                    <div>
+                                        <p></p>
+
+                                    </div>
+                                </article>
+                                <span id="spanRecordar"><label class="form-label" for="form2Example27" id="labelRecordar">He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">Política de privacidad</a>(*) y el <a href="/aviso-legal" target="_blank" rel="noopener">Aviso Legal</a>(*)</label></span>
+                            </div>
+                            <button class="button" id="boton1" type="submit" *ngIf="conectado()">
+                              <span class="default">Enviar</span>
+                              <span class="success">¡Enviado!</span>
+                              <div class="left"></div>
+                             <div class="right"></div>
+                      </button>
+                            <button class="btn btn-danger" type="button" *ngIf="!conectado()">
+                          <fa-icon [icon]="faBridgeLock"></fa-icon>No disponible en esta DEMO
+                      </button>
+                        </form>
+                    </div>
+                    <div class="negro div2">
+                        <!-- <h1>HABLA CON NOSOTROS</h1> -->
+                        <ul class="div1" id="margen1">
+                            <li>
+                                <a href="https://www.facebook.com/ta2at.delt4">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    <span> - Facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/ta2at_ua">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    <span> - Twitter</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="div2" id="margen">
+                            <li>
+                                <a href="mailto:ta2at.ua@gmail.com?Subject=Contacto">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                    <span> - GMAIL</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/ta2at_/">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                    <span> - Instagram</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--  <div class="card"
+          <h1>¡NO DUDES EN CONTACTAR CON NOSOTROS!</h1>
+          <p>Puedes contactar con nosotros utilizando el formulario de la izquierda, pero tambien puedes hacerlo contactando con nosotros mediante nuestro telefono, email o Instagram.</p>
+          <div class="container2">
+              <div class="spans">
+                  <div class="icons">
+                      <span class="fa fa-envelope-o"></span> ta2at.ua@gmail.com
+                  </div>
+                  <div class="icons">
+                      <span class="fa fa-facebook-square"><a href="https://www.facebook.com/ta2at.delt4">ta2at.delt4</a></span>
+                  </div>
+                  <div class="icons">
+                      <span class="fa fa-instagram"><a href="https://www.instagram.com/ta2at_/">ta2at_</a></span>
+                  </div>
+                  <div class="icons">
+                      <span class="fa fa-twitter-square"><a href="https://twitter.com/ta2at_ua">ta2at_ua</a></span>
+                  </div>
+
+              </div>
+
+          </div>
+      </div>-->
+    </div>
+</body>

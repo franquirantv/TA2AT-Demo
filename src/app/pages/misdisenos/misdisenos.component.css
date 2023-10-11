@@ -1,0 +1,140 @@
+body {
+    margin: 0em 2em 2em 5em;
+}
+
+header>h1 {
+    padding: 0.5em;
+    font-family: 'Catamaran', sans-serif;
+    font-size: 2.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.gallery {
+    margin: 3em 0;
+    border: 1px solid #ccc;
+    padding: 1em;
+    border-radius: var(--bs-border-radius) !important;
+}
+
+.insideGallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: 1fr;
+    grid-gap: 1em;
+    grid-auto-flow: dense;
+}
+
+.noDiseno {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+figure {
+    display: flex;
+    margin: 0;
+}
+
+img {
+    flex: 1;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+img:hover {
+    opacity: 0.7;
+}
+
+.heading-line {
+    position: relative;
+    padding-bottom: 0.17em;
+}
+
+.heading-line:after {
+    content: "";
+    height: 0.15em;
+    width: 2.8em;
+    background-color: #D4AF37;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.marginb2 {
+    margin-bottom: 2em;
+    margin-left: 3em;
+}
+
+.section2 {
+    padding: 2em 0;
+}
+
+.subirDiseño {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    margin: 0 5px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:hover {
+    width: 200px;
+}
+
+.wrapper .button .icon {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:nth-child(1):hover .icon {
+    background: #D4AF37;
+}
+
+.wrapper .button .icon mat-icon {
+    font-size: 1.6em;
+    margin-top: 0.7em;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:hover .icon mat-icon {
+    color: #fff;
+}
+
+.wrapper .button span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin-left: 10px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper .button:nth-child(1) span {
+    color: #D4AF37;
+}
+
+.columna {
+    display: flex;
+    flex-direction: column;
+    padding-left: 4em;
+}

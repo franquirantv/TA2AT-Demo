@@ -1,0 +1,72 @@
+<head>
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org/",
+            "@type": "Dataset",
+            "url": "https://ta2at.ovh/opendata",
+            "image": "https://ta2at.ovh/assets/favicon2g.webp",
+            "description": "Tabla de tauajes que puedes buscar segun estilos y partes del cuerpo",
+            "keywords": "tatuajes,tattoo,tatuaje,tattoos,abp,ingenieria multimedia,universidad de alicante,
+            UA,
+            avatar3d,
+            avatar,
+            estilos tatuajes,
+            estudios tatuajes,
+            social media tatto,
+            previsualizar tatuajes,
+            red social tatuajes ",
+            "license": "https://ta2at.ovh/aviso-legal",
+            "creator": {
+                "@type": "Organization",
+                "name": "DELT4"
+            }
+        }
+    </script>
+</head>
+<div class="row justify-content-center py-5 divTituloLegal">
+    <div class="col-8 col-md-8 col-lg-6 text-center mb-3">
+        <div class="d-block mb-3">
+            <span class="text-uppercase f14">Open Data</span>
+        </div>
+        <h1><span class="tituloLegal" alt="Agencia Española de Protección de Datos" title="Agencia Española de Protección de Datos">Datos Abiertos</span></h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row py-0 py-md-5 align-items-center justify-content-between">
+        <div class="col-12 col-md-12 col-lg-12 ">
+            <div class="d-block mb-3">
+                <div class="logo_lista text-uppercase f14 fw-bold">
+                    ¿Que son los datos abiertos?
+                </div>
+            </div>
+            <p>Los datos abiertos o "Open Data" en inglés, se refieren a información o conjunto de datos que son accesibles y disponibles para cualquier persona sin restricciones de uso, reutilización o redistribución. Estos datos suelen ser publicados en
+                línea en formatos digitales estandarizados y estructurados, con el objetivo de que cualquier persona, ya sea ciudadano común, investigador, empresa, gobierno u organización, pueda utilizarlos para crear nuevos conocimientos, productos
+                o servicios.</p>
+            <p>Los datos abiertos pueden incluir información gubernamental, estadísticas, registros públicos, estudios de investigación, datos geoespaciales, y cualquier otro tipo de información que sea de interés público. Para que se consideren "abiertos",
+                estos datos deben ser accesibles de manera fácil y en formatos que permitan su procesamiento y análisis por parte de la sociedad en general.</p>
+            <p>El Open Data se ha convertido en una herramienta importante para fomentar la transparencia y la rendición de cuentas de las instituciones públicas y privadas, así como para impulsar la innovación y el desarrollo de nuevas tecnologías y aplicaciones
+                que mejoren la vida de las personas.</p>
+        </div>
+    </div>
+    <div class="col-12 col-md-12 col-lg-12 ">
+        <div class="d-block mb-3">
+            <div class="logo_lista text-uppercase f14 fw-bold">
+                Descargar CSV
+            </div>
+        </div>
+        <p>Puedes descargar nuestro dataset en formato CSV aqui abajo</p>
+        <p><button (click)="download()" class="csv-download-btn">Descargar archivo CSV</button></p>
+    </div>
+    <div class="col-12 col-md-12 col-lg-12 ">
+        <div class="d-block mb-3">
+            <div class="logo_lista text-uppercase f14 fw-bold">
+                Protocolo HTTP
+            </div>
+        </div>
+        <div class="background">
+            <p><b>GET </b>/api/opendata</p>
+            <p><b>HOST: </b>tatuate.es</p>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap');
+
+
+.container {
+  max-width: 88em;
+  padding: 1em;
+  display: block;
+  margin-top: 2em;
+  width: 43em;
+  /* background-color: #D4AF37; */
+  border-radius: 2em;
+  box-shadow: 10px 10px 9px #c5c5c5, -10px -10px 9px #ffffff;
+  border: solid 4px black;
+}
+
+
+/* Columns */
+
+.left-column {
+    width: 41%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    top: 4em;
+    left: 1em;
+}
+
+.right-column {
+  width: 35%;
+  height: 16em;
+  margin-left: 2em;
+
+}
+
+.parte-superior{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+}
+/* Left Column */
+
+.imagen {
+  height: 16.5em;
+    max-width: 13.7em;
+    margin-top: -0.7em;
+}
+
+.left-column img {
+    width: 17em;
+    left: 0;
+    /* border: 0.3em solid; */
+    top: 3em;
+    /* border-radius: 1.5em; */
+    transition: all 0.3s ease;
+    display: block;
+    /* object-fit: cover; */
+}
+
+
+/* DISEÑO */
+
+
+.cardBox {
+  width: 15em;
+  height: 18.5em;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.card {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  border-radius: 20px;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.card .h4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: 800;
+  pointer-events: none;
+  opacity: .5;
+}
+
+.card .content .h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.card .content p {
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.card .content {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.card:hover .content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card:hover .h4 {
+  opacity: 0;
+}
+
+.cardBox::before {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 150%;
+  background: linear-gradient(to right, #D4AF37, #D4AF37, #D4AF37);
+  transform-origin: center;
+  animation: glowing_401 10s linear infinite;
+}
+
+@keyframes glowing_401 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.info-diseno{
+  width: 20em;
+
+}
+
+.info-diseno>h1{
+  font-family: 'Sedgwick Ave Display', cursive;
+  text-decoration: underline;
+  font-size: 2em;
+}
+
+.descripcion{
+  width: 23em;
+    overflow: auto;
+    height: 6.5em;
+}
+/*TATUADOR*/
+.tatuador-card {
+  width: 23em;
+  height: 7em;
+  border-radius: 1rem;
+  background-color: rgba(31, 41, 55, 1);
+  padding: 1rem;
+}
+
+.tatuador-infos {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  grid-gap: 1rem;
+  gap: 1rem;
+}
+
+.tatuador-image {
+  height: 4em;
+  width: 4em;
+  border-radius: 0.5rem;
+  background-color:white;
+}
+
+.tatuador-info {
+  height: 7rem;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tatuador-name {
+  font-size: 1.25rem;
+  margin-top: -0.4em;
+  line-height: 1.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.tatuador-function {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(156, 163, 175, 1);
+}
+
+.tatuador-stats {
+  width: 9em;
+  margin-top: -1em;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(0, 0, 0, 1);
+}
+
+
+.tatuador-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 4px;
+}
+.tatuador-boton{
+  margin-top: 2.4em;
+}
+
+
+.tatuador-state-value {
+  font-weight: 700;
+  color: black;
+}
+
+.tatuador-request {
+  width: 100%;
+    border: 1px solid #D4AF37;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: white;
+    line-height: 1.5rem;
+    transition: all .3s ease;
+}
+
+.tatuador-request:hover {
+  background-color: #D4AF37;
+  color: #fff;
+}
+
+/****** CARACTERÍSTICAS TATTOO ******/
+.caracte{
+  margin-left: 1em;
+}
+.caracte>h1{
+  font-size: 1em;
+  font-family: 'Sedgwick Ave Display', cursive;
+  color: black;
+  width: fit-content;
+  background: #D4AF37;
+  padding: 0.1em;
+  border-radius: 0.5em;
+}
+.caracteristicas{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin-left: 0.5em;
+  margin-top: 1em;
+  border: black 2px solid;
+  padding: 0.5em;
+  border-radius: 1.5em;
+}
+.apartado-color{
+  display: block;
+  width: fit-content;
+}
+
+.valor{
+  border: #D4AF37 2px solid;
+  width: fit-content;
+  padding: 0.2em;
+  border-radius: 0.5em;
+  margin: 0.2em;
+  color: black;
+
+}
+
+.valor-ajuste{
+width: auto;
+}
+
+.zonas-recomendadas{
+  display: block;
+  width: 78%;
+  margin-left: 2em;
+  margin-top: 2em;
+}
+
+.zonas{
+  border: #D4AF37 2px solid;
+  width: fit-content;
+  padding: 0.2em;
+  border-radius: 0.5em;
+  margin-top: 0.2em;
+  color: black;
+  margin: 0.2em;
+  text-decoration: none;
+}
+
+.estilos{
+  display: block;
+  width: fit-content;
+}
+
+.valor-zonas{
+  width: fit-content;
+  display: block;
+  margin-top: 0em;
+  margin-left: 0em;
+}
+
+.orden-zonas{
+  display: inline-flex;
+}
+
+.anadir{
+  background-color: #D4AF37;
+  width: fit-content;
+  padding: 0.3em;
+  margin-left: 30em;
+  margin-top: 1em;
+  border-radius: 0.5em;
+  border: 2px solid black;
+  height: 2.3em;
+}
+
+.anadir:hover{
+  background-color: white;
+  color: black;
+}
+.anadir>button>a{
+  top: -0.35em;
+  position: relative;
+  margin: 0.3em;
+}

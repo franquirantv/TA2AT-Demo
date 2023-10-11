@@ -1,0 +1,690 @@
+.parteIzquierda {
+    padding-top: 1em;
+    margin-left: 5em;
+}
+
+
+/* Titulo */
+
+.heading-line {
+    position: relative;
+    padding-bottom: 0.17em;
+}
+
+.heading-line:after {
+    content: "";
+    height: 0.15em;
+    width: 2.8em;
+    background-color: #D4AF37;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.marginb1 {
+    margin-bottom: 1em;
+}
+
+
+/* columnas */
+
+.orden {
+    columns: 2;
+}
+
+.grid-container-element {
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+    //grid-gap: 1em;
+    width: 100%;
+}
+
+
+/* MOTOR */
+
+#rendererCanvas {
+    display: flex;
+}
+
+#controles {
+    position: absolute;
+}
+
+#controles>#gui>div.children>div.controller.number.hasSlider {
+    background-color: #ecd17f;
+}
+
+.motor {
+    position: relative;
+}
+
+#elegir {
+    background-color: #D4AF37;
+    position: absolute;
+    top: 1.3em;
+    right: 24%;
+    width: 44%;
+    border-radius: 0.5em;
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr 0.2fr 0.2fr 0.2fr;
+    text-align: center;
+}
+
+.capa {
+    margin-top: 0.5em;
+    background-color: #D4AF37;
+    width: 2em;
+    height: 2.3em;
+    text-align: center;
+    border-radius: 0.4em;
+    margin-left: 0.5em;
+}
+
+.capa>mat-icon {
+    color: black;
+}
+
+.capa:hover {
+    background-color: white;
+}
+
+.botones-motor {
+    position: absolute;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    right: 0;
+}
+
+#ajustesAvatar {
+    margin: 1em;
+    height: 3em;
+    width: 3em;
+    background-color: #D4AF37;
+    transition: 0.7s;
+}
+
+#ajustesAvatar:hover,
+#rotarAvatar:hover,
+#captura:hover,
+#mensaje:hover {
+    background-color: #f8da7b;
+}
+
+#rotarAvatar {
+    height: 3em;
+    width: 3em;
+    margin: 1em;
+    background-color: #D4AF37;
+    transition: 0.7s;
+}
+
+#captura {
+    height: 3em;
+    width: 3em;
+    margin: 1em;
+    background-color: #D4AF37;
+    transition: 0.7s;
+}
+
+#mensaje {
+    height: 3em;
+    width: 3em;
+    margin: 1em;
+    background-color: #D4AF37;
+    transition: 0.7s;
+}
+
+
+/*MODAL EDITAR AVATAR*/
+
+#imgColores input[type=radio] {
+    display: block;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+    margin-left: 0.7em;
+}
+
+#imgColores input[type=radio]:checked {
+    border: 3px solid #343a40;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.pequeño {
+    width: 40vh;
+}
+
+.cambioCuerpo {
+    display: flex;
+    justify-content: center;
+}
+
+.seleccionado {
+    background-color: #fbfbfb;
+    color: #D4AF37;
+    border-radius: 3.2em;
+    box-shadow: 0 4px 26px -4px rgb(134, 130, 130);
+    height: 34vh;
+    border: 0.1em solid black;
+    width: 39vh;
+}
+
+.no_seleccionado {
+    background-color: transparent;
+    border: 0.1em solid grey;
+    border-radius: 3.2em;
+    width: 38vh;
+}
+
+.actualizarCambios {
+    background-color: #D4AF37;
+    color: #373737;
+    border: none;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 2em;
+    border-radius: 4px;
+    height: 3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.actualizarCambios:hover {
+    background-color: white;
+    color: #D4AF37;
+    border: 0.1em solid #D4AF37;
+}
+
+
+/*----------RADIO BUTTONS PIEL*/
+
+#tonoPielMio {
+    background-color: #e9caae;
+}
+
+#tonoPiel1 {
+    background-color: #fddeb0;
+}
+
+#tonoPiel2 {
+    background-color: #f5d4b5;
+}
+
+#tonoPiel3 {
+    background-color: #e9caae;
+}
+
+#tonoPiel4 {
+    background-color: #d6a980;
+}
+
+#tonoPiel5 {
+    background-color: #a56c3f;
+}
+
+#tonoPiel6 {
+    background-color: #4f3125;
+}
+
+
+/*Poder hacer que el input radio se coloree*/
+
+input[type="radio"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: #fff;
+    /* Not removed via appearance */
+    margin: 0;
+}
+
+
+/* ORDENAR */
+
+.ordenar {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1em;
+}
+
+.datos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#ajustar {
+    height: 95%;
+}
+
+
+/* IMAGEN */
+
+.imagen {
+    display: flex;
+    flex-direction: column;
+    max-width: 13em;
+    cursor: pointer;
+}
+
+.imagen img {
+    object-fit: cover;
+    max-height: 15em;
+}
+
+
+/* Espacios */
+
+.descripcion {
+    padding-top: 2em;
+}
+
+.zonas {
+    padding-top: 2em;
+}
+
+
+/*height: 41.5em;
+*/
+
+.encajado {
+    height: 80vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+
+/* Boton */
+
+.enviar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+
+.enviar button {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: #373737;
+}
+
+.enviar button:hover {
+    background-color: #eee;
+    outline-color: #D4AF37;
+    color: #D4AF37;
+}
+
+.form-control:focus {
+    border: 1px solid #D4AF37;
+    box-shadow: 0 0 10px #D4AF37;
+}
+
+
+/* Color */
+
+.color {
+    padding-top: 1em;
+}
+
+$md-radio-checked-color: #D4AF37;
+$md-radio-border-color: rgba(0, 0, 0, 0.54);
+$md-radio-size: 20px;
+$md-radio-checked-size: 10px;
+$md-radio-ripple-size: 15px;
+@keyframes ripple {
+    0% {
+        box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.0);
+    }
+    50% {
+        box-shadow: 0px 0px 0px $md-radio-ripple-size rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        box-shadow: 0px 0px 0px $md-radio-ripple-size rgba(0, 0, 0, 0);
+    }
+}
+
+.md-radio {
+    margin: 16px 0;
+    &.md-radio-inline {
+        display: inline-block;
+    }
+    input[type="radio"] {
+        display: none;
+        &:checked+label:before {
+            border-color: $md-radio-checked-color;
+            animation: ripple 0.2s linear forwards;
+        }
+        &:checked+label:after {
+            transform: scale(1);
+        }
+    }
+    label {
+        display: inline-block;
+        min-height: $md-radio-size;
+        position: relative;
+        padding: 0 ($md-radio-size + 10px);
+        margin-bottom: 0;
+        cursor: pointer;
+        vertical-align: bottom;
+        &:before,
+        &:after {
+            position: absolute;
+            content: '';
+            border-radius: 50%;
+            transition: all .3s ease;
+            transition-property: transform, border-color;
+        }
+        &:before {
+            left: 0;
+            top: 0;
+            width: $md-radio-size;
+            height: $md-radio-size;
+            border: 2px solid $md-radio-border-color;
+        }
+        &:after {
+            top: $md-radio-size / 2 - $md-radio-checked-size / 2;
+            left: $md-radio-size / 2 - $md-radio-checked-size / 2;
+            width: $md-radio-checked-size;
+            height: $md-radio-checked-size;
+            transform: scale(0);
+            background: $md-radio-checked-color;
+        }
+    }
+}
+
+
+/* TAGS*/
+
+.example-chip-list {
+    width: 100%;
+}
+
+.colorLabel {
+    color: #272727;
+}
+
+
+/* ZONAS */
+
+.multiselect-dropdown .dropdown-btn .selected-item-container .selected-item {
+    margin-bottom: 0 !important;
+    background: #D4AF37 !important;
+}
+
+#pepe>.multiselect-dropdown[_ngcontent-eel-c175] .dropdown-btn[_ngcontent-eel-c175] .selected-item-container[_ngcontent-eel-c175] .selected-item[_ngcontent-eel-c175] {
+    background-color: #D4AF37;
+}
+
+.separacion {
+    margin-right: 1em;
+}
+
+.separacionI {
+    margin-left: 1em;
+}
+
+
+/** MODAL EDITAR DISEÑO **/
+
+.modal-editar {
+    animation: fadein .5s;
+    display: none;
+    position: absolute;
+    z-index: 1001;
+    width: 100%;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-dialog1 {
+    position: relative;
+    margin: 0;
+    pointer-events: none;
+}
+
+#modalTatuajes {
+    background-color: white;
+    max-width: 53em;
+    /*min-height: 36em;
+    max-height: 44em;*/
+    top: 1em;
+    left: 22em;
+    border: 0.1em solid gray;
+    border-radius: 1em;
+    padding: 0.6em;
+}
+
+.modal-body .contenedor {
+    overflow: hidden;
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+}
+
+.boton-subir {
+    border: 2px #D4AF37 solid;
+    color: #D4AF37;
+    padding: 0.2em 0.5em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+}
+
+
+/*------------------------ BOTONES MOVER TATUTAJES -------------------------- */
+
+.moverTatuajes {
+    margin-top: 1em;
+    margin-left: 2em;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.nomostrar {
+    cursor: default;
+}
+
+.controls {
+    border: 1px solid #fff;
+    height: 3em;
+    margin: .25em;
+    width: 3em;
+}
+
+.controls:hover {
+    background-color: #939393;
+}
+
+.up {
+    rotate: 180deg;
+}
+
+.down {
+    rotate: 0deg;
+}
+
+.left {
+    rotate: 90deg;
+}
+
+.right {
+    rotate: 270deg;
+}
+
+
+/***************************************SELECTOR TATUAJES************************************************/
+
+.editar-activo {
+    color: #db6c0c;
+    border: 0.1em solid;
+}
+
+.editar-inactivo {
+    color: #000;
+}
+
+.boton-inactivo {
+    pointer-events: none;
+    color: #535353;
+    border: 0.1em solid;
+}
+
+// #ajustesAvatar {
+//     position: absolute;
+//     right: 0;
+//     margin: 1em;
+//     height: 3em;
+//     margin-top: 1.2em;
+//     width: 3em;
+//     background-color: #D4AF37;
+// }
+.select-tatus {
+    margin-top: 0.8em;
+    background-color: #D4AF37;
+}
+
+.tatus-option {
+    background-color: #D4AF37;
+    width: 11em;
+    outline: none;
+    margin-bottom: 1em;
+}
+
+.tatus-option2 {
+    -moz-appearance: none;
+    /* for Chrome */
+    -webkit-appearance: none
+}
+
+.tatus-option2::-ms-expand {
+    display: none;
+}
+
+.boton-editar-tatu {
+    margin-right: 0.5em;
+    margin-top: 1em;
+}
+
+.boton-eliminar-tatu {
+    margin-top: 0.3em;
+}
+
+.boton-eliminar-tatu1 {
+    margin-top: 0.4em;
+}
+
+.boton-eliminar-centrado {
+    margin-top: 0.5em;
+    background-color: white;
+    width: 2em;
+    height: 2.3em;
+    text-align: center;
+    border-radius: 0.4em;
+    margin-left: 0.2em;
+    border: 0.1em solid black;
+}
+
+
+/*---------------MODALES*/
+
+
+/*.modal-content:not(.modal-avatar) {
+    background-color: white !important;
+    width: 153%;
+    margin-top: 5.5em;
+}*/
+
+.modal-avatar,
+.modal-controles {
+    background-color: white !important;
+    width: 153%;
+    // margin-left: 50%;
+}
+
+#guardarCambiosC {
+    outline-style: solid;
+    outline-width: 2px;
+    width: 10em;
+    height: 2.1em;
+    border-radius: 0.5em;
+    outline-color: #D4AF37;
+    color: #D4AF37;
+}
+
+#guardarCambiosC:hover {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: #373737;
+    width: 10em;
+    height: 2.1em;
+    border-radius: 0.5em;
+}
+
+#listaControles {
+    text-align: center;
+}
+
+
+/*---------------FIN MODALES*/
+
+:host {
+     ::ng-deep {
+        .mat-step-header .mat-step-icon-selected,
+        .mat-step-header .mat-step-icon-state-done,
+        .mat-step-header .mat-step-icon-state-edit {
+            background-color: #D4AF37;
+            color: #fff;
+        }
+    }
+}
+
+.espacio {
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+.titul {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.variable {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.estilo {
+    margin-bottom: 3px;
+}
+
+.column {
+    display: flex;
+    flex-direction: row;
+}
+
+.izq {
+    margin-right: 2em;
+}

@@ -1,0 +1,380 @@
+.cerrarBtn {
+    color: white;
+}
+
+.btn-group-vertical {
+    position: absolute;
+    display: block;
+    z-index: 99;
+    left: 1%;
+    top: 25%;
+    width: 7%;
+}
+
+.btn-group-vertical1 {
+    position: absolute;
+    display: block;
+    z-index: 99;
+    left: 1%;
+    top: 31%;
+    width: 7%;
+}
+
+.btn-group-vertical button,
+.btn-group-vertical1 button,
+.btn-group-vertical2 button,
+.btn-group-vertical3 button,
+.btn-group-vertical4 button {
+    display: inline-block;
+    color: #ffc107;
+    background-color: black;
+    border: 0em;
+    opacity: 0.9;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.7em;
+    overflow: hidden;
+    width: 65%;
+}
+
+.btn-group-vertical button:hover,
+.btn-group-vertical1 button:hover,
+.btn-group-vertical2 button:hover,
+.btn-group-vertical3 button:hover,
+.btn-group-vertical4 button:hover {
+    color: rgb(0, 0, 0);
+    background: #ffc107;
+    box-shadow: 0 0 50px #ffc107;
+}
+
+.btn-group-vertical2 button {
+    position: absolute;
+    display: block;
+    z-index: 99;
+    left: 52.5em;
+    top: 25%;
+    padding: 0.2em;
+    width: 4.5%;
+}
+
+.btn-group-vertical3 button {
+    position: absolute;
+    display: block;
+    z-index: 99;
+    left: 52.5em;
+    top: 31%;
+    padding: 0.2em;
+    width: 4.5%;
+}
+
+.btn-group-vertical4 button {
+    position: absolute;
+    display: block;
+    z-index: 99;
+    left: 52.5em;
+    top: 37%;
+    padding: 0.2em;
+    width: 4.5%;
+}
+
+#imgPerfil,
+#imgSinPerfil {
+    width: 12rem;
+    height: 10rem;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-label {
+    color: black;
+    background-color: #D4AF37;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 0.625em 0.313em;
+    margin: 0.625em 0.313em;
+}
+
+#divPerfil div div label,
+#divPerfil+div.labels label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#modalPerfil .nav-link,
+#modalPerfil2 .nav-link,
+#modalPerfil3 .nav-link,
+#modalPerfil4 .nav-link {
+    color: #343a40;
+    cursor: pointer;
+}
+
+#modalNotificaciones #modalNotificaciones1 .nav-link {
+    color: #343a40;
+    cursor: pointer;
+}
+
+#modalPerfil2 {
+    font-size: 1em;
+}
+
+#modalPerfil2Contenido,
+#modalPerfil3Contenido,
+#modalPerfil4Contenido {
+    overflow: auto;
+    margin: 0.5em;
+}
+
+.active {
+    color: #D4AF37 !important;
+}
+
+.centrado {
+    display: flex;
+    justify-content: center;
+}
+
+
+/*Tamano para modales*/
+
+.divSize {
+    height: 5em;
+}
+
+
+/*IMG*/
+
+#upload {
+    opacity: 0;
+}
+
+
+/*#upload-label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+}*/
+
+.image-area {
+    border: 2px dashed rgba(255, 255, 255, 0.7);
+    padding: 1rem;
+    position: relative;
+}
+
+.titlePost {
+    background-color: #D4AF37;
+    outline-color: #D4AF37;
+    color: #373737;
+    box-shadow: 5px 5px 5px 5px darkgray;
+    padding: 0.5em 0 0.5em 0;
+    margin-top: 1em;
+    text-align: center;
+    width: 60%;
+}
+
+.divGestiona {
+    display: flex;
+    justify-content: center;
+}
+
+.divCuenta {
+    padding: 1em;
+}
+
+.divCuenta h5 {
+    text-decoration: underline;
+}
+
+.divCuenta button {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: white;
+    box-shadow: 0 4px 9px -4px black;
+}
+
+.divCuenta .btnModify {
+    margin-bottom: 2em;
+    margin-right: 1em;
+}
+
+.divCuenta p button:hover {
+    background-color: #eee;
+    outline-color: #D4AF37;
+    color: #D4AF37;
+}
+
+label.form-check-label {
+    font-weight: bold;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: green !important;
+}
+
+.custom-checkbox .custom-control-input:checked:focus~.custom-control-label::before {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 255, 0, 0.25)
+}
+
+.custom-checkbox .custom-control-input:focus~.custom-control-label::before {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25)
+}
+
+.custom-checkbox .custom-control-input:active~.custom-control-label::before {
+    background-color: #C8FFC8;
+}
+
+
+/*.image-area::before {
+    content: 'Uploaded image result';
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    z-index: 1;
+}*/
+
+.image-area img {
+    z-index: 2;
+    position: relative;
+}
+
+
+/*---------*/
+
+
+/*--------Mensajes*/
+
+
+/*------------------*/
+
+
+/*---------------------scrollbar*/
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D4AF37;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #D4AF37;
+}
+
+#botonesBuscar {
+    margin-bottom: 5em;
+    margin-right: 5em;
+}
+
+#botonesBuscar .btn.bg-dark {
+    color: white;
+}
+
+#botonesBuscar .btn.inverso {
+    color: black;
+    outline-color: #343a40;
+    background-color: white;
+    border: 1px solid #343a40;
+}
+
+#guardarCambios {
+    outline-style: solid;
+    outline-width: 2px;
+    width: 10em;
+    height: 2.1em;
+    border-radius: 0.5em;
+    outline-color: #D4AF37;
+    color: #D4AF37;
+}
+
+#guardarCambios:hover {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: #373737;
+    width: 10em;
+    height: 2.1em;
+    border-radius: 0.5em;
+}
+
+#Bloque {
+    margin-top: 5%;
+}
+
+#textoCuenta {
+    color: black;
+}
+
+#textoPerfil {
+    color: black;
+}
+
+#textoCuenta:hover {
+    cursor: pointer;
+    font-size: 17px;
+}
+
+#textoPerfil:hover {
+    cursor: pointer;
+    font-size: 17px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+}
+
+#Bloque1 {
+    margin-top: 3em;
+    width: 25%;
+    float: left;
+}
+
+#Bloque2 {
+    border-left: 2px solid black;
+    min-height: 30.5em;
+}
+
+#col-derecha1 {
+    margin-left: 5em;
+    margin-top: 5em;
+}
+
+#divPerfil {
+    margin-top: 5em;
+}
+
+.nav-item1:hover {
+    color: gray;
+}
+
+#Bloque11 {
+    margin-top: 3em;
+    width: 25%;
+    float: left;
+}
+
+#Bloque22 {
+    width: 75%;
+    float: right;
+    border-left: 2px solid black;
+    min-height: 30.5em;
+}

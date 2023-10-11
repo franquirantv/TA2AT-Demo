@@ -1,0 +1,30 @@
+.logo img {
+    width: 40%;
+}
+
+.container {
+    height: 41em;
+}
+
+.titulo {
+    color: #D4AF37;
+}
+
+.subrayado {
+    font-weight: bold;
+    color: #D4AF37;
+    text-decoration: none;
+}
+
+button.confirm {
+    background-color: #D4AF37;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #D4AF37;
+    color: #373737;
+    box-shadow: 0 4px 9px -4px black;
+}
+
+button.confirm:hover {
+    background-color: black;
+}

@@ -1,0 +1,352 @@
+<!-- Siempre enlazar el componente que contenga los modales-->
+<!-- <app-ajustes-cuenta></app-ajustes-cuenta> -->
+
+<!-- MODAL AVATAR MODIFICACIÓN-->
+<div class="modal fade" id="modalAvatar" tabindex="-1" aria-labelledby="modalAvatarLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-avatar">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar avatar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h4 class="titulo">TONO DE PIEL</h4>
+                    <div id="imgColores" class="titulo">
+                        <button (click)="cambiarColorPiel('muynegro')">
+                    <input type="radio" name="tono" id="tonoPiel4" value="tonoPiel6" checked="false">
+                        <div for="tonoPiel6" class="botonesColores">
+                        </div>
+                      </button>
+                        <button (click)="cambiarColorPiel('negro')">
+                        <input type="radio" name="tono" id="tonoPiel3" value="tonoPiel5" checked="false">
+                            <div for="tonoPiel5" class="botonesColores">
+                            </div>
+                    </button>
+                        <button (click)="cambiarColorPiel('marron')">
+                      <input type="radio" name="tono" id="tonoPiel2" value="tonoPiel4" checked="true">
+                          <div for="tonoPiel4" class="botonesColores">
+                          </div>
+                  </button>
+                        <button (click)="cambiarColorPiel('blanco')">
+                      <input type="radio" name="tono" id="tonoPiel1" value="tonoPiel3" [ngClass]="" checked="false">
+                          <div for="tonoPiel3" class="botonesColores">
+                          </div>
+                  </button>
+                    </div>
+                    <div>
+                        <h4 class="titulo">TIPO DE MODELO</h4>
+                        <div class="centrado gap">
+                            <button title="Tipo1" class="cambioCuerpo" (click)="hombreMarcado()" [ngClass]="{'seleccionado' : toggle, 'no_seleccionado': !toggle}">
+                          <img src="../../../assets/images/avatar/chicodef.png" class="pequeño titulo">
+                      </button>
+                            <button title="Tipo2" class="cambioCuerpo" (click)="mujerMarcada()" [ngClass]="{'seleccionado' : toggle2, 'no_seleccionado': !toggle2}">
+                          <img src="../../../assets/images/avatar/chicadef.png" class="pequeño titulo">
+                      </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <!-- <div class="botonesAyuda">
+              <button title="Controles" id="controlesButton" class="botonesCanva" (click)="mensaje()">
+<mat-icon>info</mat-icon>
+</button>
+              <button title="Volver a posición inicial" id="controlesButton" class="botonesCanva">
+<mat-icon>refresh</mat-icon>
+</button>
+              <button title="Guardar" id="controlesButton" class="botonesCanva">
+<mat-icon>save</mat-icon>
+</button>
+          </div> -->
+                <button (click)="actualizarAvatar()" class="actualizarCambios" id="guardarCambios" type="submit" data-bs-dismiss="modal">Actualizar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-editar" id="modalTatuajes">
+
+    <div class="modal-dialog1">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Diseño</h5>
+                <button type="button" class="btn-close" (click)="hideModalTatuajes()"></button>
+            </div>
+            <div class="modal-body">
+                <app-editar-imagen #editarImagen (imageUploaded)="onImageUploaded($event)"></app-editar-imagen>
+            </div>
+            <div class="modal-footer centrado">
+                <button class="boton-subir" (click)="hideModalTatuajes(); subirResultado(); resetearImagen();" id="guardarCambios" type="submit">Subir Diseño</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cuadrar">
+    <!-- [hidden]="motorCargado()"-->
+    <div class="mandos">
+        <!-- <div id="espacio"> -->
+            <div *ngIf="ficha()">
+                <button class="volver" (click)="setInfo()"><mat-icon>arrow_back</mat-icon><a>VOLVER</a></button>
+                <app-diseno [usuario]="usuario" [nombreUsuario]="nombreUsuario" [colorString]="colorString" [color]="color" [imagenUrl]="imagenUrl" [descripcion]="descripcion" [estilo]="estilo" [nombre]="nombre" [zonas]="zonas"></app-diseno>
+            </div>
+            <div class="container" *ngIf="!ficha()">
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <div class="navbar-brand">
+                            <img routerLink="" id="logo" src="./assets/images/LOGO2.png" width="140" height="70" alt="Logo TA2AT">
+                        </div>
+                        <mat-tab-group dynamicHeight>
+                            <mat-tab label="Buscar">
+                                <div class="input-group buscador" id="step1">
+                                    <div class="input-group-btn search-panel buscadorDiv">
+                                        <div class="dropdown" [class.active]="isOpen">
+                                            <form [formGroup]="filtrosForm" name="formulario">
+                                                <div class=" btn btn-default dropdown-toggle" (click)="toggleDropdown()">
+                                                    <mat-icon>{{ isOpen ? 'close' : 'filter_list' }}</mat-icon>
+                                                    <span class="caret"></span>
+                                                </div>
+                                                <div class="dropdown-menu">
+                                                  <p class="text-danger text-center"> No disponible en esta DEMO.</p>
+                                                    <div class="dropdown-header">Filtrar por:</div>
+                                                    <div class="dropdown-tabs">
+                                                        <div class="dropdown-tab" [class.active]="activeTab === 'Color'" (click)="changeTab('Color')">Color</div>
+                                                        <div class="dropdown-tab" [class.active]="activeTab === 'Estilos'" (click)="changeTab('Estilos')">Estilos</div>
+                                                        <div class="dropdown-tab" [class.active]="activeTab === 'Zonas'" (click)="changeTab('Zonas')">Zonas</div>
+                                                    </div>
+                                                    <div class="dropdown-content">
+
+                                                        <div *ngIf="activeTab === 'Color'" class="dropdown-options">
+                                                            <div *ngFor="let color of colors" [ngClass]="{'dropdown-option2': estadoSelected(color),'dropdown-option': !estadoSelected(color)}" (click)="selectOption('Color', color)">
+                                                                <div>
+                                                                    {{color}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div *ngIf="activeTab === 'Estilos'" class="dropdown-options">
+                                                            <div *ngFor="let estilo of estilos" [ngClass]="{'dropdown-option2': estadoSelected(estilo),'dropdown-option': !estadoSelected(estilo)}" (click)="selectOption('Estilos', estilo)">
+                                                                <div>
+                                                                    {{estilo}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div *ngIf="activeTab === 'Zonas'" class="dropdown-options">
+                                                            <div *ngFor="let zona of zonas1" [ngClass]="{'dropdown-option2': estadoSelected(zona),'dropdown-option': !estadoSelected(zona)}" (click)="selectOption('Zonas', zona)">
+                                                                <div>
+                                                                    {{zona}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="AjustarBotones">
+                                                        <div>
+                                                            <button class="botonFiltros" type="button">Aplicar filtros</button>
+                                                        </div>
+                                                        <div>
+                                                            <button class="borrarFiltros" (click)="borrarFiltros()" type="reset">Borrar filtros</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- <button (click)="abrirFiltros()" type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">
+                                      <span ><mat-icon>filter_list</mat-icon></span> <span
+                                          class="caret"></span>
+                                  </button> -->
+                                        <!-- <button (click)="abrirFiltros()" class="button button--toolbar button--advanced js-button--advanced"><span class="button--advanced__text">Advanced </span><i class="fa fa-sliders"></i></button> -->
+
+                                    </div>
+
+                                    <!-- <input type="hidden" name="search_param" value="all" id="search_param"> -->
+                                    <!-- <i class="fa fa-times-circle "></i> -->
+                                    <!-- <div class="form-control buscador">
+                                        <input #txtBuscar type="text" class="barra-busqueda" (keyup.enter)="cargarDesign1(txtBuscar.value, selectedOptions)" placeholder="No disponible en esta DEMO.">
+                                        <mat-icon (click)="cargarDesign1(txtBuscar.value, selectedOptions)">search</mat-icon>
+                                    </div> -->
+                                    <div class="form-control buscador">
+                                        <input #txtBuscar type="text" class="barra-busqueda" placeholder="No disponible en esta DEMO.">
+                                        <mat-icon>search</mat-icon>
+                                    </div>
+
+                                    <!-- <div data-toggle="tooltip" title="Borrar búsqueda" class="input-group-btn">
+                                        <span class="borrar" (click)="txtBuscar.value='' ;cargarDesign1(txtBuscar.value, selectedOptions) "><mat-icon id="modificar">delete_forever</mat-icon> </span>
+                                    </div> -->
+                                    <div data-toggle="tooltip" title="Borrar búsqueda" class="input-group-btn">
+                                        <span class="borrar" (click)="txtBuscar.value=''"><mat-icon id="modificar">delete_forever</mat-icon> </span>
+                                    </div>
+
+                                    <div class="example-button-container">
+                                        <button data-toggle="tooltip" title="Guardados" mat-mini-fab [id]="estadopagina2" (click)="estadoGuardado();">
+                                      <mat-icon [class]="estadopagina">turned_in</mat-icon>
+                                    </button>
+                                    </div>
+                                    <!-- <span class="input-group-btn">
+                                      <button class="btn btn-default" type="button"><fa-icon [icon]="faMagnifyingGlass"></fa-icon></button>
+                                  </span> -->
+
+                                </div>
+                                <div class="selected-options" *ngIf="selectedOptions.length > 0">
+                                    <div class="selected-option" *ngFor="let option of selectedOptions">
+                                        {{option.value}}
+                                        <button class="quitar" (click)="removeOption(option, true)">
+                                          <mat-icon class="icon-display">clear</mat-icon>
+                                      </button>
+                                    </div>
+                                </div>
+                                <div class="encajado" *ngIf="!loading" id="step2">
+                                    <!-- GALERIA TATUAJES -->
+                                    <div class="page-content" id="cardList">
+                                        <!-- (click)="enableDisableRule()" [ngClass]="{'green' : toggle, 'red': !toggle}"> {{status}}>-->
+
+                                        <div class="card" *ngFor="let disenyo of listaDisenyos" id="step3">
+                                            <div class="content">
+                                                <img class="imagenFondo" [src]="disenyo.imagenUrl" />
+                                                <div class="imagenDatos">
+                                                    <h2 class="title truncate" data-toggle="tooltip" title="{{ disenyo.nombre}}"> {{ disenyo.nombre}} </h2>
+
+                                                    <div id="orden">
+                                                        <button data-toggle="tooltip" title="Ver detalles" class="btnImages" (click)="cambiarInfo(disenyo);"><mat-icon>info</mat-icon></button>
+                                                        <button id="principal" (click)="anadirAvatar(disenyo); seleccionarTatuaje();"><mat-icon>loupe</mat-icon></button>
+                                                        <button [ngClass]="{'btnImages2': esGuardado(disenyo.guardados),'btnImages': !esGuardado(disenyo.guardados)}" (click)="setGuardado(disenyo);"><mat-icon>bookmark</mat-icon></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="paginacion">
+                                        <app-pagination (cambiarPagina)="cambiarPagina( $event ) " [texto]="true " [totalRegistros]="totalDisenyos " [registroActual]="posicionactual+1 " [registrosPorPagina]="registrosporpagina "></app-pagination>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                            <!--Mis diseños-->
+                            <mat-tab label="Mis diseños">
+
+                                <!-- <div class="container1" appDnd (fileDropped)="onFileDropped($event)">
+                                  <div class="seleccionarArchivo">
+                                      <input type="file" [disabled]="maximoArchivos" accept="image/*" #fileDropRef id="fileDropRef" (change)="fileBrowseHandler($event)" #fileInput />
+                                      <div class="centrado">
+                                          <img src="../../../assets/images/subirArchivos.svg">
+                                      </div>
+                                      <div>
+                                          <h3>Arrastra aquí tu diseño </h3>
+                                          <h3>o</h3>
+                                          <label for="fileDropRef" [ngClass]="maximoArchivos ? 'seleccionarInactivo' : 'seleccionarActivo' ">Selecciona el archivo</label>
+                                      </div>
+                                  </div>
+                              </div> -->
+                                <div class="wrapper">
+                                    <div (click)="showModalTatuajes()" class="button">
+                                        <div class="icon">
+                                            <mat-icon>note_add</mat-icon>
+                                        </div>
+                                        <span>Subir diseño</span>
+                                    </div>
+                                </div>
+
+                                <div class="centrado mr-1em">
+                                    <p class="textoNormal mr-bt-u">Diseños subidos: {{tatuajesUsuario.length}}/5</p>
+                                </div>
+                                <div *ngIf="maximoArchivos" class="centrado mr-1em">
+                                    <p class="textoAviso mr-bt-u">HAS ALCANZADO EL NÚMERO MÁXIMO DE DISEÑOS.</p>
+                                </div>
+
+                                <div class="encajado-misdisenos">
+                                    <div class="page-content" id="cardList">
+                                        <div class="card" *ngFor="let tatu of tatuajesUsuario; let i = index">
+                                            <div class="content">
+                                                <img class="imagenFondo" [src]="tatu.imagen" />
+                                                <div class="imagenDatos">
+                                                    <h2 class="title truncate" data-toggle="tooltip" title="{{tatu.nombre}}"> {{tatu.nombre}} </h2>
+
+                                                    <div id="orden">
+                                                        <!-- <button class="btnImages"><mat-icon>info</mat-icon></button> -->
+                                                        <button id="principal" (click)="anadirAvatarNuestroUsuario(tatu.imagen, tatu.nombre); seleccionarTatuaje();"><mat-icon>loupe</mat-icon></button>
+                                                        <button id="principal" (click)="deleteFile(i); eliminarTatuaje(tatu.nombre);"><mat-icon>delete_forever</mat-icon></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+
+    </div>
+
+    <!-- <div class="motorgra" id="motorgra" [hidden]="!motorCargado()"> -->
+    <div class="motorgra" id="motorgra">
+        <div class="motor">
+            <!-- <div *ngIf="showControles()" class="moverTatuajes">
+                <button (click)="cambiarEscala('menos')" class="controls"><svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                <path clip-rule="evenodd" fill-rule="evenodd" d="M3.75 12a.75.75 0 01.75-.75h15a.75.75 0 010 1.5h-15a.75.75 0 01-.75-.75z"></path>
+              </svg></button>
+                <button (click)="moverTatuajes('arriba')" class="controls up" id="FlechaArriba"><svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                <path clip-rule="evenodd" fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z"></path>
+              </svg></button>
+                <button (click)="cambiarEscala('mas')" class="controls"><svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                <path clip-rule="evenodd" fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"></path>
+              </svg></button>
+
+                <button (click)="moverTatuajes('izquierda')" class="controls left" id="FlechaIzquierda"><svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                <path clip-rule="evenodd" fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z"></path>
+              </svg></button>
+                <button (click)="moverTatuajes('abajo')" class="controls down" id="FlechaAbajo"><svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                <path clip-rule="evenodd" fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z"></path>
+              </svg></button>
+                <button (click)="moverTatuajes('derecha')" class="controls right" id="FlechaDerecha"><svg fill="#fff" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg" aria-hidden="true">
+                <path clip-rule="evenodd" fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z"></path>
+              </svg></button>
+            </div> -->
+            <div #controles id="controles"></div>
+            <div class="botones-motor">
+                <!-- color="primary" -->
+                <button data-toggle="tooltip" title="Personalizar avatar" mat-fab id="ajustesAvatar" type="button" data-toggle="modal" data-target="#modalAvatar" type="button" data-bs-toggle="modal" data-bs-target="#modalAvatar">
+                  <mat-icon>edit</mat-icon>
+                  </button>
+
+                <button data-toggle="tooltip" title="Ver información" mat-fab id="mensaje" type="button" (click)="abrirControles()">
+                    <mat-icon>info</mat-icon>
+                </button>
+
+                <button data-toggle="tooltip" title="Rotación automática" mat-fab id="rotarAvatar" (click)="rotarModelo()" type="button">
+                  <mat-icon *ngIf="!getEstaRotando()">3d_rotation</mat-icon>
+                  <mat-icon *ngIf="getEstaRotando()">pause</mat-icon>
+              </button>
+
+                <!-- <button data-toggle="tooltip" title="Hacer captura" mat-fab id="captura" (click)="guardarImagen()" type="button">
+                  <mat-icon>camera</mat-icon>
+              </button> -->
+
+            </div>
+
+            <div id="elegir">
+                <div class="capa">
+                    <app-badge [items]="listaTatuajes"></app-badge><button class="boton-eliminar-tatu1"><mat-icon>layers</mat-icon></button></div>
+                <div class="select-tatus">
+                    <select [(ngModel)]="value" [attr.disabled]="mostrarselect ? null : ''" [ngClass]="mostrarselect ? '' : 'tatus-option2'" class="tatus-option" (change)="handleChange($event)">
+                      <option *ngFor="let item of listaTatuajes" [value]="item.datos.nombre">{{item.datos.nombre}}</option>
+                  </select>
+                </div>
+                <div id="boton-editar" class="boton-eliminar-centrado boton-inactivo"><button (click)="editarTatuaje(value)" class="boton-eliminar-tatu"><mat-icon>edit</mat-icon></button></div>
+                <div id="boton-mostrar" class="boton-eliminar-centrado boton-inactivo"><button (click)="mostrarTatuaje(value)" class="boton-eliminar-tatu"><mat-icon *ngIf="!valorMostrar">visibility</mat-icon><mat-icon *ngIf="valorMostrar">visibility_off</mat-icon></button></div>
+                <div id="boton-eliminar" class="boton-eliminar-centrado boton-inactivo"><button (click)="eliminarTatuaje(value)" class="boton-eliminar-tatu"><mat-icon>close</mat-icon></button></div>
+
+            </div>
+            <div #rendererCanvas></div>
+            <!-- <canvas #canvasTAG style=" border:none " id="glcanvas" width="750" height="600">
+            Tu navegador parece no soportar el elemento HTML5 <code>&lt;canvas&gt;</code>.
+            </canvas> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>TA2AT</title>
+    <meta charset="UTF-8">
+    <meta name="title" content="TA2AT">
+    <meta name="description" content="¡Quítate el miedo de hacerte un tatuaje!">
+</head>
+
+<body>
+    <div _ngcontent-ovr-c36 class="container vh-100" id="divLanding" *ngIf="!videoStart()">
+        <div class="row" id="columna1">
+
+            <div id="gradient" class="col">
+                <img src="./assets/images/landingIzquierda4.webp" widht="1031" height="948" id="imgPersona" alt="Imagen inicio">
+                <!-- <a href="https://www.instagram.com/ta2at_/" target="_blank"><img src="./assets/images/sorteooo.png" id="imgPersonaSorteo" alt="Imagen inicio"></a> -->
+            </div>
+
+
+            <div class="col" id="div-landing2">
+                <div id="botones2" class="row">
+                    <div class="col">
+                        <!-- TODO cartel open-->
+                        <img id="video2" src="./assets/images/open-24hours.webp" class="gif" alt="cartel 24h">
+                        <div *ngIf="!iniciado()">
+                            <div class="row">
+                                <button type="button" id="inicioSesion" class="btn col justify-content-center" (click)="cambiarEstado()">Iniciar sesión</button>
+                            </div>
+                            <div class="row">
+                                <button type="button" id="registrarse" class="btn col justify-content-center" (click)="cambiarEstado2()">Registrarse</button>
+                            </div>
+                        </div>
+                        <div *ngIf="iniciado()">
+                            <div class="row">
+                                <button type="button" id="inicioSesion" class="btn col justify-content-center" (click)="cambiarEstado3()">Entrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="div-landing">
+                <h1 id="title">¡Te ayudamos a elegir tu tatuaje ideal!</h1>
+                <h2 id="descrp1">La plataforma que te permite visualizar tu futuro tatuaje</h2>
+            </div>
+        </div>
+    </div>
+    <!--VIDEOOOO-->
+    <div _ngcontent-ovr-c36 class="video" *ngIf="videoStart()">
+        <video autoplay class="video" id="videotrans" (ended)="onVideoEnded()">
+            <source src="../../../assets/images/videodef.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="container">
+        <!-- <div class="postLanding">
+            <h2 class="titlePost">¡ENTRA EN TA2AT! DESCUBRE LOS DIFERENTES DISEÑOS PUBLICADOS</h2>
+        </div> -->
+        <div style="justify-content: center; display: flex; padding-top: 3em;">
+            <div class="asd">
+                <h2>Entra y descubre el paraíso de los tatuajes </h2>
+                <!-- <p>Indaga entre los diversos diseños que podrás encontrar en nuestro buscador y añadirlos a tu avatar 3D. Cada semana los tatuadores añaden diseños nuevos para tenerlos a vuestro alcance. Visita nuestra página continuamente para poder ser
+                    el primero en probarlo.</p> -->
+                <p>Con TA2AT, puedes subir tu propio tatuaje y ver cómo se ve en un avatar 3D. También puedes obtener una vista previa de los tatuajes de otros artistas y estudios, y contactar con ellos en cualquier momento. TA2AT es la manera perfecta de
+                    encontrar tu próximo tatuaje y conectarte con otros amantes de los tatuajes.</p>
+            </div>
+        </div>
+        <div class="patron shadow-lg">
+            <div class="row columna2 nomovil">
+                <div class="col div-post-landing hover14 ">
+                    <figure><img class="imgLanding" alt="Imagen diseño1" [lazyLoad]="imagenLanding1"></figure>
+                </div>
+                <div class="col div-post-landing hover14">
+                    <figure><img class="imgLanding" alt="Imagen diseño1" [lazyLoad]="imagenLanding2"></figure>
+                </div>
+                <div class="col div-post-landing hover14">
+                    <figure><img class="imgLanding" alt="Imagen diseño2" [lazyLoad]="imagenLanding3"></figure>
+                </div>
+                <!--
+          <div id="gradient" class="col">
+              <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <img class="d-block w-100 active hover-zoom" src="./assets/images/pexels-lucas-guimarães-5533992.jpg" alt="First slide">
+                      </div>
+                      <div class="carousel-item">
+                          <img class="d-block w-100" src="./assets/images/pexels-kevin-bidwell-2183131.jpg" alt="Second slide">
+                      </div>
+                      <div class="carousel-item">
+                          <img class="d-block w-100" src="./assets/images/pexels-pixabay-37321.jpg" alt="Third slide">
+                      </div>
+                  </div>
+              </div>
+          </div>-->
+            </div>
+        </div>
+
+        <!--Columna imagenes en movil-->
+        <div class="row columna2 movil">
+            <div class="col div-post-landing">
+                <img class="img-fluid hover-zoom hover-shadow" [lazyLoad]="imagenLanding2" alt="Imagen diseño1">
+            </div>
+            <div class="col div-post-landing">
+                <img class="img-fluid hover-zoom hover-shadow" [lazyLoad]="imagenLanding3" alt="Imagen diseño2">
+            </div>
+            <!--
+            <div id="gradient" class="col">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100 active hover-zoom" src="./assets/images/pexels-lucas-guimarães-5533992.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="./assets/images/pexels-kevin-bidwell-2183131.jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="./assets/images/pexels-pixabay-37321.jpg" alt="Third slide">
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <div class="flex justify-content-center botonaco">
+            <a class="btn btn-registro mt-4" routerLink="/signup" target="_blank">Empezar gratis</a>
+        </div>
+
+        <!-- Fin Columna imagenes en movil-->
+    </div>
+    <div id="avatarInicio" class="">
+        <div _ngcontent-ovr-c37 class="container row">
+            <div id="gradient" class="col flex justify-content-center">
+                <img id="video" widht="840" height="972" [lazyLoad]="gifLanding2" class="gif" alt="video avatar">
+            </div>
+            <div class="col" id="columna1">
+                <h1 id="title" class="text-center">¡Personaliza tu avatar 3D!</h1>
+                <h2 id="descrp">Y empieza a probar todos los diseños disponibles, más los que subas tú a la plataforma
+                </h2>
+                <h2 id="descrp">Únete a nuestra comunidad y podrás disfrutar de: personalizar a tu gusto tu propio avatar, guardarte tus diseños favoritos para verlos más tarde, chatear con nuestros estudios miembros...</h2>
+
+            </div>
+            <!-- <div id="gradient" class="col" id="video_tablet">
+                <img id="video" src="./assets/images/VIDEO1-.gif" class="gif">
+            </div> -->
+        </div>
+    </div>
+
+    <!-- <div id="planesInicio">
+        <div class="container">
+            <div class="row d-block d-md-flex justify-content-center pt-5 mb-5">
+                <div class="col-10 col-md-8 col-lg-6 text-center">
+                    <div class="d-block mb-3">
+                        <img class="d-block w-100" src="./assets/images/LOGO2.png">
+                        <div class="frase-intro-top color-dark text-uppercase f14 fw-bold">
+                            Empieza hoy mismo
+                        </div>
+                    </div>
+                    <h3 class="fw-bold">El mejor software para estudios de tatuajes y amantes del tatuaje.</h3>
+                    <p class="mt-4">Empieza con uno de nuestros planes y aprovecha todas nuestras ventajas, desde tu propio avatar 3D, hasta ver nuevos diseños y resolver todas tus dudas.</p>
+                    <a class="btn btn-registro mt-4" href="/signup" target="_blank">Empezar gratis</a>
+
+
+                </div>
+            </div>
+        </div>
+        <svg viewBox="0 0 100 20">
+             <path fill="#FFFFFF" opacity="0.5"></path>
+             <path fill="#FFFFFF" d="M0 30 V12 Q30 17 55 12 T100 11 V30z"></path>
+        </svg>
+    </div> -->
+
+</body>
+
+</html>

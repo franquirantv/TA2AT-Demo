@@ -1,0 +1,61 @@
+<body>
+  <div class="chat-container">
+    <div class="conversations">
+        <div *ngFor="let conver of Conversaciones; let i = index;" class="conversation" [ngClass]="{'cahtSelec': chatActivo === i}" (click)="seleccionarChat(i)">
+            <div>
+                <img src="assets/images/blank-profile-picture.png" class="">
+                <p>Estudio de tatuajes</p>
+
+            </div>
+            <div *ngIf="!(listaNL[i] === 0)">
+                <span class="red">{{listaNL[i]}}</span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!existenConvers()">
+        <p>Ahora mismo no tienes ningun chat abierto, por favor añade uno para poder chatear
+            <p>
+    </div>
+    <div *ngIf="existenConvers()" class="messages">
+
+        <div *ngFor="let conver of Conversaciones; let i = index;">
+            <div *ngIf="i === chatActivo">
+                <div class="cabeceraT">
+                    <img src="assets/images/blank-profile-picture.png" class="avatar">
+                    <p class="chat-header">Estudio de tatuajes</p>
+                    <button data-toggle="tooltip" title="Actualizar" class="fa fa-refresh send-button" (click)="refrescarChat()"></button>
+                </div>
+                <div id="contenedorDeMensajes" class="message-container">
+                    <div *ngFor="let mensaje of conver; let i = index;">
+                        <div *ngIf="i!==0">
+                            <div *ngIf="!(mensaje.id === 'fecha') && !(mensaje.id === 'nl')" class="message-wrapper">
+                                <div class="message" [ngClass]="(getUsuarioId()==mensaje.remitente)? 'enviado' : 'recibido' ">
+                                    <p>{{mensaje.mensaje}}</p>
+                                    <small class="time">{{getHora(mensaje)}}</small>
+                                </div>
+                            </div>
+                            <div *ngIf="mensaje.id === 'fecha'" class="fecha-wrapper">
+                                <div class="fecha">
+                                    <p>{{mensaje.fecha}}</p>
+                                </div>
+                            </div>
+                            <div *ngIf="mensaje.id === 'nl'" class="no-leido">
+                                <div class="no-leido2">
+                                    <p>{{mensaje.numero + ' ' + mensaje.mensaje}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="message-input">
+            <input type="text" class="input-field" placeholder="Escribe tu mensaje..." [(ngModel)]="nuevoMensaje" [ngModelOptions]="{standalone: true}">
+
+            <button data-toggle="tooltip" title="Enviar" id="botondiv" (click)="enviar()" href="#" class="send-button"><mat-icon>send</mat-icon></button>
+
+        </form>
+    </div>
+</div>
+</body>
