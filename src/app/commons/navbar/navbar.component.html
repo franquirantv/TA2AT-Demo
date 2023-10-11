@@ -11,7 +11,7 @@
         <ul class="navbar-nav mr-auto" id="navegacion">
             <li class="nav-item">
                 <!--Los span son para el efecto del navbar con css-->
-                <a class="nav-link" href="/explorar">
+                <a class="nav-link" routerLink="/explorar">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li class="nav-item" *ngIf="!esUsuario()">
-                <a class="nav-link" href="/planes">
+                <a class="nav-link" routerLink="/planes">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contacto">
+                <a class="nav-link" routerLink="/contacto">
                     <span></span>
                     <span></span>
                     <span></span>

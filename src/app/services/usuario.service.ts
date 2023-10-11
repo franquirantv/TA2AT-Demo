@@ -8,7 +8,6 @@ import { environment } from '../../environments/environment';
 import { catchError, tap, map, of, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { Usuario } from '../models/usuario.model';
-import { SocialAuthService} from '@abacritt/angularx-social-login';
 import { ComunicacionService } from './comunicacion.service';
 
 @Injectable({
@@ -21,7 +20,6 @@ export class UsuariosService {
 
   constructor( private http: HttpClient,
                private router: Router,//id
-               private authService: SocialAuthService,
                 ) {
                   const token=localStorage.getItem('token')||'';
                   if(token.length>0){
@@ -69,10 +67,6 @@ export class UsuariosService {
   });
     // console.log('logout');
 
-    this.authService.signOut().then((data) => {
-      this.router.navigate(['/login']);
-    }).catch((data) => {
-    });
 
     this.limpiarLocalStore();
     this.usuario = new Usuario("","","",false);

@@ -6,7 +6,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuariosService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
 
-import { SocialLoginModule, SocialAuthService, SocialUser, GoogleLoginProvider  } from '@abacritt/angularx-social-login';
 import Swal from 'sweetalert2';
 import { Meta } from '@angular/platform-browser';
 import { faBridgeLock } from '@fortawesome/free-solid-svg-icons';

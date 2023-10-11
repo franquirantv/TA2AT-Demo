@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { Meta } from '@angular/platform-browser';
-import { SocialAuthService } from '@abacritt/angularx-social-login';
-import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { AvatarService } from 'src/app/services/avatar.service';
 import { loginform, Googleloginform } from '../../interfaces/login-form.interface';
@@ -72,7 +70,6 @@ export class SignupGoogleComponent {
     private router: Router,
     private http: HttpClient,
     private meta: Meta,
-    private authService: SocialAuthService,
     private activatedRoute: ActivatedRoute,
     private avatarService: AvatarService
   ) {
@@ -99,10 +96,7 @@ export class SignupGoogleComponent {
 
     this.redirectToPageAfterDelay();
     this.meta.addTag({ name: 'description', content: 'Regístrate en TA2AT para acceder a una amplia variedad de servicios y contenido exclusivo. Crea una cuenta en pocos minutos y disfruta de una experiencia personalizada. Proporciona tu información personal y de contacto, elige una contraseña segura y ¡listo! Únete a nuestra comunidad en línea y empieza a disfrutar de todas las ventajas de ser miembro.' });
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-    });
+
   }
 
   redirectToPageAfterDelay(): void {
