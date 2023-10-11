@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/franquirantv/ta2at-demo">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/images/favicon_grande.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">TA2AT DEMO</h3>
@@ -225,8 +225,8 @@ Project Link: [https://github.com/franquirantv/ta2at-demo](https://github.com/fr
 [license-url]: https://github.com/franquirantv/ta2at-demo/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/francisco-quirant-vicente
-[landing-screenshot]: assets/images/landing-final.jpeg
-[explore-screenshot]: assets/images/explorar-final.jpeg
+[landing-screenshot]: src/assets/images/landing-final.jpeg
+[explore-screenshot]: src/assets/images/explorar-final.jpeg
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
 [Angular-url]: https://angular.io/
 [Typescript]: https://img.shields.io/badge/typescript-2d6ed6?style=for-the-badge&logo=typescript&logoColor=white
