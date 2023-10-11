@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "msg": "getMensajeForm",
+  "result": [
+      {
+          "id": 1,
+          "remitente": "63874455a7ca794afff94a59",
+          "destinatario": "63c0608a0a1a4833ebf968dd",
+          "mensaje": "\"Hola, me gustaría hacerme el tatuaje del samurai\"",
+          "fecha": "2023-05-24T17:07:30.000Z",
+          "leido": 1
+      },
+      {
+          "id": 2,
+          "remitente": "63c0608a0a1a4833ebf968dd",
+          "destinatario": "63874455a7ca794afff94a59",
+          "mensaje": "\"Claro pasate por mi estudio el jueves a las 12\"",
+          "fecha": "2023-05-24T17:08:48.000Z",
+          "leido": 1
+      },
+      {
+          "id": 3,
+          "remitente": "63874455a7ca794afff94a59",
+          "destinatario": "636ce64b383e1a0feb82175b",
+          "mensaje": "\"He tenido un problema con el avatar.\"",
+          "fecha": "2023-05-28T22:02:21.000Z",
+          "leido": 1
+      },
+      {
+          "id": 5,
+          "remitente": "63874455a7ca794afff94a59",
+          "destinatario": "63c0608a0a1a4833ebf968dd",
+          "mensaje": "\"Perfecto!\"",
+          "fecha": "2023-06-06T10:09:33.000Z",
+          "leido": 1
+      }
+  ]
+}

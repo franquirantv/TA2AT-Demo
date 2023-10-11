@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "msg": "getUsuarios",
+  "usuarios": [
+      {
+          "imagen": "6e88672a-1774-4ae4-b3e8-d204e34a13c8.png",
+          "uid": "636ce64b383e1a0feb82175b"
+      },
+      {
+          "imagen": "63950f5a-dfbf-4b71-95db-43ebe1d1c703.jpg",
+          "uid": "63c0608a0a1a4833ebf968dd"
+      }
+  ],
+  "total": 50
+}
